@@ -1,0 +1,14 @@
+{
+  "category": "other",
+  "priority": "low",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "none",
+  "needs_human": false,
+  "summary": "Spam message promising a free crypto bonus through a link.",
+  "product": {
+    "name": null,
+    "category": "unknown",
+    "order_id": null
+  }
+}

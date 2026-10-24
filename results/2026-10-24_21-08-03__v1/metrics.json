@@ -1,0 +1,116 @@
+[
+  {
+    "run": "cloud_default",
+    "model": "claude-haiku-5-5",
+    "prompt_version": "v1",
+    "temperature": null,
+    "top_p": null,
+    "options": {
+      "effort": "medium"
+    },
+    "n_tickets": 30,
+    "n_golden": 10,
+    "valid_pct": 100.0,
+    "failed": 0,
+    "mean_field_accuracy": 0.9375,
+    "mean_field_accuracy_ci95": [
+      0.9,
+      0.975
+    ],
+    "exact_match": 0.5,
+    "per_field_accuracy": {
+      "category": 1.0,
+      "priority": 0.9,
+      "sentiment": 0.8,
+      "language": 1.0,
+      "requested_action": 0.9,
+      "needs_human": 0.9,
+      "product.category": 1.0,
+      "product.order_id": 1.0
+    },
+    "order_id_fabricated": 0,
+    "order_id_golden_null": 5,
+    "order_id_filled_accuracy": 1.0,
+    "latency_p50_s": 1.4982806000625715,
+    "latency_p95_s": 2.271977959951618,
+    "cost_total_usd": 0.0086956,
+    "cost_per_1000_usd": 0.28985333333333335,
+    "hours_per_1000": 0.4377369379659218
+  },
+  {
+    "run": "local_t0",
+    "model": "qwen2.5:3b",
+    "prompt_version": "v1",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "options": {
+      "num_ctx": 4096
+    },
+    "n_tickets": 30,
+    "n_golden": 10,
+    "valid_pct": 100.0,
+    "failed": 0,
+    "mean_field_accuracy": 0.7375,
+    "mean_field_accuracy_ci95": [
+      0.625,
+      0.825
+    ],
+    "exact_match": 0.0,
+    "per_field_accuracy": {
+      "category": 0.5,
+      "priority": 0.4,
+      "sentiment": 0.8,
+      "language": 0.9,
+      "requested_action": 0.6,
+      "needs_human": 0.8,
+      "product.category": 0.9,
+      "product.order_id": 1.0
+    },
+    "order_id_fabricated": 0,
+    "order_id_golden_null": 5,
+    "order_id_filled_accuracy": 1.0,
+    "latency_p50_s": 3.445208699966315,
+    "latency_p95_s": 3.6056641400093215,
+    "cost_total_usd": 0.0,
+    "cost_per_1000_usd": 0.0,
+    "hours_per_1000": 0.9557013907448251
+  },
+  {
+    "run": "local_t07",
+    "model": "qwen2.5:3b",
+    "prompt_version": "v1",
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "options": {
+      "num_ctx": 4096
+    },
+    "n_tickets": 30,
+    "n_golden": 10,
+    "valid_pct": 100.0,
+    "failed": 0,
+    "mean_field_accuracy": 0.7375,
+    "mean_field_accuracy_ci95": [
+      0.6625,
+      0.8
+    ],
+    "exact_match": 0.0,
+    "per_field_accuracy": {
+      "category": 0.6,
+      "priority": 0.3,
+      "sentiment": 0.8,
+      "language": 0.9,
+      "requested_action": 0.6,
+      "needs_human": 0.9,
+      "product.category": 0.8,
+      "product.order_id": 1.0
+    },
+    "order_id_fabricated": 0,
+    "order_id_golden_null": 5,
+    "order_id_filled_accuracy": 1.0,
+    "latency_p50_s": 3.4514354000566527,
+    "latency_p95_s": 3.625584215001436,
+    "cost_total_usd": 0.0,
+    "cost_per_1000_usd": 0.0,
+    "hours_per_1000": 0.9575346222242204
+  }
+]

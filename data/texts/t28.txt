@@ -1,0 +1,1 @@
+Dell XPS 15 9530 bluetooth drops every 10 minutes after the Windows 23H2 update, tried reinstalling drivers, BIOS 1.10.0 same. Warranty until 2027. Not asking for a refund, just want to know if there is a known fix or should I send it in for service.

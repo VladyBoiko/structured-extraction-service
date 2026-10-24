@@ -1,0 +1,58 @@
+# All experiment settings in one place.
+prompt_version: v1            # file prompts/<version>.md
+
+data:
+  texts: data/texts           # one <id>.txt file per ticket
+  golden: data/golden         # one <id>.json file with reference labels
+  results_dir: results        # every run goes to a new subfolder; old results are never overwritten
+
+request:
+  timeout_s: 60               # timeout of a single model request
+  max_retries: 2              # retries on network errors, timeouts, 429 and 5xx
+  max_repair_attempts: 1      # how many times a schema-invalid answer is sent back for repair
+  max_tokens: 600
+
+# Each entry below is one configuration (model + sampling).
+# Prices are USD per 1M tokens.
+runs:
+  # Cloud model. Claude Haiku 5.5 rejects temperature/top_p, so they are null and not sent.
+  # Instead of sampling, the cloud model is tuned with `effort` (thinking depth); medium is the model default.
+  # $0.10 / $0.50 applies to prompts up to 100K tokens; thinking tokens are billed as output tokens.
+  - name: cloud_default
+    provider: anthropic
+    model: claude-haiku-5-5
+    temperature: null
+    top_p: null
+    options: {effort: medium}
+    price_input_per_mtok: 0.10
+    price_output_per_mtok: 0.50
+
+  # Local model via Ollama: `ollama pull qwen2.5:3b`.
+  # Sampling is compared on the local model: greedy vs. temperature 0.7 / top_p 0.9.
+  - name: local_t0
+    provider: ollama
+    model: qwen2.5:3b
+    temperature: 0.0
+    top_p: 1.0
+    options: {num_ctx: 4096}
+    price_input_per_mtok: 0.0
+    price_output_per_mtok: 0.0
+
+  - name: local_t07
+    provider: ollama
+    model: qwen2.5:3b
+    temperature: 0.7
+    top_p: 0.9
+    options: {num_ctx: 4096}
+    price_input_per_mtok: 0.0
+    price_output_per_mtok: 0.0
+
+  # Optional: a cheaper and faster cloud configuration with lower effort.
+  # - name: cloud_low
+  #   provider: anthropic
+  #   model: claude-haiku-5-5
+  #   temperature: null
+  #   top_p: null
+  #   options: {effort: low}
+  #   price_input_per_mtok: 0.10
+  #   price_output_per_mtok: 0.50

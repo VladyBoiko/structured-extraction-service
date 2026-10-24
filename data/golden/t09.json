@@ -1,0 +1,14 @@
+{
+  "category": "product_defect",
+  "priority": "urgent",
+  "sentiment": "negative",
+  "language": "mixed",
+  "requested_action": "replacement",
+  "needs_human": true,
+  "summary": "JBL Tune 760NC from order ES-49877 arrived scratched with a silent left ear; customer wants a fast exchange.",
+  "product": {
+    "name": "JBL Tune 760NC",
+    "category": "headphones",
+    "order_id": "ES-49877"
+  }
+}

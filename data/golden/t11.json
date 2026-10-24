@@ -1,0 +1,14 @@
+{
+  "category": "account",
+  "priority": "medium",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "other",
+  "needs_human": true,
+  "summary": "Account is locked after 3 failed logins and the password reset email never arrives; customer asks to unlock it.",
+  "product": {
+    "name": null,
+    "category": "unknown",
+    "order_id": null
+  }
+}

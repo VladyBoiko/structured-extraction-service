@@ -1,0 +1,14 @@
+{
+  "category": "payment",
+  "priority": "high",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "refund",
+  "needs_human": true,
+  "summary": "Customer was charged twice for order ES-48213 with one TV delivered and wants the extra charge refunded.",
+  "product": {
+    "name": null,
+    "category": "tv",
+    "order_id": "ES-48213"
+  }
+}

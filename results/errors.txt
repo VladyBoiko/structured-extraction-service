@@ -1,0 +1,143 @@
+Run: 2026-10-24_21-08-03__v1
+
+========================================================================
+cloud_default  (claude-haiku-5-5, prompt v1)
+
+Value distribution over all tickets (one value almost everywhere means the field collapsed):
+  category: product_defect=9, order_change=5, payment=4, delivery=3, other=3, order_status=2, product_question=2, account=1, usage_help=1
+  priority: medium=14, low=8, high=7, urgent=1
+  sentiment: negative=16, neutral=11, positive=3
+  language: en=14, uk=7, de=5, mixed=4
+  requested_action: information=9, other=9, replacement=3, cancellation=3, none=3, refund=2, repair=1
+  needs_human: True=22, False=8
+  product.category: unknown=8, headphones=5, laptop=4, smartphone=4, appliance=3, tv=2, tablet=2, other=2
+  product.order_id: None=17, ES-48213=1, ES-50177=1, ES-49002=1, ES-51320=1, ES-49877=1, ES-48990=1, ES-50410=1, ES-49531=1, ES-49760=1, ES-50822=1, ES-51004=1, ES-50233=1, ES-50555=1
+
+Differences from golden:
+
+t03: Доброго дня! Замовив ноутбук Lenovo IdeaPad 3 тиждень тому, номер ES-50177, а статус досі 'обробляєт
+    needs_human: expected False, got True
+
+t09: Hi team, навушники JBL Tune 760NC прийшли з подряпиною на корпусі and the left ear is silent. Order 
+    priority: expected 'urgent', got 'high'
+
+t11: can't log in anymore, says account locked after 3 attempts. forgot password also, reset mail never a
+    sentiment: expected 'neutral', got 'negative'
+
+t22: phone screen cracked on day 2, warrenty??
+    requested_action: expected 'repair', got 'other'
+
+t29: Ich möchte meine Bestellung ES-50555 stornieren, das Handy kostet woanders 100 Euro weniger.
+    sentiment: expected 'neutral', got 'negative'
+
+========================================================================
+local_t0  (qwen2.5:3b, prompt v1)
+
+Value distribution over all tickets (one value almost everywhere means the field collapsed):
+  category: product_defect=14, order_status=4, delivery=4, product_question=3, order_change=2, payment=2, account=1
+  priority: high=26, low=4
+  sentiment: negative=13, neutral=13, positive=4
+  language: en=14, de=8, uk=8
+  requested_action: information=14, replacement=5, refund=3, cancellation=3, repair=3, none=2
+  needs_human: True=24, False=6
+  product.category: unknown=9, headphones=5, smartphone=5, laptop=4, tv=2, tablet=2, appliance=2, accessory=1
+  product.order_id: None=18, ES-48213=1, ES-50177=1, ES-49002=1, ES-51320=1, ES-49877=1, ES-48990=1, ES-50410=1, ES-49531=1, ES-49760=1, ES-50822=1, ES-51004=1, ES-50555=1
+
+Differences from golden:
+
+t01: hi my card got charged twice for order ES-48213 but only one tv was delivered?? pls fix asap, i need
+    category: expected 'payment', got 'order_status'
+
+t03: Доброго дня! Замовив ноутбук Lenovo IdeaPad 3 тиждень тому, номер ES-50177, а статус досі 'обробляєт
+    category: expected 'order_status', got 'product_defect'
+    priority: expected 'medium', got 'high'
+    needs_human: expected False, got True
+
+t05: does the Xiaomi Redmi Buds 4 work with iphone? thx
+    category: expected 'product_question', got 'product_defect'
+
+t09: Hi team, навушники JBL Tune 760NC прийшли з подряпиною на корпусі and the left ear is silent. Order 
+    priority: expected 'urgent', got 'high'
+    language: expected 'mixed', got 'de'
+
+t11: can't log in anymore, says account locked after 3 attempts. forgot password also, reset mail never a
+    priority: expected 'medium', got 'high'
+    sentiment: expected 'neutral', got 'negative'
+    requested_action: expected 'other', got 'replacement'
+
+t12: Дякую за швидку доставку! Телевізор LG OLED C3 чудовий, картинка супер. Тільки питання: чи треба щос
+    category: expected 'usage_help', got 'product_question'
+
+t13: Mein Paket (Bestellung ES-50410, Tablet Samsung Tab S9) wurde laut Tracking vor 5 Tagen zugestellt, 
+    requested_action: expected 'other', got 'information'
+
+t22: phone screen cracked on day 2, warrenty??
+    priority: expected 'medium', got 'high'
+    requested_action: expected 'repair', got 'information'
+
+t26: CONGRATS!!! you won a free crypto bonus, click the link below to claim now
+    category: expected 'other', got 'product_question'
+    priority: expected 'low', got 'high'
+    sentiment: expected 'neutral', got 'positive'
+    requested_action: expected 'none', got 'information'
+    needs_human: expected False, got True
+
+t29: Ich möchte meine Bestellung ES-50555 stornieren, das Handy kostet woanders 100 Euro weniger.
+    priority: expected 'medium', got 'high'
+    product.category: expected 'smartphone', got 'unknown'
+
+========================================================================
+local_t07  (qwen2.5:3b, prompt v1)
+
+Value distribution over all tickets (one value almost everywhere means the field collapsed):
+  category: product_defect=13, delivery=4, order_change=3, order_status=3, product_question=3, payment=3, account=1
+  priority: high=26, low=2, medium=2
+  sentiment: negative=15, neutral=11, positive=4
+  language: en=14, de=8, uk=8
+  requested_action: information=12, replacement=5, refund=4, repair=4, cancellation=3, none=2
+  needs_human: True=23, False=7
+  product.category: unknown=9, headphones=6, smartphone=6, laptop=4, tablet=2, appliance=2, tv=1
+  product.order_id: None=16, ES-48213=1, ES-50177=1, ES-49002=1, ES-51320=1, ES-49877=1, ES-48990=1, ES-50410=1, ES-49531=1, n/a=1, ES-49760=1, ES-50822=1, ES-51004=1, ES-50233=1, ES-50555=1
+
+Differences from golden:
+
+t01: hi my card got charged twice for order ES-48213 but only one tv was delivered?? pls fix asap, i need
+    category: expected 'payment', got 'order_change'
+
+t03: Доброго дня! Замовив ноутбук Lenovo IdeaPad 3 тиждень тому, номер ES-50177, а статус досі 'обробляєт
+    priority: expected 'medium', got 'high'
+    needs_human: expected False, got True
+
+t05: does the Xiaomi Redmi Buds 4 work with iphone? thx
+    category: expected 'product_question', got 'product_defect'
+    priority: expected 'low', got 'high'
+
+t09: Hi team, навушники JBL Tune 760NC прийшли з подряпиною на корпусі and the left ear is silent. Order 
+    priority: expected 'urgent', got 'high'
+    language: expected 'mixed', got 'de'
+
+t11: can't log in anymore, says account locked after 3 attempts. forgot password also, reset mail never a
+    priority: expected 'medium', got 'high'
+    sentiment: expected 'neutral', got 'negative'
+    requested_action: expected 'other', got 'replacement'
+
+t12: Дякую за швидку доставку! Телевізор LG OLED C3 чудовий, картинка супер. Тільки питання: чи треба щос
+    category: expected 'usage_help', got 'product_question'
+    product.category: expected 'tv', got 'smartphone'
+
+t13: Mein Paket (Bestellung ES-50410, Tablet Samsung Tab S9) wurde laut Tracking vor 5 Tagen zugestellt, 
+    requested_action: expected 'other', got 'information'
+
+t22: phone screen cracked on day 2, warrenty??
+    priority: expected 'medium', got 'high'
+    requested_action: expected 'repair', got 'information'
+
+t26: CONGRATS!!! you won a free crypto bonus, click the link below to claim now
+    category: expected 'other', got 'product_question'
+    priority: expected 'low', got 'high'
+    sentiment: expected 'neutral', got 'positive'
+    requested_action: expected 'none', got 'information'
+
+t29: Ich möchte meine Bestellung ES-50555 stornieren, das Handy kostet woanders 100 Euro weniger.
+    priority: expected 'medium', got 'high'
+    product.category: expected 'smartphone', got 'unknown'

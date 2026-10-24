@@ -1,0 +1,14 @@
+{
+  "category": "usage_help",
+  "priority": "low",
+  "sentiment": "positive",
+  "language": "uk",
+  "requested_action": "information",
+  "needs_human": false,
+  "summary": "Customer is happy with the LG OLED C3 TV and asks if HDMI 2.1 setup is needed for a PS5.",
+  "product": {
+    "name": "LG OLED C3",
+    "category": "tv",
+    "order_id": null
+  }
+}

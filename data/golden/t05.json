@@ -1,0 +1,14 @@
+{
+  "category": "product_question",
+  "priority": "low",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "information",
+  "needs_human": false,
+  "summary": "Customer asks whether Xiaomi Redmi Buds 4 are compatible with an iPhone.",
+  "product": {
+    "name": "Xiaomi Redmi Buds 4",
+    "category": "headphones",
+    "order_id": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "category": "product_defect",
+  "priority": "medium",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "repair",
+  "needs_human": true,
+  "summary": "Phone screen cracked on day 2; customer asks whether the warranty covers it.",
+  "product": {
+    "name": null,
+    "category": "smartphone",
+    "order_id": null
+  }
+}

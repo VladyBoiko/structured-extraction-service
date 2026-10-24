@@ -1,0 +1,14 @@
+{
+  "category": "order_status",
+  "priority": "medium",
+  "sentiment": "neutral",
+  "language": "uk",
+  "requested_action": "information",
+  "needs_human": false,
+  "summary": "Customer asks when Lenovo IdeaPad 3 order ES-50177 will ship; it has been processing for a week.",
+  "product": {
+    "name": "Lenovo IdeaPad 3",
+    "category": "laptop",
+    "order_id": "ES-50177"
+  }
+}

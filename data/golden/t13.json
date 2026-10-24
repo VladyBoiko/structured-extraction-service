@@ -1,0 +1,14 @@
+{
+  "category": "delivery",
+  "priority": "high",
+  "sentiment": "negative",
+  "language": "de",
+  "requested_action": "other",
+  "needs_human": true,
+  "summary": "Samsung Tab S9 from order ES-50410 is marked delivered 5 days ago, but the customer never received it.",
+  "product": {
+    "name": "Samsung Tab S9",
+    "category": "tablet",
+    "order_id": "ES-50410"
+  }
+}
