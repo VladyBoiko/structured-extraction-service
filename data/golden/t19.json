@@ -1,0 +1,20 @@
+{
+  "category": "usage_help",
+  "priority": "medium",
+  "sentiment": "neutral",
+  "language": "mixed",
+  "requested_action": "information",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-49760",
+  "summary": "LG UltraGear 27GP850 from order ES-49760 flickers with G-Sync despite a new cable and drivers; customer asks for help.",
+  "products": [
+    {
+      "name": "LG UltraGear 27GP850",
+      "category": "other"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "category": "order_status",
+  "priority": "medium",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "information",
+  "needs_human": false,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-51877",
+  "summary": "Customer asks when Logitech MX Master 3S order ES-51877 will ship; it is still being prepared.",
+  "products": [
+    {
+      "name": "Logitech MX Master 3S",
+      "category": "accessory"
+    }
+  ]
+}

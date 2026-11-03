@@ -1,0 +1,15 @@
+{
+  "category": "delivery",
+  "priority": "urgent",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "other",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": "tonight",
+  "tracking_number": "20453388190022",
+  "order_id": "ES-51502",
+  "summary": "Parcel ES-51502 returns to the sender tonight; customer is abroad until Sunday and asks to extend storage.",
+  "products": []
+}

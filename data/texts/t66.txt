@@ -1,0 +1,1 @@
+your website crashes on the checkout page in Safari, can't place any order. tried 3 times

@@ -5,10 +5,11 @@
   "language": "en",
   "requested_action": "other",
   "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": null,
   "summary": "Account is locked after 3 failed logins and the password reset email never arrives; customer asks to unlock it.",
-  "product": {
-    "name": null,
-    "category": "unknown",
-    "order_id": null
-  }
+  "products": []
 }

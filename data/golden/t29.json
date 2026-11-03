@@ -5,10 +5,16 @@
   "language": "de",
   "requested_action": "cancellation",
   "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-50555",
   "summary": "Customer wants to cancel order ES-50555 because the phone is 100 euros cheaper elsewhere.",
-  "product": {
-    "name": null,
-    "category": "smartphone",
-    "order_id": "ES-50555"
-  }
+  "products": [
+    {
+      "name": null,
+      "category": "smartphone"
+    }
+  ]
 }

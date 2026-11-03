@@ -2,14 +2,18 @@
 import random
 from collections import defaultdict
 
-# Fields compared with the golden set. `summary` and `product.name` are free text and are not scored.
+# Fields compared with the golden set. `summary` and product names are free text and are not scored;
+# `deadline` is scored only as present / absent, because its wording varies; `products.category` compares the
+# product categories of the whole list (order does not matter).
 FIELDS = [
-    "category", "priority", "sentiment", "language", "requested_action",
-    "needs_human", "product.category", "product.order_id",
+    "category", "priority", "sentiment", "language", "requested_action", "needs_human",
+    "escalation_threat", "repeat_contact", "deadline", "tracking_number", "order_id", "products.category",
 ]
 
 
 def _get(obj: dict | None, path: str):
+    if path == "products.category":
+        return None if obj is None else sorted(p.get("category") for p in obj.get("products") or [])
     cur = obj
     for part in path.split("."):
         if cur is None:
@@ -19,9 +23,11 @@ def _get(obj: dict | None, path: str):
 
 
 def _norm(field: str, value):
+    if field == "deadline":
+        return bool(value and str(value).strip())
     if isinstance(value, str):
         s = value.strip()
-        if field.endswith("order_id"):
+        if field in ("order_id", "tracking_number"):
             return s.upper().replace("#", "").replace(" ", "")
         return s.lower()
     return value
@@ -46,10 +52,15 @@ def _bootstrap_ci(scores: list[float], n_boot: int = 1000, seed: int = 0) -> tup
     return means[int(0.025 * n_boot)], means[int(0.975 * n_boot) - 1]
 
 
+def _field_flags(rec: dict, label: dict) -> list[bool]:
+    """Per-field correctness of one answer; an invalid answer counts as all fields wrong."""
+    return [rec["valid"] and _norm(f, _get(rec["output"], f)) == _norm(f, _get(label, f)) for f in FIELDS]
+
+
 def compute_metrics(records: list[dict], golden: dict[str, dict]) -> dict:
     """Metrics of one configuration (model + prompt + sampling).
 
-    Accuracy is computed on the golden tickets present in the run; an invalid answer counts as all fields wrong.
+    Validity, latency and cost cover all records; accuracy covers the golden tickets present in the run.
     """
     n = len(records)
     n_valid = sum(1 for r in records if r["valid"])
@@ -65,17 +76,15 @@ def compute_metrics(records: list[dict], golden: dict[str, dict]) -> dict:
 
     for gid in gold_ids:
         rec = by_id[gid]
-        flags = []
-        for f in FIELDS:
-            ok = rec["valid"] and _norm(f, _get(rec["output"], f)) == _norm(f, _get(golden[gid], f))
+        flags = _field_flags(rec, golden[gid])
+        for f, ok in zip(FIELDS, flags):
             correct[f] += int(ok)
-            flags.append(ok)
         ticket_scores.append(sum(flags) / len(FIELDS))
         exact += int(all(flags))
 
         # order_id: count fabricated values (golden is null) separately from accuracy on filled ones
-        g_oid = _norm("product.order_id", _get(golden[gid], "product.order_id"))
-        m_oid = _norm("product.order_id", _get(rec["output"], "product.order_id")) if rec["valid"] else None
+        g_oid = _norm("order_id", _get(golden[gid], "order_id"))
+        m_oid = _norm("order_id", _get(rec["output"], "order_id")) if rec["valid"] else None
         if g_oid is None:
             golden_null += 1
             fabricated += int(m_oid is not None)
@@ -109,29 +118,43 @@ def compute_metrics(records: list[dict], golden: dict[str, dict]) -> dict:
     }
 
 
-def format_tables(all_metrics: list[dict]) -> str:
-    """Markdown tables: summary metrics and per-field accuracy."""
+def format_tables(metrics: list[dict]) -> str:
+    """Markdown tables: run metrics, accuracy and per-field accuracy."""
+    runs = list(dict.fromkeys(m["run"] for m in metrics))
+    first = {r: next(m for m in metrics if m["run"] == r) for r in runs}
     lines = [
-        "| run | model | prompt | temp | top_p | options | valid % | failed | mean acc [95% CI] | exact "
-        "| fabricated order_id | p50 s | p95 s | $/1000 | hours/1000 |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "Runs (all tickets):", "",
+        "| run | model | prompt | temp | top_p | options | tickets | valid % | failed | p50 s | p95 s "
+        "| $/1000 | hours/1000 |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
-    for m in all_metrics:
-        lo, hi = m["mean_field_accuracy_ci95"]
+    for r in runs:
+        m = first[r]
         opts = ", ".join(f"{k}={v}" for k, v in (m.get("options") or {}).items()) or "-"
         lines.append(
-            f"| {m['run']} | {m['model']} | {m['prompt_version']} | {m['temperature']} | {m['top_p']} | {opts} "
-            f"| {m['valid_pct']:.0f} | {m['failed']} | {m['mean_field_accuracy']:.2f} [{lo:.2f}-{hi:.2f}] "
-            f"| {m['exact_match']:.2f} | {m['order_id_fabricated']}/{m['order_id_golden_null']} "
+            f"| {r} | {m['model']} | {m['prompt_version']} | {m['temperature']} | {m['top_p']} | {opts} "
+            f"| {m['n_tickets']} | {m['valid_pct']:.0f} | {m['failed']} "
             f"| {m['latency_p50_s']:.2f} | {m['latency_p95_s']:.2f} | {m['cost_per_1000_usd']:.4f} "
             f"| {m['hours_per_1000']:.2f} |"
         )
-    lines += ["", "Per-field accuracy (golden set):", "",
+
+    lines += ["", "Accuracy on the golden set:", "",
+              "| run | golden | mean acc [95% CI] | exact | fabricated order_id |",
+              "|---|---|---|---|---|"]
+    for m in metrics:
+        lo, hi = m["mean_field_accuracy_ci95"]
+        lines.append(
+            f"| {m['run']} | {m['n_golden']} "
+            f"| {m['mean_field_accuracy']:.2f} [{lo:.2f}-{hi:.2f}] | {m['exact_match']:.2f} "
+            f"| {m['order_id_fabricated']}/{m['order_id_golden_null']} |"
+        )
+
+    lines += ["", "Per-field accuracy:", "",
               "| run | " + " | ".join(FIELDS) + " |",
               "|---|" + "---|" * len(FIELDS)]
-    for m in all_metrics:
+    for m in metrics:
         cells = " | ".join(f"{m['per_field_accuracy'][f]:.2f}" for f in FIELDS)
         lines.append(f"| {m['run']} | {cells} |")
-    lines += ["", f"_Golden tickets per configuration: {all_metrics[0]['n_golden']}. "
-                  "If the confidence intervals of two configurations overlap, neither is claimed better._"]
+
+    lines += ["", "_If the confidence intervals of two configurations overlap, neither is claimed better._"]
     return "\n".join(lines)

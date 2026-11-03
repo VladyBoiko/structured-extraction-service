@@ -5,10 +5,11 @@
   "language": "en",
   "requested_action": "none",
   "needs_human": false,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": null,
   "summary": "Spam message promising a free crypto bonus through a link.",
-  "product": {
-    "name": null,
-    "category": "unknown",
-    "order_id": null
-  }
+  "products": []
 }

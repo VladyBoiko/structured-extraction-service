@@ -1,0 +1,20 @@
+{
+  "category": "payment",
+  "priority": "urgent",
+  "sentiment": "neutral",
+  "language": "mixed",
+  "requested_action": "other",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": "до кінця дня",
+  "tracking_number": null,
+  "order_id": null,
+  "summary": "Card and PayPal payments for a Sony PS5 are declined at checkout; customer wants to buy before the sale ends today.",
+  "products": [
+    {
+      "name": "Sony PS5",
+      "category": "other"
+    }
+  ]
+}

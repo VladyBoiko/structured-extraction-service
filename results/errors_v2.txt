@@ -1,0 +1,331 @@
+Run: 2026-11-03_02-02-27__v2, golden set: 30 tickets
+
+========================================================================
+cloud_default  (claude-haiku-5-5, prompt v2)
+
+Value distribution over all tickets (one value almost everywhere means the field collapsed):
+  category: product_defect=17, delivery=14, order_change=11, payment=9, product_question=8, other=6, usage_help=5, account=3, order_status=2
+  priority: medium=30, low=22, high=16, urgent=7
+  sentiment: neutral=40, negative=31, positive=4
+  language: en=42, uk=15, de=12, mixed=6
+  requested_action: information=22, other=20, refund=8, repair=8, replacement=7, none=6, cancellation=4
+  needs_human: True=51, False=24
+  escalation_threat: False=71, True=4
+  repeat_contact: False=70, True=5
+  deadline: None=64, by friday=1, на завтра зранку=1, tomorrow noon=1, до кінця дня=1, before Friday=1, tonight=1, bis Samstag=1, this week=1, Monday=1, до понеділка=1, by Friday=1
+  tracking_number: None=69, 59000123456789=1, 20453388190022=1, 00340434161234567890=1, 1Z999AA10123456784=1, 20450012345678=1, DE48291034=1
+  order_id: None=39, ES-48213=1, ES-50177=1, ES-49002=1, ES-51320=1, ES-49877=1, ES-48990=1, ES-50410=1, ES-49531=1, ES-49760=1, ES-50822=1, ES-51004=1, ES-50233=1, ES-50555=1, ES-51877=1, ES-50991=1, ES-50312=1, ES-51450=1, ES-51190=1, ES-51502=1, ES-51702=1, ES-51815=1, ES-51920=1, ES-51744=1, ES-50677=1, ES-51066=1, ES-51288=1, ES-49120=1, ES-51399=1, ES-50444=1, ES-51540=1, ES-51811=1, ES-51209=1, ES-51990=1, ES-50999=1, ES-49655=1, ES-51333=1
+  products.category: []=18, ['headphones']=11, ['other']=8, ['smartphone']=7, ['appliance']=7, ['laptop']=4, ['tablet']=3, ['accessory', 'other']=3, ['tv']=2, ['accessory']=2, ['appliance', 'appliance']=2, ['smartphone', 'smartphone']=1, ['laptop', 'laptop']=1, ['accessory', 'accessory']=1, ['accessory', 'smartphone']=1, ['accessory', 'accessory', 'laptop']=1, ['accessory', 'tv']=1, ['accessory', 'other', 'tv']=1, ['other', 'other']=1
+
+Differences from golden:
+
+t03: Доброго дня! Замовив ноутбук Lenovo IdeaPad 3 тиждень тому, номер ES-50177, а статус досі 'обробляєт
+    priority: expected 'medium', got 'low'
+
+t04: This is the THIRD time I write. Samsung Galaxy S23 I bought 2 weeks ago (order #ES-49002) keeps rest
+    priority: expected 'urgent', got 'high'
+
+t16: Hello, I ordered a Bosch washing machine, order ES-49531, delivery was scheduled for Tuesday between
+    requested_action: expected 'cancellation', got 'refund'
+
+t20: my order ES-50822 says 'payment pending' since yesterday but the money already left my bank account
+    sentiment: expected 'neutral', got 'negative'
+
+t28: Dell XPS 15 9530 bluetooth drops every 10 minutes after the Windows 23H2 update, tried reinstalling 
+    category: expected 'usage_help', got 'product_defect'
+
+t30: Привіт! Не можу оплатити карткою Monobank, помилка 'transaction declined' на checkout. Через PayPal 
+    sentiment: expected 'neutral', got 'negative'
+
+t31: Hi, I ordered a Logitech MX Master 3S mouse last week, order ES-51877, and it still says 'preparing 
+    priority: expected 'medium', got 'low'
+
+t35: Pryvit! Kupyv navushnyky Marshall Major IV misiats tomu, pravyi navushnyk vzahali ne hraie. Mozhna y
+    sentiment: expected 'negative', got 'neutral'
+
+t38: Ordered Sony WH-CH720N headphones together with a Samsung Galaxy Watch6 (ES-51190). The watch is fin
+    products.category: expected ['headphones', 'other'], got ['headphones']
+
+========================================================================
+local_t0  (qwen2.5:3b, prompt v2)
+
+Value distribution over all tickets (one value almost everywhere means the field collapsed):
+  category: delivery=18, product_defect=15, payment=8, order_status=8, order_change=7, product_question=6, usage_help=5, account=4, other=4
+  priority: medium=64, high=5, low=5, urgent=1
+  sentiment: neutral=41, negative=28, positive=6
+  language: en=41, uk=21, de=13
+  requested_action: information=34, refund=17, none=14, replacement=5, repair=4, cancellation=1
+  needs_human: True=39, False=36
+  escalation_threat: False=70, True=5
+  repeat_contact: False=71, True=4
+  deadline: None=68, by Friday=2, до кінця дня=2, tomorrow noon=1, Samstag=1, до понеділка=1
+  tracking_number: None=68, ES-50410=1, 59000123456789=1, 20453388190022=1, 00340434161234567890=1, 1Z999AA10123456784=1, 20450012345678=1, DE48291034=1
+  order_id: None=34, ES-12345=3, ES-48213=1, ES-50177=1, ES-49002=1, ES-51320=1, ES-49877=1, ES-48990=1, ES-50410=1, ES-49531=1, ES-49760=1, ES-50822=1, ES-51004=1, ES-50233=1, ES-50555=1, ES-51877=1, ES-50991=1, ES-50312=1, ES-51450=1, ES-51190=1, ES-51502=1, ES-51702=1, ES-51815=1, ES-51920=1, ES-51744=1, ES-10123456784=1, ES-50677=1, ES-51066=1, ES-20450012345678=1, ES-51288=1, ES-49120=1, ES-51399=1, ES-50444=1, ES-51540 ES-51541=1, ES-51811=1, ES-51209=1, ES-51990=1, ES-50999=1, ES-49655=1, ES-51333=1
+  products.category: []=18, ['accessory']=15, ['smartphone']=8, ['appliance']=7, ['headphones']=6, ['tv']=2, ['laptop']=2, ['tablet']=2, ['smartphone', 'smartphone']=2, ['other']=2, ['accessory', 'smartphone']=2, ['headphones', 'smartphone']=1, ['accessory', 'accessory', 'accessory']=1, ['accessory', 'appliance']=1, ['accessory', 'accessory']=1, ['accessory', 'tv']=1, ['accessory', 'accessory', 'smartphone']=1, ['unknown']=1, ['accessory', 'tv', 'unknown']=1, ['other', 'smartphone', 'smartphone']=1
+
+Differences from golden:
+
+t03: Доброго дня! Замовив ноутбук Lenovo IdeaPad 3 тиждень тому, номер ES-50177, а статус досі 'обробляєт
+    requested_action: expected 'information', got 'none'
+    needs_human: expected False, got True
+
+t04: This is the THIRD time I write. Samsung Galaxy S23 I bought 2 weeks ago (order #ES-49002) keeps rest
+    priority: expected 'urgent', got 'high'
+
+t05: does the Xiaomi Redmi Buds 4 work with iphone? thx
+    category: expected 'product_question', got 'usage_help'
+    priority: expected 'low', got 'medium'
+    products.category: expected ['headphones'], got ['accessory']
+
+t09: Hi team, навушники JBL Tune 760NC прийшли з подряпиною на корпусі and the left ear is silent. Order 
+    priority: expected 'urgent', got 'medium'
+    language: expected 'mixed', got 'uk'
+    requested_action: expected 'replacement', got 'refund'
+
+t10: Invoice for order ES-48990 is missing the VAT number of my company, need corrected invoice for accou
+    priority: expected 'urgent', got 'medium'
+    requested_action: expected 'other', got 'refund'
+
+t11: can't log in anymore, says account locked after 3 attempts. forgot password also, reset mail never a
+    sentiment: expected 'neutral', got 'negative'
+    requested_action: expected 'other', got 'information'
+
+t12: Дякую за швидку доставку! Телевізор LG OLED C3 чудовий, картинка супер. Тільки питання: чи треба щос
+    priority: expected 'low', got 'medium'
+
+t13: Mein Paket (Bestellung ES-50410, Tablet Samsung Tab S9) wurde laut Tracking vor 5 Tagen zugestellt, 
+    priority: expected 'high', got 'medium'
+    requested_action: expected 'other', got 'information'
+    tracking_number: expected None, got 'ES-50410'
+
+t15: bro my airpods pro 2 case не заряджається wtf, 3 days old
+    language: expected 'mixed', got 'uk'
+    requested_action: expected 'repair', got 'information'
+    needs_human: expected True, got False
+    products.category: expected ['headphones'], got ['accessory']
+
+t16: Hello, I ordered a Bosch washing machine, order ES-49531, delivery was scheduled for Tuesday between
+    priority: expected 'high', got 'medium'
+
+t19: hello, Монітор LG UltraGear 27GP850 flickers when I turn on G-Sync, особливо в іграх. Habe schon ein
+    language: expected 'mixed', got 'en'
+
+t20: my order ES-50822 says 'payment pending' since yesterday but the money already left my bank account
+    priority: expected 'high', got 'medium'
+    sentiment: expected 'neutral', got 'negative'
+    requested_action: expected 'other', got 'refund'
+
+t26: CONGRATS!!! you won a free crypto bonus, click the link below to claim now
+    sentiment: expected 'neutral', got 'positive'
+
+t28: Dell XPS 15 9530 bluetooth drops every 10 minutes after the Windows 23H2 update, tried reinstalling 
+    category: expected 'usage_help', got 'product_defect'
+    needs_human: expected True, got False
+
+t29: Ich möchte meine Bestellung ES-50555 stornieren, das Handy kostet woanders 100 Euro weniger.
+    requested_action: expected 'cancellation', got 'refund'
+    needs_human: expected True, got False
+
+t30: Привіт! Не можу оплатити карткою Monobank, помилка 'transaction declined' на checkout. Через PayPal 
+    priority: expected 'urgent', got 'medium'
+    sentiment: expected 'neutral', got 'negative'
+    language: expected 'mixed', got 'uk'
+    requested_action: expected 'other', got 'refund'
+    products.category: expected ['other'], got ['smartphone']
+
+t31: Hi, I ordered a Logitech MX Master 3S mouse last week, order ES-51877, and it still says 'preparing 
+    category: expected 'order_status', got 'payment'
+    priority: expected 'medium', got 'urgent'
+    sentiment: expected 'neutral', got 'positive'
+    requested_action: expected 'information', got 'none'
+    needs_human: expected False, got True
+
+t32: second message, nobody replied to the first one. parcel stuck at the Lviv sorting center for 6 days 
+    sentiment: expected 'negative', got 'neutral'
+    language: expected 'en', got 'uk'
+    requested_action: expected 'other', got 'information'
+
+t33: скасуйте будь ласка замовлення es 50991 (зарядка Anker 65W), передумав
+    category: expected 'order_change', got 'order_status'
+    requested_action: expected 'cancellation', got 'none'
+    needs_human: expected True, got False
+
+t34: Wow, amazing service 👏 the third Xiaomi Robot Vacuum S10 in a row that dies after a week. Really lov
+    category: expected 'product_defect', got 'delivery'
+    priority: expected 'urgent', got 'high'
+
+t35: Pryvit! Kupyv navushnyky Marshall Major IV misiats tomu, pravyi navushnyk vzahali ne hraie. Mozhna y
+    products.category: expected ['headphones'], got ['accessory']
+
+t36: Hello,
+
+I hope this message finds you well. I have been a customer of your store for a while and gen
+    priority: expected 'low', got 'medium'
+    deadline: expected 'before Friday', got None
+    products.category: expected ['other'], got ['accessory']
+
+t37: hello??
+    priority: expected 'low', got 'medium'
+
+t38: Ordered Sony WH-CH720N headphones together with a Samsung Galaxy Watch6 (ES-51190). The watch is fin
+    products.category: expected ['headphones', 'other'], got ['headphones', 'smartphone']
+
+t39: hat das Samsnug Galxy A54 dual sim und esim? will es meiner mutter schenken
+    priority: expected 'low', got 'medium'
+
+t40: Pick-up point says my parcel (tracking 20453388190022, order ES-51502) goes back to the sender tonig
+    priority: expected 'urgent', got 'medium'
+    requested_action: expected 'other', got 'information'
+    needs_human: expected True, got False
+    deadline: expected 'tonight', got None
+    products.category: expected [], got ['accessory']
+
+t41: Hi, I ordered 2x Anker PowerCore 10000 and a Samsung 25W charger in one order, ES-51702. Both power 
+    products.category: expected ['accessory', 'accessory'], got ['accessory', 'accessory', 'accessory']
+
+t42: Hallo, ich habe einen Philips Airfryer XXL und einen Braun Stabmixer bestellt (ES-51815). Laut DHL w
+    priority: expected 'high', got 'medium'
+    sentiment: expected 'negative', got 'neutral'
+    requested_action: expected 'other', got 'information'
+    products.category: expected ['appliance', 'appliance'], got ['accessory', 'appliance']
+
+========================================================================
+local_t07  (qwen2.5:3b, prompt v2)
+
+Value distribution over all tickets (one value almost everywhere means the field collapsed):
+  category: delivery=16, product_defect=15, payment=9, order_change=8, product_question=8, account=6, order_status=5, usage_help=5, other=3
+  priority: medium=63, high=6, low=5, urgent=1
+  sentiment: neutral=41, negative=29, positive=5
+  language: en=41, uk=21, de=13
+  requested_action: information=37, refund=16, none=12, replacement=4, repair=4, cancellation=2
+  needs_human: False=40, True=35
+  escalation_threat: False=71, True=4
+  repeat_contact: False=71, True=4
+  deadline: None=69, by Friday=3, tomorrow noon=1, до кінця дня=1, Samstag=1
+  tracking_number: None=68, ES-50410=1, 59000123456789=1, 20453388190022=1, 00340434161234567890=1, 1Z999AA10123456784=1, 20450012345678=1, DE48291034=1
+  order_id: None=33, ES-12345=3, ES-50991=2, ES-48213=1, ES-50177=1, ES-49002=1, ES-51320=1, ES-49877=1, ES-48990=1, ES-50410=1, ES-49531=1, ES-49760=1, ES-50822=1, ES-51004=1, ES-50233=1, ES-50555=1, ES-51877=1, ES-50312=1, ES-51450=1, ES-51190=1, ES-51502=1, ES-51702=1, ES-51815=1, ES-51920=1, ES-51744=1, ES-10123456784=1, ES-50677=1, ES-51066=1, ES-20450012345678=1, ES-51288=1, ES-49120=1, ES-51399=1, ES-50444=1, ES-51540=1, ES-51811=1, ES-51209=1, ES-51990=1, ES-50999=1, ES-49655=1, ES-51333=1
+  products.category: []=19, ['accessory']=13, ['smartphone']=7, ['appliance']=7, ['headphones']=6, ['laptop']=3, ['tablet']=3, ['tv']=2, ['smartphone', 'smartphone']=2, ['other']=2, ['accessory', 'appliance']=2, ['headphones', 'smartphone']=1, ['unknown']=1, ['accessory', 'accessory', 'accessory']=1, ['accessory', 'smartphone']=1, ['accessory', 'other']=1, ['accessory', 'accessory', 'smartphone']=1, ['accessory', 'tv']=1, ['accessory', 'tv', 'unknown']=1, ['other', 'smartphone', 'smartphone']=1
+
+Differences from golden:
+
+t03: Доброго дня! Замовив ноутбук Lenovo IdeaPad 3 тиждень тому, номер ES-50177, а статус досі 'обробляєт
+    requested_action: expected 'information', got 'none'
+    needs_human: expected False, got True
+
+t04: This is the THIRD time I write. Samsung Galaxy S23 I bought 2 weeks ago (order #ES-49002) keeps rest
+    priority: expected 'urgent', got 'high'
+
+t05: does the Xiaomi Redmi Buds 4 work with iphone? thx
+    category: expected 'product_question', got 'usage_help'
+    priority: expected 'low', got 'medium'
+    products.category: expected ['headphones'], got ['accessory']
+
+t09: Hi team, навушники JBL Tune 760NC прийшли з подряпиною на корпусі and the left ear is silent. Order 
+    category: expected 'product_defect', got 'product_question'
+    priority: expected 'urgent', got 'medium'
+    language: expected 'mixed', got 'uk'
+    requested_action: expected 'replacement', got 'refund'
+    deadline: expected 'на завтра зранку', got None
+
+t10: Invoice for order ES-48990 is missing the VAT number of my company, need corrected invoice for accou
+    priority: expected 'urgent', got 'medium'
+    sentiment: expected 'neutral', got 'negative'
+    requested_action: expected 'other', got 'refund'
+
+t11: can't log in anymore, says account locked after 3 attempts. forgot password also, reset mail never a
+    requested_action: expected 'other', got 'information'
+
+t12: Дякую за швидку доставку! Телевізор LG OLED C3 чудовий, картинка супер. Тільки питання: чи треба щос
+    priority: expected 'low', got 'medium'
+    sentiment: expected 'positive', got 'neutral'
+
+t13: Mein Paket (Bestellung ES-50410, Tablet Samsung Tab S9) wurde laut Tracking vor 5 Tagen zugestellt, 
+    priority: expected 'high', got 'medium'
+    requested_action: expected 'other', got 'information'
+    tracking_number: expected None, got 'ES-50410'
+
+t15: bro my airpods pro 2 case не заряджається wtf, 3 days old
+    language: expected 'mixed', got 'uk'
+    requested_action: expected 'repair', got 'information'
+    needs_human: expected True, got False
+    products.category: expected ['headphones'], got ['accessory']
+
+t16: Hello, I ordered a Bosch washing machine, order ES-49531, delivery was scheduled for Tuesday between
+    priority: expected 'high', got 'medium'
+
+t19: hello, Монітор LG UltraGear 27GP850 flickers when I turn on G-Sync, особливо в іграх. Habe schon ein
+    language: expected 'mixed', got 'de'
+
+t20: my order ES-50822 says 'payment pending' since yesterday but the money already left my bank account
+    priority: expected 'high', got 'medium'
+    sentiment: expected 'neutral', got 'negative'
+    requested_action: expected 'other', got 'refund'
+
+t26: CONGRATS!!! you won a free crypto bonus, click the link below to claim now
+    sentiment: expected 'neutral', got 'positive'
+
+t28: Dell XPS 15 9530 bluetooth drops every 10 minutes after the Windows 23H2 update, tried reinstalling 
+    category: expected 'usage_help', got 'product_defect'
+    needs_human: expected True, got False
+
+t29: Ich möchte meine Bestellung ES-50555 stornieren, das Handy kostet woanders 100 Euro weniger.
+    requested_action: expected 'cancellation', got 'refund'
+    needs_human: expected True, got False
+
+t30: Привіт! Не можу оплатити карткою Monobank, помилка 'transaction declined' на checkout. Через PayPal 
+    priority: expected 'urgent', got 'medium'
+    sentiment: expected 'neutral', got 'negative'
+    language: expected 'mixed', got 'uk'
+    requested_action: expected 'other', got 'refund'
+    products.category: expected ['other'], got ['accessory']
+
+t31: Hi, I ordered a Logitech MX Master 3S mouse last week, order ES-51877, and it still says 'preparing 
+    category: expected 'order_status', got 'payment'
+    priority: expected 'medium', got 'urgent'
+    sentiment: expected 'neutral', got 'positive'
+
+t32: second message, nobody replied to the first one. parcel stuck at the Lviv sorting center for 6 days 
+    sentiment: expected 'negative', got 'neutral'
+    language: expected 'en', got 'uk'
+    requested_action: expected 'other', got 'information'
+
+t33: скасуйте будь ласка замовлення es 50991 (зарядка Anker 65W), передумав
+    category: expected 'order_change', got 'payment'
+    requested_action: expected 'cancellation', got 'none'
+    needs_human: expected True, got False
+
+t34: Wow, amazing service 👏 the third Xiaomi Robot Vacuum S10 in a row that dies after a week. Really lov
+    priority: expected 'urgent', got 'high'
+
+t35: Pryvit! Kupyv navushnyky Marshall Major IV misiats tomu, pravyi navushnyk vzahali ne hraie. Mozhna y
+    products.category: expected ['headphones'], got ['accessory']
+
+t36: Hello,
+
+I hope this message finds you well. I have been a customer of your store for a while and gen
+    priority: expected 'low', got 'medium'
+    products.category: expected ['other'], got ['accessory']
+
+t37: hello??
+    priority: expected 'low', got 'medium'
+
+t38: Ordered Sony WH-CH720N headphones together with a Samsung Galaxy Watch6 (ES-51190). The watch is fin
+    products.category: expected ['headphones', 'other'], got ['headphones', 'smartphone']
+
+t39: hat das Samsnug Galxy A54 dual sim und esim? will es meiner mutter schenken
+    priority: expected 'low', got 'medium'
+    language: expected 'de', got 'en'
+
+t40: Pick-up point says my parcel (tracking 20453388190022, order ES-51502) goes back to the sender tonig
+    priority: expected 'urgent', got 'medium'
+    requested_action: expected 'other', got 'information'
+    deadline: expected 'tonight', got None
+    products.category: expected [], got ['unknown']
+
+t41: Hi, I ordered 2x Anker PowerCore 10000 and a Samsung 25W charger in one order, ES-51702. Both power 
+    products.category: expected ['accessory', 'accessory'], got ['accessory', 'accessory', 'accessory']
+
+t42: Hallo, ich habe einen Philips Airfryer XXL und einen Braun Stabmixer bestellt (ES-51815). Laut DHL w
+    priority: expected 'high', got 'medium'
+    requested_action: expected 'other', got 'information'
+    products.category: expected ['appliance', 'appliance'], got ['accessory', 'appliance']

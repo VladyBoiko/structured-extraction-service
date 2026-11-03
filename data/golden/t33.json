@@ -1,0 +1,20 @@
+{
+  "category": "order_change",
+  "priority": "medium",
+  "sentiment": "neutral",
+  "language": "uk",
+  "requested_action": "cancellation",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-50991",
+  "summary": "Customer wants to cancel order ES-50991 for an Anker 65W charger after changing their mind.",
+  "products": [
+    {
+      "name": "Anker 65W",
+      "category": "accessory"
+    }
+  ]
+}

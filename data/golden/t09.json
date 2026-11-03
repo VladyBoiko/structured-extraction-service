@@ -5,10 +5,16 @@
   "language": "mixed",
   "requested_action": "replacement",
   "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": "на завтра зранку",
+  "tracking_number": null,
+  "order_id": "ES-49877",
   "summary": "JBL Tune 760NC from order ES-49877 arrived scratched with a silent left ear; customer wants a fast exchange.",
-  "product": {
-    "name": "JBL Tune 760NC",
-    "category": "headphones",
-    "order_id": "ES-49877"
-  }
+  "products": [
+    {
+      "name": "JBL Tune 760NC",
+      "category": "headphones"
+    }
+  ]
 }

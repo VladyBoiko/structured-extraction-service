@@ -35,7 +35,7 @@ def main() -> None:
 
     texts = {t["id"]: t["text"] for t in load_texts(ROOT / "data" / "texts")}
     golden = load_golden(ROOT / "data" / "golden")
-    print(f"Run: {run_dir.name}")
+    print(f"Run: {run_dir.name}, golden set: {len(golden)} tickets")
 
     for path in sorted(run_dir.glob("*.jsonl")):
         if args.run and path.stem not in args.run:

@@ -7,8 +7,9 @@ from src.providers import LLMResult, NonRetryableError, Provider
 
 GOOD = json.dumps({
     "category": "payment", "priority": "high", "sentiment": "negative", "language": "en",
-    "requested_action": "refund", "needs_human": True, "summary": "Double charge.",
-    "product": {"name": None, "category": "tv", "order_id": "ES-48213"},
+    "requested_action": "refund", "needs_human": True, "escalation_threat": False, "repeat_contact": False,
+    "deadline": None, "tracking_number": None, "order_id": "ES-48213", "summary": "Double charge.",
+    "products": [{"name": None, "category": "tv"}],
 })
 BAD = '{"category": "payment"}'
 REQ = {"max_tokens": 100, "timeout_s": 1, "max_retries": 2, "max_repair_attempts": 1}

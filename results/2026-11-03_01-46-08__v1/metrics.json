@@ -1,0 +1,128 @@
+[
+  {
+    "run": "cloud_default",
+    "model": "claude-haiku-5-5",
+    "prompt_version": "v1",
+    "temperature": null,
+    "top_p": null,
+    "options": {
+      "effort": "medium"
+    },
+    "n_tickets": 75,
+    "n_golden": 30,
+    "valid_pct": 96.0,
+    "failed": 3,
+    "mean_field_accuracy": 0.9333333333333333,
+    "mean_field_accuracy_ci95": [
+      0.9027777777777778,
+      0.9583333333333334
+    ],
+    "exact_match": 0.4666666666666667,
+    "per_field_accuracy": {
+      "category": 0.9,
+      "priority": 0.7333333333333333,
+      "sentiment": 0.8333333333333334,
+      "language": 0.9666666666666667,
+      "requested_action": 0.9333333333333333,
+      "needs_human": 0.9,
+      "escalation_threat": 1.0,
+      "repeat_contact": 1.0,
+      "deadline": 1.0,
+      "tracking_number": 1.0,
+      "order_id": 1.0,
+      "products.category": 0.9333333333333333
+    },
+    "order_id_fabricated": 0,
+    "order_id_golden_null": 12,
+    "order_id_filled_accuracy": 1.0,
+    "latency_p50_s": 1.7466439999989234,
+    "latency_p95_s": 3.413457350002136,
+    "cost_total_usd": 0.0317673,
+    "cost_per_1000_usd": 0.423564,
+    "hours_per_1000": 0.5274188862962614
+  },
+  {
+    "run": "local_t0",
+    "model": "qwen2.5:3b",
+    "prompt_version": "v1",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "options": {
+      "num_ctx": 4096
+    },
+    "n_tickets": 75,
+    "n_golden": 30,
+    "valid_pct": 100.0,
+    "failed": 0,
+    "mean_field_accuracy": 0.7805555555555556,
+    "mean_field_accuracy_ci95": [
+      0.7333333333333333,
+      0.8277777777777777
+    ],
+    "exact_match": 0.06666666666666667,
+    "per_field_accuracy": {
+      "category": 0.6,
+      "priority": 0.23333333333333334,
+      "sentiment": 0.8,
+      "language": 0.8333333333333334,
+      "requested_action": 0.6,
+      "needs_human": 0.8333333333333334,
+      "escalation_threat": 0.9666666666666667,
+      "repeat_contact": 0.9666666666666667,
+      "deadline": 0.9666666666666667,
+      "tracking_number": 0.9333333333333333,
+      "order_id": 0.8666666666666667,
+      "products.category": 0.7666666666666667
+    },
+    "order_id_fabricated": 0,
+    "order_id_golden_null": 12,
+    "order_id_filled_accuracy": 0.7777777777777778,
+    "latency_p50_s": 3.9030586000008043,
+    "latency_p95_s": 4.2332239300129,
+    "cost_total_usd": 0.0,
+    "cost_per_1000_usd": 0.0,
+    "hours_per_1000": 1.0688227366672234
+  },
+  {
+    "run": "local_t07",
+    "model": "qwen2.5:3b",
+    "prompt_version": "v1",
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "options": {
+      "num_ctx": 4096
+    },
+    "n_tickets": 75,
+    "n_golden": 30,
+    "valid_pct": 100.0,
+    "failed": 0,
+    "mean_field_accuracy": 0.7722222222222223,
+    "mean_field_accuracy_ci95": [
+      0.725,
+      0.8166666666666667
+    ],
+    "exact_match": 0.13333333333333333,
+    "per_field_accuracy": {
+      "category": 0.5666666666666667,
+      "priority": 0.26666666666666666,
+      "sentiment": 0.7666666666666667,
+      "language": 0.8333333333333334,
+      "requested_action": 0.6333333333333333,
+      "needs_human": 0.8333333333333334,
+      "escalation_threat": 0.9666666666666667,
+      "repeat_contact": 0.9333333333333333,
+      "deadline": 0.9666666666666667,
+      "tracking_number": 0.9333333333333333,
+      "order_id": 0.8333333333333334,
+      "products.category": 0.7333333333333333
+    },
+    "order_id_fabricated": 0,
+    "order_id_golden_null": 12,
+    "order_id_filled_accuracy": 0.7222222222222222,
+    "latency_p50_s": 3.8907690000196453,
+    "latency_p95_s": 4.340864410003996,
+    "cost_total_usd": 0.0,
+    "cost_per_1000_usd": 0.0,
+    "hours_per_1000": 1.0811966599992486
+  }
+]

@@ -1,6 +1,6 @@
 """Output schema: what the model extracts from one support ticket.
 
-8 top-level fields, 6 enums and a nested `product` object.
+13 top-level fields, 6 enums and a `products` list of nested objects.
 """
 from enum import Enum
 
@@ -64,13 +64,12 @@ class ProductCategory(str, Enum):
 
 
 class Product(BaseModel):
-    """Nested object: which product and order the ticket is about."""
+    """Nested object: one product the ticket is about."""
 
     model_config = ConfigDict(extra="forbid")
 
     name: str | None = Field(description="Product name or model as written by the customer, or null if not mentioned.")
     category: ProductCategory = Field(description="Type of product; 'unknown' if it cannot be determined.")
-    order_id: str | None = Field(description="Order number in the form ES-12345, or null if not mentioned.")
 
 
 class TicketExtraction(BaseModel):
@@ -83,8 +82,18 @@ class TicketExtraction(BaseModel):
     language: Language = Field(description="Language of the ticket text.")
     requested_action: RequestedAction = Field(description="What the customer wants us to do.")
     needs_human: bool = Field(description="True if a support agent must act; false if an automatic answer is enough.")
+    escalation_threat: bool = Field(
+        description="True if the customer threatens a complaint, legal action, a chargeback or a public review.")
+    repeat_contact: bool = Field(
+        description="True if the customer says they already contacted support about this issue before.")
+    deadline: str | None = Field(
+        description="Time limit the customer states (e.g. 'tomorrow noon', 'by Friday'), as written; null if none.")
+    tracking_number: str | None = Field(
+        description="Parcel tracking number if mentioned, or null. Never the order number.")
+    order_id: str | None = Field(description="Order number in the form ES-12345, or null if not mentioned.")
     summary: str = Field(min_length=1, max_length=200, description="One short sentence in English.")
-    product: Product
+    products: list[Product] = Field(
+        description="Every product the ticket is about, one entry per distinct product; empty if none is mentioned.")
 
 
 def _resolve(node, defs):

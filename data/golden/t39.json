@@ -1,0 +1,20 @@
+{
+  "category": "product_question",
+  "priority": "low",
+  "sentiment": "neutral",
+  "language": "de",
+  "requested_action": "information",
+  "needs_human": false,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": null,
+  "summary": "Customer asks whether the Samsung Galaxy A54 supports dual SIM and eSIM.",
+  "products": [
+    {
+      "name": "Samsnug Galxy A54",
+      "category": "smartphone"
+    }
+  ]
+}

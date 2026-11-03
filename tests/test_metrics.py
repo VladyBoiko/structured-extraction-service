@@ -1,12 +1,11 @@
-from src.metrics import FIELDS, compute_metrics
+from src.metrics import FIELDS, compute_metrics, format_tables
 
 GOLDEN = {
     "a": {"category": "payment", "priority": "high", "sentiment": "negative", "language": "en",
-          "requested_action": "refund", "needs_human": True,
-          "product": {"name": None, "category": "tv", "order_id": "ES-1"}},
+          "requested_action": "refund", "needs_human": True, "order_id": "ES-1",
+          "products": [{"name": None, "category": "tv"}, {"name": "HDMI cable", "category": "accessory"}]},
     "b": {"category": "other", "priority": "low", "sentiment": "neutral", "language": "uk",
-          "requested_action": "none", "needs_human": False,
-          "product": {"name": None, "category": "unknown", "order_id": None}},
+          "requested_action": "none", "needs_human": False, "order_id": None, "products": []},
 }
 
 
@@ -32,17 +31,24 @@ def test_failed_answer_counts_all_fields_wrong():
 
 
 def test_fabricated_order_id_detected():
-    wrong = perfect("b")
-    wrong = {**wrong, "product": {**wrong["product"], "order_id": "ES-999"}}
+    wrong = {**perfect("b"), "order_id": "ES-999"}
     m = compute_metrics([rec("a", perfect("a")), rec("b", wrong)], GOLDEN)
     assert m["order_id_fabricated"] == 1
 
 
 def test_order_id_normalization_and_enum_case():
-    out = perfect("a")
-    out = {**out, "category": "Payment", "product": {**out["product"], "order_id": "#es-1"}}
+    out = {**perfect("a"), "category": "Payment", "order_id": "#es-1"}
     m = compute_metrics([rec("a", out)], {"a": GOLDEN["a"]})
     assert m["mean_field_accuracy"] == 1.0
+
+
+def test_products_compared_by_categories_in_any_order():
+    out = {**perfect("a"), "products": [{"name": "cable", "category": "accessory"}, {"name": "TV", "category": "tv"}]}
+    missing = {**perfect("a"), "products": [{"name": None, "category": "tv"}]}
+    m = compute_metrics([rec("a", out)], {"a": GOLDEN["a"]})
+    assert m["per_field_accuracy"]["products.category"] == 1.0
+    m = compute_metrics([rec("a", missing)], {"a": GOLDEN["a"]})
+    assert m["per_field_accuracy"]["products.category"] == 0.0
 
 
 def test_cost_per_1000_and_ci_bounds():
@@ -51,3 +57,15 @@ def test_cost_per_1000_and_ci_bounds():
     lo, hi = m["mean_field_accuracy_ci95"]
     assert 0.0 <= lo <= hi <= 1.0
     assert set(m["per_field_accuracy"]) == set(FIELDS)
+
+
+def test_accuracy_only_on_golden_tickets():
+    recs = [rec("a", perfect("a")), rec("x", None, valid=False)]       # "x" has no golden label
+    m = compute_metrics(recs, GOLDEN)
+    assert m["mean_field_accuracy"] == 1.0 and m["n_golden"] == 1
+    assert m["valid_pct"] == 50.0                                      # validity covers all tickets
+
+
+def test_format_tables_has_one_row_per_run():
+    m = compute_metrics([rec("a", perfect("a")), rec("b", None, valid=False)], GOLDEN)
+    assert "| r | 2 | 0.50 [" in format_tables([m])

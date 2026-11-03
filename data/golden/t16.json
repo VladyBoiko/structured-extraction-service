@@ -1,0 +1,20 @@
+{
+  "category": "delivery",
+  "priority": "high",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "cancellation",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-49531",
+  "summary": "Bosch washing machine delivery for order ES-49531 was missed and moved; customer wants to cancel and get the money back.",
+  "products": [
+    {
+      "name": "Bosch washing machine",
+      "category": "appliance"
+    }
+  ]
+}

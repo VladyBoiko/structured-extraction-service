@@ -1,0 +1,15 @@
+{
+  "category": "payment",
+  "priority": "urgent",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "other",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": "by tomorrow noon",
+  "tracking_number": null,
+  "order_id": "ES-48990",
+  "summary": "Invoice for order ES-48990 lacks the company VAT number; customer needs a corrected invoice by tomorrow noon.",
+  "products": []
+}

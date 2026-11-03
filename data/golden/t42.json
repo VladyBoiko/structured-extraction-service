@@ -1,0 +1,24 @@
+{
+  "category": "delivery",
+  "priority": "high",
+  "sentiment": "negative",
+  "language": "de",
+  "requested_action": "other",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": "bis Samstag",
+  "tracking_number": "00340434161234567890",
+  "order_id": "ES-51815",
+  "summary": "Parcel for order ES-51815 marked delivered but the Braun hand blender is missing; customer wants it found by Saturday.",
+  "products": [
+    {
+      "name": "Philips Airfryer XXL",
+      "category": "appliance"
+    },
+    {
+      "name": "Braun Stabmixer",
+      "category": "appliance"
+    }
+  ]
+}

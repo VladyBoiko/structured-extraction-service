@@ -1,0 +1,20 @@
+{
+  "category": "product_defect",
+  "priority": "medium",
+  "sentiment": "negative",
+  "language": "mixed",
+  "requested_action": "repair",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": null,
+  "summary": "AirPods Pro 2 charging case stopped charging 3 days after purchase.",
+  "products": [
+    {
+      "name": "AirPods Pro 2",
+      "category": "headphones"
+    }
+  ]
+}

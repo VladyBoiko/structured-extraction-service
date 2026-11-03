@@ -1,0 +1,15 @@
+{
+  "category": "payment",
+  "priority": "high",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "other",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-50822",
+  "summary": "Order ES-50822 shows payment pending although the money has already left the customer's bank account.",
+  "products": []
+}

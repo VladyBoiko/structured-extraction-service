@@ -6,8 +6,9 @@ compared on field accuracy, share of valid answers, latency and cost.
 
 ## Input
 
-`data/texts/` holds 30 synthetic tickets, one `<id>.txt` file each. They are deliberately messy: different lengths, typos,
-missing details, and English mixed with Ukrainian and German. Order numbers (`ES-xxxxx`) are fictional; there is no personal data.
+`data/texts/` holds 75 synthetic tickets, one `<id>.txt` file each. They are deliberately messy: different lengths, typos,
+slang, missing details, English mixed with Ukrainian and German, long emails with signatures, spam, and even instructions
+aimed at the model. Order numbers (`ES-xxxxx`) are fictional; there is no personal data.
 
 ```text
 data/texts/t09.txt
@@ -15,8 +16,10 @@ Hi team, навушники JBL Tune 760NC прийшли з подряпино�
 Хочу обмін, bitte schnell, у мене це подарунок на завтра зранку!
 ```
 
-`data/golden/` holds reference labels for 10 of the tickets, one `<id>.json` per ticket with the same name as the text
-(`golden/t09.json` labels `texts/t09.txt`). Labeling rules: [data/LABELING_GUIDE.md](data/LABELING_GUIDE.md).
+`data/golden/` holds reference labels for 30 of the tickets, one `<id>.json` per ticket with the same name as the text
+(`golden/t09.json` labels `texts/t09.txt`).
+
+Labeling rules: [data/LABELING_GUIDE.md](data/LABELING_GUIDE.md).
 
 ## Output schema
 
@@ -30,8 +33,13 @@ Defined with Pydantic in [src/schema.py](src/schema.py) and sent to both models 
 | `language` | enum | `en`, `uk`, `de`, `mixed` |
 | `requested_action` | enum | what the customer wants done: `refund`, `replacement`, `repair`, `cancellation`, `information`, `other`, `none` |
 | `needs_human` | bool | whether a support agent has to act |
+| `escalation_threat` | bool | the customer threatens a complaint, legal action, a chargeback or a public review |
+| `repeat_contact` | bool | the customer already contacted support about this issue |
+| `deadline` | string or null | a time limit the customer states, as written ("tomorrow noon") |
+| `tracking_number` | string or null | parcel tracking number; never the order number |
+| `order_id` | string or null | order number in the form `ES-12345` |
 | `summary` | string | one English sentence, 1-200 characters |
-| `product` | object | `name` (string or null), `category` (enum: `smartphone`, `laptop`, `tv`, `headphones`, `tablet`, `appliance`, `accessory`, `other`, `unknown`), `order_id` (string or null) |
+| `products` | list of objects | every product the ticket is about, each with `name` (string or null) and `category` (enum: `smartphone`, `laptop`, `tv`, `headphones`, `tablet`, `appliance`, `accessory`, `other`, `unknown`); empty if none |
 
 Expected output for the ticket above:
 
@@ -43,8 +51,13 @@ Expected output for the ticket above:
   "language": "mixed",
   "requested_action": "replacement",
   "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": "на завтра зранку",
+  "tracking_number": null,
+  "order_id": "ES-49877",
   "summary": "JBL Tune 760NC from order ES-49877 arrived scratched with a silent left ear; customer wants a fast exchange.",
-  "product": {"name": "JBL Tune 760NC", "category": "headphones", "order_id": "ES-49877"}
+  "products": [{"name": "JBL Tune 760NC", "category": "headphones"}]
 }
 ```
 
@@ -71,7 +84,7 @@ cp .env.example .env                             # then put your ANTHROPIC_API_K
 ollama pull qwen2.5:3b                           # local model, ~2 GB
 ```
 
-A full run of 30 tickets costs well under one cent on the API.
+A full run of 75 tickets costs about one cent on the API.
 
 ## Run
 
@@ -98,9 +111,11 @@ Each run creates `results/<YYYY-MM-DD_HH-MM-SS>__<prompt>/` and never overwrites
 - `<configuration>.jsonl` - one record per ticket: `id`, `run`, `provider`, `model`, `prompt_version`, `temperature`,
   `top_p`, `options`, `timestamp`, `status` (`ok` / `failed`), `output` (validated JSON), `raw` (model text), `error`,
   `attempts`, `repairs`, `latency_s`, `input_tokens`, `output_tokens`, `cost_usd`;
-- `metrics.json` and `metrics.md` - the comparison tables.
+- `metrics.json` and `metrics.md` - the comparison tables: run metrics over all tickets (validity, latency, cost), accuracy
+  on the golden set and per-field accuracy.
 
 Metric definitions: [docs/METRICS.md](docs/METRICS.md).
+Comparison of the models and prompts, error analysis and the production choice: [REPORT.md](REPORT.md).
 
 ## Configuration
 
@@ -126,5 +141,6 @@ of configurations. Each configuration sets `provider`, `model`, `temperature`, `
 | `prompts/` | versioned system prompts and [CHANGELOG.md](prompts/CHANGELOG.md) |
 | `data/texts/`, `data/golden/` | input tickets and reference labels |
 | `docs/METRICS.md` | metric definitions |
+| `REPORT.md` | results, error analysis, production choice |
 | `results/` | model outputs and metrics per run |
 | `tests/` | pytest suite |

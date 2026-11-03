@@ -1,0 +1,20 @@
+{
+  "category": "product_defect",
+  "priority": "medium",
+  "sentiment": "negative",
+  "language": "uk",
+  "requested_action": "repair",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": null,
+  "summary": "Right earcup of Marshall Major IV headphones bought a month ago does not play; customer asks for a warranty repair.",
+  "products": [
+    {
+      "name": "Marshall Major IV",
+      "category": "headphones"
+    }
+  ]
+}

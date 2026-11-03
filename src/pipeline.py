@@ -30,7 +30,7 @@ def load_texts(path: Path) -> list[dict]:
 
 
 def load_golden(path: Path) -> dict[str, dict]:
-    """Golden set: one `<id>.json` file with the reference labels per ticket."""
+    """Golden set: one `<id>.json` file with the reference label per ticket."""
     return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted(path.glob("*.json"))}
 
 
@@ -170,10 +170,11 @@ def main() -> None:
                 print(f"  SKIPPED: {e}")
                 skipped.append(f"{run['name']}: {e}")
 
-    metrics = [compute_metrics(recs, golden) for recs in all_records.values() if recs]
-    if not metrics:
+    all_records = {name: recs for name, recs in all_records.items() if recs}
+    if not all_records:
         print("\nNo results to compute metrics from.")
         return
+    metrics = [compute_metrics(recs, golden) for recs in all_records.values()]
     (out_dir / "metrics.json").write_text(json.dumps(metrics, ensure_ascii=False, indent=2), encoding="utf-8")
     table = format_tables(metrics)
     (out_dir / "metrics.md").write_text(table + "\n", encoding="utf-8")

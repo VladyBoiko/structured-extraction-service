@@ -1,0 +1,24 @@
+{
+  "category": "product_defect",
+  "priority": "medium",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "refund",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-51702",
+  "summary": "Both Anker PowerCore 10000 power banks from order ES-51702 arrived dead; customer wants a refund for them.",
+  "products": [
+    {
+      "name": "Anker PowerCore 10000",
+      "category": "accessory"
+    },
+    {
+      "name": "Samsung 25W charger",
+      "category": "accessory"
+    }
+  ]
+}

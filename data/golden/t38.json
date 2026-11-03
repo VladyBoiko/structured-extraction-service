@@ -1,0 +1,24 @@
+{
+  "category": "product_defect",
+  "priority": "medium",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "replacement",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-51190",
+  "summary": "Sony WH-CH720N headphones from order ES-51190 do not turn on; customer wants a replacement.",
+  "products": [
+    {
+      "name": "Sony WH-CH720N",
+      "category": "headphones"
+    },
+    {
+      "name": "Samsung Galaxy Watch6",
+      "category": "other"
+    }
+  ]
+}

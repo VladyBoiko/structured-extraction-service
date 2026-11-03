@@ -158,8 +158,9 @@ class MockProvider(Provider):
                 return LLMResult('{"category": "payment"}', 100, 5)  # schema-invalid answer
         out = {
             "category": "other", "priority": "low", "sentiment": "neutral", "language": "en",
-            "requested_action": "none", "needs_human": False, "summary": "Mock summary.",
-            "product": {"name": None, "category": "unknown", "order_id": None},
+            "requested_action": "none", "needs_human": False, "escalation_threat": False,
+            "repeat_contact": False, "deadline": None, "tracking_number": None, "summary": "Mock summary.",
+            "order_id": None, "products": [],
         }
         return LLMResult(json.dumps(out), 300, 60)
 

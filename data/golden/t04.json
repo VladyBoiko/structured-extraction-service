@@ -1,0 +1,20 @@
+{
+  "category": "product_defect",
+  "priority": "urgent",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "replacement",
+  "needs_human": true,
+  "escalation_threat": true,
+  "repeat_contact": true,
+  "deadline": "by friday",
+  "tracking_number": null,
+  "order_id": "ES-49002",
+  "summary": "Samsung Galaxy S23 from order ES-49002 keeps restarting after a reset; customer demands a replacement and threatens a complaint.",
+  "products": [
+    {
+      "name": "Samsung Galaxy S23",
+      "category": "smartphone"
+    }
+  ]
+}

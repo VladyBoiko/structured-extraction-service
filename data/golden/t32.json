@@ -1,0 +1,15 @@
+{
+  "category": "delivery",
+  "priority": "medium",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "other",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": true,
+  "deadline": null,
+  "tracking_number": "59000123456789",
+  "order_id": null,
+  "summary": "Parcel has been stuck at the Lviv sorting center for 6 days; customer asks to contact the courier.",
+  "products": []
+}

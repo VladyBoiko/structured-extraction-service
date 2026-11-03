@@ -1,0 +1,20 @@
+{
+  "category": "usage_help",
+  "priority": "medium",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "information",
+  "needs_human": true,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": null,
+  "summary": "Dell XPS 15 9530 Bluetooth drops every 10 minutes since a Windows update; customer asks for a known fix or service.",
+  "products": [
+    {
+      "name": "Dell XPS 15 9530",
+      "category": "laptop"
+    }
+  ]
+}

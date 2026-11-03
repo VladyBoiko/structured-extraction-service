@@ -1,0 +1,20 @@
+{
+  "category": "delivery",
+  "priority": "low",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "information",
+  "needs_human": false,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": "before Friday",
+  "tracking_number": null,
+  "order_id": "ES-51450",
+  "summary": "Customer asks whether Philips Hue starter kit order ES-51450 will be delivered before Friday.",
+  "products": [
+    {
+      "name": "Philips Hue starter kit",
+      "category": "other"
+    }
+  ]
+}

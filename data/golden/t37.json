@@ -1,0 +1,15 @@
+{
+  "category": "other",
+  "priority": "low",
+  "sentiment": "neutral",
+  "language": "en",
+  "requested_action": "none",
+  "needs_human": false,
+  "escalation_threat": false,
+  "repeat_contact": false,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": null,
+  "summary": "Message contains only a greeting with no request.",
+  "products": []
+}

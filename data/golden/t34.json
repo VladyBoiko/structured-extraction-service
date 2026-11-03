@@ -1,0 +1,20 @@
+{
+  "category": "product_defect",
+  "priority": "urgent",
+  "sentiment": "negative",
+  "language": "en",
+  "requested_action": "refund",
+  "needs_human": true,
+  "escalation_threat": true,
+  "repeat_contact": true,
+  "deadline": null,
+  "tracking_number": null,
+  "order_id": "ES-50312",
+  "summary": "Third Xiaomi Robot Vacuum S10 from order ES-50312 died after a week; customer wants a refund and threatens a chargeback.",
+  "products": [
+    {
+      "name": "Xiaomi Robot Vacuum S10",
+      "category": "appliance"
+    }
+  ]
+}
