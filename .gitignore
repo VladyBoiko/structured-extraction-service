@@ -5,3 +5,9 @@ __pycache__/
 .DS_Store
 results_smoke/
 .pytest_cache/
+
+# RAG (block 2): external documents are downloaded, not committed; extraction cache
+data/rag/raw/external/
+data/rag/.cache/
+data/rag/.index/
+.models/

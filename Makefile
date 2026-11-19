@@ -18,4 +18,19 @@ errors:
 smoke:
 	$(PYTHON) main.py --config config.smoke.yaml
 
-.PHONY: install run report test errors smoke
+# ---- Block 2: RAG (independent of block 1: none of these run the extraction service)
+rag-data:          ## build store documents, download external ones, ingest -> data/rag/chunks.jsonl
+	$(PYTHON) -m src.rag data
+
+rag-ingest:        ## re-ingest only (incremental: unchanged files come from the cache)
+	$(PYTHON) -m src.rag ingest
+
+rag-index:         ## embed chunks and build the Qdrant collections
+	$(PYTHON) -m src.rag index
+
+rag-eval-retrieval:  ## recall@5 / MRR on evals/retrieval_questions.yaml
+	$(PYTHON) -m src.rag eval-retrieval
+
+rag: rag-data rag-index rag-eval-retrieval
+
+.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval

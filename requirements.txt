@@ -4,3 +4,16 @@ pyyaml>=6.0
 python-dotenv>=1.0
 requests>=2.31
 pytest>=8.0
+
+# Block 2: RAG ingestion
+pymupdf4llm>=0.2      # PDF -> markdown with headings and tables (installs PyMuPDF)
+python-docx>=1.1
+beautifulsoup4>=4.12
+charset-normalizer>=3.3
+tiktoken>=0.7
+
+# Block 2: index and retrieval (local ONNX models on CPU, embedded Qdrant)
+fastembed>=0.7
+qdrant-client>=1.12
+rank-bm25>=0.2.2
+numpy>=1.26

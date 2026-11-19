@@ -1,0 +1,587 @@
+# Corpus catalog: every file the RAG ingests and its metadata.
+#
+#   path            file under data/rag/raw/
+#   authoring       store documents: markdown source in data/rag/authoring/, rendered to `path`
+#                   (.md copied, .docx and .html generated) by `python -m src.rag build-store`
+#   derive          deliberate duplicates for the deduplication check (not real documents)
+#   url, sha256     external public documents, fetched by `python -m src.rag download`
+#   doc_type        policy | faq | product_page | service | spec_sheet | manual | law
+#   region          UA (Ukrainian store) | DACH (German/Austrian/Swiss store) | INTL (all regions)
+#                   | EU (EU law) | DE (German law) | GLOBAL (manufacturer documents)
+#   status          current | superseded (an older version kept on purpose; retrieval filters it out by default)
+#
+# Store documents are synthetic: ElectroStore is the fictional shop from block 1 (orders ES-xxxxx).
+
+documents:
+
+  # ------------------------------------------------------------------ store: returns
+  - path: store/policies/returns_ua_2024.md
+    authoring: returns_ua_2024.md
+    doc_type: policy
+    topic: returns
+    language: uk
+    region: UA
+    version: "2024"
+    effective_date: "2024-01-01"
+    status: superseded
+    superseded_by: store/policies/returns_ua_2025.md
+
+  - path: store/policies/returns_ua_2025.md
+    authoring: returns_ua_2025.md
+    doc_type: policy
+    topic: returns
+    language: uk
+    region: UA
+    version: "2025"
+    effective_date: "2025-03-01"
+    status: current
+
+  - path: store/policies/returns_dach_2025.docx
+    authoring: returns_eu_2025.md
+    doc_type: policy
+    topic: returns
+    language: de
+    region: DACH
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  - path: store/policies/returns_overview_en.html
+    authoring: returns_international_en.md
+    doc_type: policy
+    topic: returns
+    language: en
+    region: INTL
+    version: "2025-07"
+    effective_date: "2025-07-01"
+    status: current
+
+  # ------------------------------------------------------------------ store: warranty and service
+  - path: store/policies/warranty_ua.docx
+    authoring: warranty_ua.md
+    doc_type: policy
+    topic: warranty
+    language: uk
+    region: UA
+    version: "2025"
+    effective_date: "2025-03-01"
+    status: current
+
+  - path: store/policies/warranty_dach.md
+    authoring: warranty_eu.md
+    doc_type: policy
+    topic: warranty
+    language: de
+    region: DACH
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  - path: store/policies/care_plus_en.html
+    authoring: care_plus_en.md
+    doc_type: policy
+    topic: warranty
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  - path: store/service/service_centers_ua.md
+    authoring: service_centers_ua.md
+    doc_type: service
+    topic: warranty
+    language: uk
+    region: UA
+    version: "2025-04"
+    effective_date: "2025-04-01"
+    status: current
+
+  - path: store/service/repair_process_en.docx
+    authoring: service_process_en.md
+    doc_type: service
+    topic: warranty
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-03-01"
+    status: current
+
+  - path: store/service/damaged_on_arrival_en.md
+    authoring: damaged_delivery_en.md
+    doc_type: policy
+    topic: delivery
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-03-01"
+    status: current
+
+  - path: store/service/wrong_item_dach.md
+    authoring: wrong_item_de.md
+    doc_type: policy
+    topic: delivery
+    language: de
+    region: DACH
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  # ------------------------------------------------------------------ store: delivery
+  - path: store/policies/delivery_ua_2024.html
+    authoring: delivery_ua_2024.md
+    doc_type: policy
+    topic: delivery
+    language: uk
+    region: UA
+    version: "2024"
+    effective_date: "2024-01-01"
+    status: superseded
+    superseded_by: store/policies/delivery_ua_2025.html
+
+  - path: store/policies/delivery_ua_2025.html
+    authoring: delivery_ua_2025.md
+    doc_type: policy
+    topic: delivery
+    language: uk
+    region: UA
+    version: "2025"
+    effective_date: "2025-06-01"
+    status: current
+
+  - path: store/policies/delivery_dach.docx
+    authoring: delivery_eu.md
+    doc_type: policy
+    topic: delivery
+    language: de
+    region: DACH
+    version: "2025"
+    effective_date: "2025-02-01"
+    status: current
+
+  - path: store/policies/shipping_international_en.md
+    authoring: delivery_international_en.md
+    doc_type: policy
+    topic: delivery
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-02-01"
+    status: current
+
+  - path: store/policies/large_appliances_dach.docx
+    authoring: large_appliances_de.md
+    doc_type: policy
+    topic: delivery
+    language: de
+    region: DACH
+    version: "2025"
+    effective_date: "2025-02-01"
+    status: current
+
+  - path: store/service/installation_ua.md
+    authoring: installation_ua.md
+    doc_type: service
+    topic: delivery
+    language: uk
+    region: UA
+    version: "2025"
+    effective_date: "2025-06-01"
+    status: current
+
+  # ------------------------------------------------------------------ store: orders and payment
+  - path: store/policies/payment_methods_en.md
+    authoring: payment_en.md
+    doc_type: policy
+    topic: payment
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  - path: store/policies/payment_ua.html
+    authoring: payment_ua.md
+    doc_type: policy
+    topic: payment
+    language: uk
+    region: UA
+    version: "2025"
+    effective_date: "2025-03-01"
+    status: current
+
+  - path: store/policies/order_cancellation_en.md
+    authoring: order_cancellation_en.md
+    doc_type: policy
+    topic: orders
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  - path: store/policies/order_changes_ua.docx
+    authoring: order_change_ua.md
+    doc_type: policy
+    topic: orders
+    language: uk
+    region: UA
+    version: "2025"
+    effective_date: "2025-03-01"
+    status: current
+
+  - path: store/policies/price_match_dach.md
+    authoring: price_match_de.md
+    doc_type: policy
+    topic: orders
+    language: de
+    region: DACH
+    version: "2025"
+    effective_date: "2025-02-01"
+    status: current
+
+  - path: store/policies/gift_cards_en.html
+    authoring: gift_cards_en.md
+    doc_type: policy
+    topic: payment
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  - path: store/policies/business_customers_en.docx
+    authoring: b2b_en.md
+    doc_type: policy
+    topic: orders
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-02-01"
+    status: current
+
+  - path: store/policies/trade_in_ua.docx
+    authoring: trade_in_ua.md
+    doc_type: policy
+    topic: orders
+    language: uk
+    region: UA
+    version: "2025"
+    effective_date: "2025-05-01"
+    status: current
+
+  # ------------------------------------------------------------------ store: account and loyalty
+  - path: store/policies/loyalty_2024.md
+    authoring: loyalty_2024.md
+    doc_type: policy
+    topic: account
+    language: en
+    region: INTL
+    version: "2024"
+    effective_date: "2024-01-01"
+    status: superseded
+    superseded_by: store/policies/loyalty_2025.md
+
+  - path: store/policies/loyalty_2025.md
+    authoring: loyalty_2025.md
+    doc_type: policy
+    topic: account
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-04-01"
+    status: current
+
+  - path: store/policies/account_security_en.html
+    authoring: account_security_en.md
+    doc_type: policy
+    topic: account
+    language: en
+    region: INTL
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  - path: store/policies/privacy_dach.docx
+    authoring: privacy_de.md
+    doc_type: policy
+    topic: account
+    language: de
+    region: DACH
+    version: "2025"
+    effective_date: "2025-01-15"
+    status: current
+
+  # ------------------------------------------------------------------ store: FAQ
+  # faq_ua is a trap: it is still published, but its answers are from 2024 and contradict the 2025 policies.
+  - path: store/faq/faq_ua.html
+    authoring: faq_ua.md
+    doc_type: faq
+    topic: general
+    language: uk
+    region: UA
+    version: "2024-05"
+    effective_date: "2024-05-10"
+    status: current
+
+  - path: store/faq/faq_en.html
+    authoring: faq_en.md
+    doc_type: faq
+    topic: general
+    language: en
+    region: INTL
+    version: "2025-07"
+    effective_date: "2025-07-01"
+    status: current
+
+  - path: store/faq/faq_dach.html
+    authoring: faq_de.md
+    doc_type: faq
+    topic: general
+    language: de
+    region: DACH
+    version: "2025-07"
+    effective_date: "2025-07-01"
+    status: current
+
+  # ------------------------------------------------------------------ store: product pages
+  - path: store/products/jbl_tune_760nc_ua.html
+    authoring: product_jbl_tune_760nc_ua.md
+    doc_type: product_page
+    topic: product
+    language: uk
+    region: UA
+    version: "2025-07"
+    effective_date: "2025-07-01"
+    status: current
+
+  - path: store/products/jbl_tune_770nc_ua.html
+    authoring: product_jbl_tune_770nc_ua.md
+    doc_type: product_page
+    topic: product
+    language: uk
+    region: UA
+    version: "2025-07"
+    effective_date: "2025-07-01"
+    status: current
+
+  - path: store/products/sony_wh1000xm5_dach.html
+    authoring: product_sony_wh1000xm5_de.md
+    doc_type: product_page
+    topic: product
+    language: de
+    region: DACH
+    version: "2025-07"
+    effective_date: "2025-07-01"
+    status: current
+
+  - path: store/products/sony_wf1000xm5_dach.html
+    authoring: product_sony_wf1000xm5_de.md
+    doc_type: product_page
+    topic: product
+    language: de
+    region: DACH
+    version: "2025-07"
+    effective_date: "2025-07-01"
+    status: current
+
+  # ------------------------------------------------------------------ deliberate duplicates (dedup check)
+  # Same text as returns_ua_2025.md, saved from a shared drive with Windows line endings and extra spaces.
+  - path: store/shared_drive/returns_ua_2025 (copy).md
+    derive: {from: store/policies/returns_ua_2025.md, kind: reformat}
+
+  # Same FAQ text as faq_en.html, exported from the old CMS with a different page template.
+  - path: store/legacy/faq_en_cms_export.html
+    derive: {from: faq_en.md, kind: legacy_template}
+
+  # An unpublished draft of the shipping page with two small edits: a near-duplicate.
+  - path: store/drafts/shipping_international_en_draft.md
+    derive:
+      from: store/policies/shipping_international_en.md
+      kind: edit
+      replace:
+        "9.90 EUR": "8.90 EUR"
+        "Effective 2025-02-01.": "DRAFT, not published."
+
+  # ------------------------------------------------------------------ external: manufacturer spec sheets (PDF)
+  - path: external/spec_sheets/jbl_tune_760nc_spec_en.pdf
+    title: 'JBL Tune 760NC spec sheet (EN)'
+    url: https://id.jbl.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwa3d6f41a/pdfs/JBL_Tune_760NC_SpecSheet_US_English.pdf
+    sha256: 91b3150f0be7e6bbd12262da158c502701fd4adb22e369c9287b9202e3af13e6
+    doc_type: spec_sheet
+    topic: product
+    language: en
+    region: GLOBAL
+    version: "2021"
+    effective_date: "2021-01-01"
+    status: current
+
+  - path: external/spec_sheets/jbl_tune_760nc_spec_de.pdf
+    title: 'JBL Tune 760NC Datenblatt (DE)'
+    url: https://support.jbl.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0085f8d8/pdfs/JBL_Tune_760NC_SpecSheet_German.pdf
+    sha256: 00d55810583a823a63550f42334edd28dc727a8efa2552a7de1f2c1f458e60a4
+    doc_type: spec_sheet
+    topic: product
+    language: de
+    region: GLOBAL
+    version: "2021"
+    effective_date: "2021-01-01"
+    status: current
+
+  - path: external/spec_sheets/jbl_tune_770nc_spec_en.pdf
+    title: 'JBL Tune 770NC spec sheet (EN)'
+    url: https://uy.jbl.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwd14d26a3/pdfs/JBL%20Tune%20770NC_Specsheet_EN.pdf
+    sha256: d686ac945374b4c8bb758c70557cfde9b64fb3c2aff6ae2855b5386e2594fc8b
+    doc_type: spec_sheet
+    topic: product
+    language: en
+    region: GLOBAL
+    version: "2023"
+    effective_date: "2023-01-01"
+    status: current
+
+  - path: external/spec_sheets/jbl_tune_520bt_spec_en.pdf
+    title: 'JBL Tune 520BT spec sheet (EN)'
+    url: https://kr.jbl.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw8c4cf11f/pdfs/JBL%20Tune%20520BT_%20Specsheet_EN.pdf
+    sha256: 41fc2f2a1125cca492f097c8fe669956dcbe02926223573cc0f4fa87b3fbf889
+    doc_type: spec_sheet
+    topic: product
+    language: en
+    region: GLOBAL
+    version: "2023"
+    effective_date: "2023-01-01"
+    status: current
+
+  - path: external/spec_sheets/jbl_tune_520bt_spec_de.pdf
+    title: 'JBL Tune 520BT Datenblatt (DE)'
+    url: https://support.harmanaudio.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwb4ac032f/pdfs/JBL%20Tune%20520BT_%20Specsheet_DE.pdf
+    sha256: a28bed454118a0ba002bc9538ced229e03d6e28b9cca1ef61732b4bd5dfc78e3
+    doc_type: spec_sheet
+    topic: product
+    language: de
+    region: GLOBAL
+    version: "2023"
+    effective_date: "2023-01-01"
+    status: current
+
+  # ------------------------------------------------------------------ external: manufacturer help guides (PDF)
+  - path: external/manuals/sony_wh1000xm5_help_guide_en.pdf
+    title: 'Sony WH-1000XM5 Help Guide (EN)'
+    url: https://helpguide.sony.net/mdr/wh1000xm5/v1/en/print.pdf
+    sha256: cf0e7cc6c78907b6f244f4cfaabc6aa9d26a7c7deb659ce35059ed74970222de
+    doc_type: manual
+    topic: product
+    language: en
+    region: GLOBAL
+    version: "2022"
+    effective_date: "2022-05-01"
+    status: current
+
+  - path: external/manuals/sony_wf1000xm5_help_guide_en.pdf
+    title: 'Sony WF-1000XM5 Help Guide (EN)'
+    url: https://helpguide.sony.net/mdr/2963/v1/en/print.pdf
+    sha256: 09f7bd153b740c3b50a9025498622a3f40a2c9e7126d825c6c880c4de72c0aa4
+    doc_type: manual
+    topic: product
+    language: en
+    region: GLOBAL
+    version: "2023"
+    effective_date: "2023-07-01"
+    status: current
+
+  - path: external/manuals/sony_wf1000xm5_help_guide_de.pdf
+    title: 'Sony WF-1000XM5 Hilfe (DE)'
+    url: https://helpguide.sony.net/mdr/2963/v1/de/print.pdf
+    sha256: ba583087d7a8e93b4dc783e6a42f754fec5da3a760360c7779a1b7451f194084
+    doc_type: manual
+    topic: product
+    language: de
+    region: GLOBAL
+    version: "2023"
+    effective_date: "2023-07-01"
+    status: current
+
+  # ------------------------------------------------------------------ external: law (HTML)
+  - path: external/law/ua_consumer_protection_law.html
+    title: 'Закон України «Про захист прав споживачів»'
+    url: https://zakon.rada.gov.ua/laws/show/1023-12
+    sha256: ae63f3f34bd34563e7e98ad2895f42be2e04f65e5ec67887dfbe34af5054d1df
+    doc_type: law
+    topic: consumer_law
+    language: uk
+    region: UA
+    version: "1023-XII"
+    effective_date: "1991-05-12"
+    status: current
+
+  - path: external/law/ua_cabinet_resolution_172.html
+    title: 'Постанова КМУ № 172 «Про реалізацію окремих положень Закону України "Про захист прав споживачів"»'
+    url: https://zakon.rada.gov.ua/laws/show/172-94-%D0%BF
+    sha256: d401e620397e87ea3429af0ca65f607c2de9d836b8f75a25d06b9261b6bbe726
+    doc_type: law
+    topic: consumer_law
+    language: uk
+    region: UA
+    version: "172-1994"
+    effective_date: "1994-03-19"
+    status: current
+
+  - path: external/law/eu_directive_2011_83_consumer_rights_en.html
+    title: 'Directive 2011/83/EU on consumer rights'
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32011L0083
+    sha256: d4c4e644607045d6deeb4781169e0bdade5c7c0d4fb8db4e612c092a1036aa2c
+    doc_type: law
+    topic: consumer_law
+    language: en
+    region: EU
+    version: "2011/83/EU"
+    effective_date: "2011-10-25"
+    status: current
+
+  - path: external/law/eu_directive_2011_83_consumer_rights_de.html
+    title: 'Richtlinie 2011/83/EU über die Rechte der Verbraucher'
+    url: https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32011L0083
+    sha256: 3c548e8e539d1491c6bb808f99f3c9375b6dc786ae9f2cb1408523cfc8e3509c
+    doc_type: law
+    topic: consumer_law
+    language: de
+    region: EU
+    version: "2011/83/EU"
+    effective_date: "2011-10-25"
+    status: current
+
+  - path: external/law/eu_directive_2019_771_sale_of_goods_en.html
+    title: 'Directive (EU) 2019/771 on contracts for the sale of goods'
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0771
+    sha256: 794d0e24b1cb18f71eb22251b0335be746f57cf5ebb3849a3bafff915900fbdd
+    doc_type: law
+    topic: consumer_law
+    language: en
+    region: EU
+    version: "2019/771"
+    effective_date: "2019-05-20"
+    status: current
+
+  - path: external/law/de_bgb_312g_widerrufsrecht.html
+    title: 'BGB § 312g Widerrufsrecht'
+    url: https://www.gesetze-im-internet.de/bgb/__312g.html
+    sha256: faba5fcf6a9dbc4fb35ff9481e858552befdf611dcbecc4e17d798d7c407d41c
+    doc_type: law
+    topic: consumer_law
+    language: de
+    region: DE
+    version: "BGB"
+    effective_date: "2022-05-28"
+    status: current
+
+  - path: external/law/de_bgb_355_widerrufsrecht.html
+    title: 'BGB § 355 Widerrufsrecht bei Verbraucherverträgen'
+    url: https://www.gesetze-im-internet.de/bgb/__355.html
+    sha256: 721c360b93b943491838c9ee1fcdf2261490421ccde72ad25ed3cab41f148e00
+    doc_type: law
+    topic: consumer_law
+    language: de
+    region: DE
+    version: "BGB"
+    effective_date: "2022-05-28"
+    status: current

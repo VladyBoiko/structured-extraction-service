@@ -1,0 +1,53 @@
+"""Paths and ingestion parameters for the RAG pipeline."""
+
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / "data" / "rag"
+
+CATALOG = DATA / "catalog.yaml"        # every document and its metadata
+AUTHORING = DATA / "authoring"         # markdown sources of the synthetic store documents
+RAW = DATA / "raw"                     # the corpus as the pipeline sees it: .md / .docx / .html / .pdf
+CACHE = DATA / ".cache"                # extracted text per file hash (git-ignored): incremental runs
+
+MANIFEST = DATA / "manifest.json"      # one record per file: hashes, status, metadata, chunk count
+CHUNKS = DATA / "chunks.jsonl"         # structure-aware chunks: the index is built from these
+CHUNKS_FIXED = DATA / "chunks_fixed.jsonl"   # fixed-size baseline, kept for the retrieval comparison
+INGEST_REPORT = DATA / "ingest_report.json"  # dedup, language checks, chunking comparison
+
+# Bump when extraction or normalization changes: cached texts are then re-extracted.
+PIPELINE_VERSION = "ingest-v1"
+CHUNKER_VERSION = "chunker-v2"   # v2: merged chunks name every merged section in their label
+
+# Token counting. o200k_base splits Cyrillic and German far better than cl100k_base, so a token budget
+# means roughly the same amount of text in all three corpus languages. It is an offline approximation;
+# the embedding model has its own tokenizer with a 512-token window, and 300 tokens here stay well inside it.
+TOKENIZER = "o200k_base"
+
+# Structure-aware chunking (see README, "Chunking strategy").
+CHUNK_MAX_TOKENS = 380   # one chunk = one section or a part of it; with the header it stays under the 512-token
+                         # window of the embedding model (measured: at most 472 XLM-R tokens)
+CHUNK_MIN_TOKENS = 150   # sibling sections smaller than this are merged (chosen by the size sweep in step 2)
+
+# Fixed-size baseline for the comparison.
+FIXED_TOKENS = 300
+FIXED_OVERLAP = 50
+
+NEAR_DUP_JACCARD = 0.8    # word 5-shingle overlap above which two documents are near-duplicates
+MIN_CHARS_PER_PAGE = 50    # a PDF page with less text has no usable text layer (needs OCR)
+LANG_MIXED_WARN = 0.2      # warn when more than this share of a document's paragraphs is in another language
+
+# ---------------------------------------------------------------- step 2: index and retrieval
+MODELS_DIR = ROOT / ".models"                 # downloaded ONNX models (git-ignored)
+INDEX_DIR = DATA / ".index"                   # on-disk Qdrant collections (git-ignored, rebuilt from chunks)
+EMBED_CACHE = CACHE / "embeddings"            # vectors by sha256(model + text): unchanged chunks are never re-embedded
+EVALS = ROOT / "evals"
+RETRIEVAL_QUESTIONS = EVALS / "retrieval_questions.yaml"
+RETRIEVAL_RESULTS = EVALS / "results" / "retrieval"
+
+EMBED_MODEL = "e5-large"       # key in src/rag/embeddings.py MODELS; chosen by the comparison in README
+RERANK_MODEL = "bge-m3"        # key in src/rag/retrieve.py RERANKERS
+CANDIDATES = 30                # how many hits each of vector / BM25 contributes to the fusion
+RERANK_CANDIDATES = 20         # how many fused hits the cross-encoder re-scores
+RRF_K = 60                     # Reciprocal Rank Fusion constant
+TOP_K = 5                      # hits returned / evaluated (recall@5)

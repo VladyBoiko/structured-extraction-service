@@ -1,0 +1,143 @@
+# Retrieval test set: questions with the place in the corpus where the answer is.
+#
+# A hit = a retrieved chunk from `doc` whose text contains `quote` (whitespace-insensitive). Several
+# evidence entries = several acceptable places (the same rule in another document). Gold is defined by
+# evidence, not by chunk id, so the structure-aware and the fixed-size chunks are judged by the same rule:
+# a fixed window that cuts the quote in half does not count.
+#
+# `trap` marks what makes the question hard; `superseded` lists outdated documents that contain a
+# competing (wrong) answer: with the default filter (status = current) they must not be returned.
+
+questions:
+  - id: r01
+    question: "Скільки днів у мене є, щоб повернути товар, замовлений з доставкою по Україні?"
+    language: uk
+    trap: "outdated version (2024 policy and the 2024 FAQ say 14 days)"
+    evidence:
+      - {doc: returns_ua_2025, quote: "подовжив строк повернення товару належної якості до 30 днів"}
+      - {doc: returns_overview_en, quote: "| Ukraine | 30 days from delivery |"}
+    superseded: [returns_ua_2024]
+
+  - id: r02
+    question: "Was kostet die Rücksendung, wenn ich in Österreich wohne?"
+    language: de
+    trap: "regional rules (free in Germany, 12 EUR for Switzerland); the DACH FAQ gives the delivery cost to Austria (7,90 EUR), not the return cost"
+    evidence:
+      - {doc: returns_dach_2025, quote: "| Österreich | 5,90 €"}
+      - {doc: returns_overview_en, quote: "| Austria | 30 days (14-day statutory withdrawal included) | 5.90 EUR |"}
+
+  - id: r03
+    question: "How much do I pay with Care+ if I drop my phone and crack the screen?"
+    language: en
+    trap: "vocabulary mismatch (drop / crack vs. accidental damage / deductible)"
+    evidence:
+      - {doc: care_plus_en, quote: "deductible of 20% of the repair cost"}
+
+  - id: r04
+    question: "Чому моя знижка Gold не застосувалась до товару, який уже був зі знижкою?"
+    language: uk
+    trap: "cross-lingual (answer in an English document) and outdated version (2024 rules allowed it); the 2024 FAQ, still current, says Gold is 10% including sale items"
+    evidence:
+      - {doc: loyalty_2025, quote: "items that are already on sale"}
+    superseded: [loyalty_2024]
+
+  - id: r05
+    question: "Від якої суми доставка у відділення Нової Пошти безкоштовна?"
+    language: uk
+    trap: "outdated version (2024 tariffs and the 2024 FAQ say 2,000 UAH)"
+    evidence:
+      - {doc: delivery_ua_2025, quote: "| відділення або поштомат Нової Пошти | 80 грн | від 3 000 грн |"}
+    superseded: [delivery_ua_2024]
+
+  - id: r06
+    question: "Ist der Sony WF-1000XM5 wasserdicht?"
+    language: de
+    trap: "similar products (WH-1000XM5 is not water resistant at all)"
+    evidence:
+      - {doc: sony_wf1000xm5_dach, quote: "IPX4"}
+      - {doc: sony_wf1000xm5_help_guide_de, quote: "IPX4"}
+      - {doc: sony_wf1000xm5_help_guide_en, quote: "IPX4"}
+
+  - id: r07
+    question: "Скільки годин працює JBL Tune 770NC з увімкненим шумозаглушенням?"
+    language: uk
+    trap: "similar products (760NC: 35 hours)"
+    evidence:
+      - {doc: jbl_tune_770nc_ua, quote: "| робота з ANC | до 44 год |"}
+      - {doc: jbl_tune_770nc_ua, quote: "44 год з ANC проти 35 год"}
+      - {doc: jbl_tune_770nc_spec_en, quote: "Music playtime with BT on and ANC on: Up to 44 hrs"}
+
+  - id: r08
+    question: "My WF-1000XM5 earbuds won't turn on, how do I reset them?"
+    language: en
+    trap: "a long manual (225 chunks) with many similar topics (initialize, pairing, charging); the WH-1000XM5 guide has a different reset procedure (AC outlet)"
+    evidence:
+      - {doc: sony_wf1000xm5_help_guide_en, quote: "Press and hold the reset button on the back of the charging case for about 20 seconds"}
+      - {doc: sony_wf1000xm5_help_guide_de, quote: "Halten Sie die Rücksetztaste an der Rückseite des Ladeetuis mindestens etwa 20 Sekunden lang gedrückt"}
+
+  - id: r09
+    question: "У який строк продавець має усунути недоліки товару згідно із законом?"
+    language: uk
+    trap: "a long law where \"чотирнадцяти днів\" appears in several articles with different meanings"
+    evidence:
+      - {doc: ua_consumer_protection_law, quote: "повинні бути усунуті протягом чотирнадцяти днів"}
+      - {doc: ua_consumer_protection_law, quote: "понад установлений строк (чотирнадцять днів)"}
+
+  - id: r10
+    question: "How many days does a consumer have to withdraw from an online purchase under EU law?"
+    language: en
+    trap: "legal wording (distance contract, right of withdrawal) and the same rule in several laws"
+    evidence:
+      - {doc: eu_directive_2011_83_consumer_rights_en, quote: "shall have a period of 14 days to withdraw"}
+      - {doc: eu_directive_2011_83_consumer_rights_de, quote: "Widerrufsfrist 14 Tage"}
+      - {doc: de_bgb_355_widerrufsrecht, quote: "Die Widerrufsfrist beträgt 14 Tage"}
+
+  - id: r11
+    question: "Kann ich In-Ear-Kopfhörer zurückgeben, wenn ich die Versiegelung schon entfernt habe?"
+    language: de
+    trap: "store policy, product page and law all answer it"
+    evidence:
+      - {doc: returns_dach_2025, quote: "In-Ear-Kopfhörer, deren Hygieneversiegelung entfernt wurde"}
+      - {doc: sony_wf1000xm5_dach, quote: "nur mit unbeschädigter Hygieneversiegelung"}
+      - {doc: de_bgb_312g_widerrufsrecht, quote: "aus Gründen des Gesundheitsschutzes oder der Hygiene"}
+      - {doc: eu_directive_2011_83_consumer_rights_de, quote: "aus Hygienegründen nicht zur Rückgabe geeignet sind und deren Versiegelung nach der Lieferung entfernt wurde"}
+      - {doc: eu_directive_2011_83_consumer_rights_en, quote: "not suitable for return due to health protection or hygiene reasons and were unsealed after delivery"}
+
+  - id: r12
+    question: "Можна оплатити частинами order на 1000 грн?"
+    language: mixed
+    trap: "mixed language; the number in the question (1000) is not the number in the answer (1 500)"
+    evidence:
+      - {doc: payment_ua, quote: "| monobank «Покупка частинами» | до 10 | 1 500 грн |"}
+      - {doc: faq_ua, quote: "Так, через monobank і ПриватБанк для замовлень від 1 500 грн"}
+
+  - id: r13
+    question: "Do you deliver to London?"
+    language: en
+    trap: "vocabulary mismatch (London vs. United Kingdom)"
+    evidence:
+      - {doc: shipping_international_en, quote: "We do not ship to the United Kingdom"}
+      - {doc: faq_en, quote: "We ship only to Ukraine, Germany, Austria, Switzerland, Poland, Czechia and Slovakia"}
+
+  - id: r14
+    question: "Wer zahlt den Zoll bei einer Lieferung in die Schweiz?"
+    language: de
+    trap: "homonym: German \"Zoll\" means both customs and inch (large appliances page: \"Fernseher ab 65 Zoll\", JBL spec sheets)"
+    evidence:
+      - {doc: delivery_dach, quote: "Einfuhrumsatzsteuer und Zollgebühren zahlt der Kunde"}
+      - {doc: shipping_international_en, quote: "may be subject to import VAT and duties, which the recipient pays"}
+
+  - id: r15
+    question: "Посилку вже відправили, чи можна ще змінити адресу доставки?"
+    language: uk
+    trap: "partial answer: the change table and the English page say 'only before handover', the full answer adds the paid Nova Poshta redirect by TTN"
+    evidence:
+      - {doc: order_changes_ua, quote: "змінити адресу можна лише через застосунок Нової Пошти за номером ТТН"}
+      - {doc: shipping_international_en, quote: "can be changed only before the parcel is handed over to the carrier"}
+
+  - id: r16
+    question: "I paid for my order in Ukraine in instalments and returned the item. What happens to my instalment plan?"
+    language: en
+    trap: "cross-lingual: the answer exists only in the Ukrainian returns policy (English overview and payment pages do not cover it)"
+    evidence:
+      - {doc: returns_ua_2025, quote: "Для оплати частинами банк закриває розстрочку, а перший платіж повертається на картку"}
