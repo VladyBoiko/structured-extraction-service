@@ -223,6 +223,16 @@ def label(c: Citation) -> str:
     return f"{c.title} › {c.section}"
 
 
+SOURCE_ID = re.compile(r"\[?\b(S\d{1,2})\b\]?")
+
+
+def replace_source_ids(text: str, context: list[dict]) -> str:
+    """S1..Sn are ids for the model, not for the customer. The prompt forbids them in the answer, and the model still
+    writes one now and then (most often in "missing"), so the code replaces each with the title of its document."""
+    titles = {c["id"]: c["chunk"]["title"] for c in context}
+    return SOURCE_ID.sub(lambda m: f"[{titles[m.group(1)]}]" if m.group(1) in titles else "", text).strip()
+
+
 def render(claims: list[Claim], missing: str, language: str) -> str:
     t = TEXTS[language]
     lines = []
@@ -298,7 +308,7 @@ def translate(client, question: str) -> tuple[dict, float]:
     cache = _load_translation_cache()
     if key in cache:
         return cache[key]["translations"], cache[key]["cost_usd"]
-    translations, spent = _translate(client, question)
+    translations, spent = _translate(client or make_client(), question)   # a client only on a cache miss
     if translations and C.TRANSLATION_CACHE:
         cache = _load_translation_cache()
         cache[key] = {"translations": translations, "cost_usd": spent}
@@ -329,7 +339,7 @@ def retrieve(question: str, retriever, client=None, filters: Filters | None = No
     """{hits, translations, cost_usd}. With QUERY_TRANSLATION on, the question is translated first (one model call)."""
     translations, spent = {}, 0.0
     if C.QUERY_TRANSLATION:
-        translations, spent = translate(client or make_client(), question)
+        translations, spent = translate(client, question)
     if translations:
         search_kw["translations"] = translations
     hits = retriever.search(question, mode="rerank", filters=filters, k=C.TOP_K, **search_kw)
@@ -399,6 +409,8 @@ def answer(question: str, retriever, client=None, filters: Filters | None = None
         result.status = "not_found_unverified"
         return result
     result.answerable, result.status = True, "answered"
-    result.claims, result.missing = verified, data.get("missing", "").strip()
+    for claim in verified:
+        claim.text = replace_source_ids(claim.text, context)
+    result.claims, result.missing = verified, replace_source_ids(data.get("missing", ""), context)
     result.text = render(verified, result.missing, language)
     return result

@@ -1,0 +1,112 @@
+# RAG (block 2) quality gates on every push and pull request.
+#
+#   tests  offline tests (block 1 and block 2), no API key, no models
+#   evals  retrieval and answer evaluation of the configuration in use, then the gates in evals/ci_thresholds.yaml
+#          (one run of the test set, about $0.03); needs the ANTHROPIC_API_KEY repository secret
+#   full   on demand only (Actions -> RAG evals -> Run workflow, "full" ticked): 3 runs of the test set, the LLM judge
+#          and the faithfulness check, about $0.15
+name: RAG evals
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Full evaluation: 3 runs, LLM judge, faithfulness (about $0.15)"
+        type: boolean
+        default: false
+
+concurrency:            # a newer push to the same branch cancels the older run (and its API spend)
+  group: rag-evals-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  PYTHONIOENCODING: utf-8
+  PYTHONUTF8: "1"
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+      - run: python -m pytest -q
+
+  evals:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      # Embedding model and reranker (about 3 GB): downloaded once, then restored from the cache.
+      - uses: actions/cache@v4
+        with:
+          path: .models
+          key: models-e5-large-bge-reranker-v2-m3-v1
+      # Vectors and the Qdrant collection depend only on the chunks: unchanged chunks are never embedded again.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            data/rag/.cache/embeddings
+            data/rag/.index
+          key: index-${{ hashFiles('data/rag/chunks.jsonl') }}
+          restore-keys: index-
+
+      - name: Retrieval evaluation (configuration in use)
+        run: python -m src.rag eval-retrieval-quick --tag ci
+
+      - name: Check the API key
+        id: key
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::ANTHROPIC_API_KEY is not available (a pull request from a fork, or the secret is not set): the answer evaluation is skipped, the retrieval gate still applies."
+          fi
+
+      - name: Answer evaluation (39 questions, 1 run)
+        if: steps.key.outputs.present == 'true'
+        run: python -m src.rag eval --runs 1 --tag ci
+
+      - name: Quality gates
+        run: |
+          if [ "${{ steps.key.outputs.present }}" = "true" ]; then
+            python -m src.rag ci-check --answers ci --retrieval ci
+          else
+            python -m src.rag ci-check --answers none --retrieval ci
+          fi
+
+      - name: Full evaluation (3 runs, judge, faithfulness)
+        if: github.event_name == 'workflow_dispatch' && inputs.full && steps.key.outputs.present == 'true'
+        run: |
+          python -m src.rag eval --tag full
+          python -m src.rag judge --tag full
+          python -m src.rag faithfulness --tag full
+          python -m src.rag ci-check --answers full --retrieval ci
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rag-eval-results
+          path: |
+            evals/results/answers/ci*/
+            evals/results/answers/full*/
+            evals/results/retrieval/ci*/
+          if-no-files-found: ignore

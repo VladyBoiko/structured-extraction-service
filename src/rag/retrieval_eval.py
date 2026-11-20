@@ -261,3 +261,33 @@ def write_per_question(questions: list[dict], chunks: list[dict], retriever: Ret
             out.append(f"{h['rank']}. {mark} `{h['chunk_id']}` — {h['section'][:80]}  \n   _{snippet}_")
         out.append("")
     (folder or C.RETRIEVAL_RESULTS).joinpath("per_question.md").write_text("\n".join(out), encoding="utf-8")
+
+
+def run_quick(tag: str = "ci") -> dict:
+    """CI: only the configuration in use (structure-aware chunks, hybrid + rerank, with query translation when it is
+    on), on the retrieval questions. Minutes instead of the full comparison of models, modes and sizes."""
+    from .answer_eval import free_path
+    data = load_questions()
+    questions = data["questions"]
+    structured = load_chunks(C.CHUNKS)
+    problems = lint(questions, structured)
+    if problems:
+        raise SystemExit("retrieval questions do not match the corpus:\n  " + "\n  ".join(problems))
+    r = Retriever(structured, "structured")
+    translations = None
+    key = "structured/rerank"
+    if C.QUERY_TRANSLATION:
+        from .answer import translate   # cached translations need no API key
+        translations = {q["id"]: translate(None, q["question"])[0] for q in questions}
+        key = "structured/rerank+translation"
+    res = run_config(r, questions, "rerank", translations=translations)
+    print(f"{key}: hit@1 {res['hit@1']:.2f}  recall@5 {res['recall@5']:.2f}  MRR {res['mrr@10']:.2f}  "
+          f"{res['ms']} ms  misses {' '.join(res['misses@5']) or '-'}")
+    results = {"questions": len(questions), "k": C.TOP_K, "quick": True, "modes": {key: res},
+               "pipeline": {"faq_chunks": C.FAQ_CHUNKS, "query_translation": C.QUERY_TRANSLATION},
+               "chunks_hash": hashlib.sha256(C.CHUNKS.read_bytes()).hexdigest()[:12]}
+    out = free_path(C.RETRIEVAL_RESULTS / tag)
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"written to {out}")
+    return results

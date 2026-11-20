@@ -23,6 +23,12 @@ Changes from the error analysis of v1 (step 4: deterministic scorers, the judge 
 
 Unchanged: only the sources, one fact per claim, the answer language, the source-selection rules.
 
+Note (step 4, CI): rule 7 is not always followed. No source id appeared in three evaluation runs of v2, but the first
+CI run found ids such as "S4" in 4 of 33 answers, mostly in "missing". A prompt rule lowers the chance and cannot
+guarantee it, so the code now replaces any id with the title of its document before the answer is shown
+(`replace_source_ids` in `src/rag/answer.py`); the `id_leak` gate stays in the CI as a guard. The prompt text did
+not change, so this is still v2.
+
 ## v1
 
 First version. Rules:

@@ -480,6 +480,43 @@ per answered question, about **$0.6 per 1,000 questions**; questions stopped by 
 retrieval runs locally. Latency: 5–10 s per question (about 5 s of it the reranker on CPU). The cost on the full test
 set is measured in step 4.
 
+### Evals in CI
+
+[.github/workflows/rag-evals.yml](.github/workflows/rag-evals.yml) runs on every push and pull request, on every
+branch:
+
+| Job | What it does | Cost, time |
+|---|---|---|
+| `tests` | all offline tests (block 1 and block 2): no API key, no models | $0, ~1 min |
+| `evals` | retrieval evaluation of the configuration in use, one run of the 39-question test set, then the quality gates | ~$0.03; ~15 min the first time (model download, embeddings), ~8 min with the cache |
+
+The gates are in [evals/ci_thresholds.yaml](evals/ci_thresholds.yaml), checked by `python -m src.rag ci-check`, which
+prints a table to the job summary and fails the job when a gate fails:
+
+| Gate | Threshold | Final configuration (each of 3 runs) |
+|---|---|---|
+| retrieval recall@5 | ≥ 0.90 | 1.00 |
+| answers: pass (all deterministic checks) | ≥ 0.80 | 0.90 |
+| answers: decision (answer / "I don't know") | ≥ 0.85 | 0.95 |
+| answered a question the documents do not answer | 0 | 0 |
+| trap value in an answer, source id shown to the customer | 0 | 0 |
+| answer language | ≥ 0.95 | 1.00 |
+| regression against [evals/baseline.json](evals/baseline.json) | pass and decision at most 0.10 below | — |
+
+The v1 configuration fails five of these gates (pass 0.72–0.77, decision 0.795, language 0.949), so they separate a
+working system from a degraded one. One run of the test set has room for that noise: the final configuration scored
+the same 0.897 in each of its three runs. The model and reranker (~3 GB) and the vectors are cached between runs
+(`actions/cache`), and query translations of the test questions are committed (`evals/translations.json`), so the
+retrieval part needs no API key: on a pull request from a fork, where secrets are not available, the answer
+evaluation is skipped with a notice and the retrieval gate still applies.
+
+The LLM judge, the faithfulness check and three runs per question are not part of every push (slower, about $0.15,
+and the judge itself is not deterministic, which would make a gate on it flaky). They run on demand: Actions → RAG
+evals → Run workflow, with "full" ticked. Locally, `make rag-ci` runs what the CI runs.
+
+Set up once: the repository secret `ANTHROPIC_API_KEY` (Settings → Secrets and variables → Actions); a spend limit on
+the key in the Anthropic console is a good guard.
+
 ### RAG files
 
 | Path | Contents |

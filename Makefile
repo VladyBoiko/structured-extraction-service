@@ -37,6 +37,11 @@ rag-ask:           ## answer a question with sources: make rag-ask Q="Скіль
 rag-eval:          ## answer the test set 3 times and score the answers (calls Claude)
 	$(PYTHON) -m src.rag eval
 
+rag-ci:            ## what the CI runs: retrieval and one answer run, then the quality gates (~$0.03)
+	$(PYTHON) -m src.rag eval-retrieval-quick --tag ci
+	$(PYTHON) -m src.rag eval --runs 1 --tag ci
+	$(PYTHON) -m src.rag ci-check --answers ci --retrieval ci
+
 rag: rag-data rag-index rag-eval-retrieval
 
-.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval rag-ask rag-eval
+.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval rag-ask rag-eval rag-ci

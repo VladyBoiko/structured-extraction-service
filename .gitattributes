@@ -1,0 +1,8 @@
+# One line ending everywhere: data files are hashed (chunks.jsonl fingerprints the index and the evaluation results),
+# so a CRLF checkout on Windows must not change their bytes.
+* text=auto eol=lf
+
+*.docx binary
+*.pdf binary
+*.png binary
+*.npy binary

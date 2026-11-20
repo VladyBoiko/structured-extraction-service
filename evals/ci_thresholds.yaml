@@ -1,0 +1,20 @@
+# Quality gates of the CI (`python -m src.rag ci-check`, .github/workflows/rag-evals.yml).
+#
+# CI answers the test set once (one run). The gates leave room for that: every single run of the final configuration
+# (evals/results/answers/v2-threshold, 3 runs) scores pass 0.897, decision 0.949, language 1.0; the v1 configuration
+# (evals/results/answers/v1_2) fails them (pass 0.72-0.77, decision 0.795, language 0.949).
+
+retrieval:                      # evals/retrieval_questions.yaml, the configuration in use
+  recall@5: {min: 0.90}
+
+answers:                        # evals/testset.yaml, deterministic scorers
+  pass: {min: 0.80}
+  decision: {min: 0.85}
+  answered_unanswerable: {max: 0.0}   # no made-up answer to a question the documents do not answer
+  traps: {max: 0.0}                   # no outdated or confused value
+  id_leak: {max: 0.0}
+  language: {min: 0.95}
+
+regression:                     # against evals/baseline.json (the final configuration when it was accepted)
+  pass: {max_drop: 0.10}
+  decision: {max_drop: 0.10}

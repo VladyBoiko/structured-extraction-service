@@ -237,3 +237,13 @@ def test_translation_cache_reuses_the_same_translation(monkeypatch, tmp_path):
     second = A.translate(None, "Питання?")
     assert first == second == ({"uk": "uk 1"}, 0.0001) and calls == ["Питання?"]
     assert A.translate(None, "Інше?")[0] == {"uk": "uk 2"}
+
+
+def test_source_ids_never_reach_the_customer():
+    client = FakeClient({"answerable": True, "missing": "S2 does not say when the refund arrives; [S9] neither.",
+                         "claims": [{"text": "Повернути товар можна протягом 30 днів (S1).",
+                                     "sources": [{"id": "S1", "quote": "до 30 днів з дня отримання"}]}]})
+    res = answer("Скільки днів на повернення?", FakeRetriever([RETURNS, FAQ]), client=client)
+    assert "S1" not in res.text and "S2" not in res.text and "S9" not in res.text
+    assert "[Часті запитання] does not say" in res.missing                 # S2 = the FAQ, by title
+    assert res.claims[0].text == "Повернути товар можна протягом 30 днів ([Правила повернення товару (Україна)])."

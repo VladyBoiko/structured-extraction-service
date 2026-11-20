@@ -11,3 +11,8 @@ data/rag/raw/external/
 data/rag/.cache/
 data/rag/.index/
 .models/
+
+# CI and local `make rag-ci` runs (uploaded as an artifact in Actions, not committed)
+evals/results/answers/ci*/
+evals/results/answers/full*/
+evals/results/retrieval/ci*/

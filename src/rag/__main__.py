@@ -63,6 +63,13 @@ def main(argv: list[str] | None = None) -> int:
     j = sub.add_parser("judge", help="grade every answer of an evaluation run with the LLM judge")
     j.add_argument("--tag", help="evaluation run under evals/results/answers/ (default: the answer prompt version)")
     j.add_argument("--judge-prompt", help="judge prompt version in prompts/judge/")
+    ci = sub.add_parser("ci-check", help="compare an evaluation run with the CI gates (exit 1 on failure)")
+    ci.add_argument("--answers", default="ci", help="answer run under evals/results/answers/ (newest of name, name_2 ...); 'none' to skip")
+    ci.add_argument("--retrieval", default="ci", help="retrieval run under evals/results/retrieval/; 'none' to skip")
+    bl = sub.add_parser("baseline", help="accept an answer run as evals/baseline.json for the regression gates")
+    bl.add_argument("tag")
+    rq = sub.add_parser("eval-retrieval-quick", help="retrieval evaluation of the configuration in use only (CI)")
+    rq.add_argument("--tag", default="ci")
     fa = sub.add_parser("faithfulness", help="check that every claim follows from the sources it cites")
     fa.add_argument("--tag", help="evaluation run under evals/results/answers/ (default: the answer prompt version)")
     args = ap.parse_args(argv)
@@ -138,6 +145,16 @@ def main(argv: list[str] | None = None) -> int:
         from . import config as C
         from .judge import judge_run
         judge_run(tag=args.tag or C.PROMPT_VERSION, prompt_version=args.judge_prompt or C.JUDGE_PROMPT_VERSION)
+    if args.cmd == "ci-check":
+        from .ci import check
+        return 0 if check(None if args.answers == "none" else args.answers,
+                          None if args.retrieval == "none" else args.retrieval) else 1
+    if args.cmd == "baseline":
+        from .ci import write_baseline
+        write_baseline(args.tag)
+    if args.cmd == "eval-retrieval-quick":
+        from .retrieval_eval import run_quick
+        run_quick(args.tag)
     if args.cmd == "faithfulness":
         from . import config as C
         from .faithfulness import run as faithfulness_run
