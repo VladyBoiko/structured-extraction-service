@@ -1,7 +1,9 @@
 # Retrieval results: history of runs
 
-The current results are in [results.md](results.md). This file keeps the earlier runs, so changes in the numbers can be
-traced to changes in the test set.
+Run 2, the full comparison of step 2 (models, modes, chunk sizes, rerankers), is in [results.md](results.md). Runs 3 and 4
+(step 4) are in their own folders, [faq-per-question/](faq-per-question/results.md) and
+[translation/](translation/results.md). This file keeps every run, so changes in the numbers can be traced to changes in
+the test set or the pipeline.
 
 ## Summary
 
@@ -9,10 +11,17 @@ traced to changes in the test set.
 |---|---|---|---|
 | 1 | 15 | 0.80 / 1.00 / 0.90 | – |
 | 2 | 16 | 0.75 / 0.94 / 0.84 | one question added (r16), evidence and trap descriptions refined |
+| 3 | 16 | 0.81 / 0.94 / 0.88 | pipeline: one FAQ question per chunk (853 chunks instead of 834) |
+| 4 | 16 | 0.75 / **1.00** / 0.88 | pipeline: query translation (uk / en / de), each chunk reranked with the question in its language |
 
 On the 15 questions of run 1, run 2 gives the same result (hit@1 12/15 = 0.80, recall@5 15/15, MRR 0.90): the whole
 drop comes from the new question r16, which every configuration misses. The pipeline and the corpus did not change
 between the runs.
+
+Runs 3 and 4 change the pipeline, not the test set (step 4, see [REPORT_RAG.md](../../../REPORT_RAG.md)). Run 3: an FAQ
+is a list of unrelated questions, and merged into one chunk it was scored by all of them; one question per chunk
+moves the right chunk to rank 1 for one more question. Run 4: r16, an English question whose answer is only in a
+Ukrainian policy, is found for the first time (rank 2); the right chunk of r07 moves from rank 1 to 2.
 
 ## Run 2: changes to the test set
 

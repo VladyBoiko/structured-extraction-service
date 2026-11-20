@@ -17,7 +17,8 @@ INGEST_REPORT = DATA / "ingest_report.json"  # dedup, language checks, chunking 
 
 # Bump when extraction or normalization changes: cached texts are then re-extracted.
 PIPELINE_VERSION = "ingest-v1"
-CHUNKER_VERSION = "chunker-v2"   # v2: merged chunks name every merged section in their label
+CHUNKER_VERSION = "chunker-v3"   # v2: merged chunks name every merged section in their label;
+                                 # v3: an FAQ keeps one question per chunk (FAQ_CHUNKS)
 
 # Token counting. o200k_base splits Cyrillic and German far better than cl100k_base, so a token budget
 # means roughly the same amount of text in all three corpus languages. It is an offline approximation;

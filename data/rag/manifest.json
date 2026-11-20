@@ -1,8 +1,8 @@
 {
-  "dataset_version": "ds-f1b0b383d207",
+  "dataset_version": "ds-ec70d82e8d60",
   "pipeline_version": "ingest-v1",
   "chunking": {
-    "chunker": "chunker-v2",
+    "chunker": "chunker-v3",
     "structured": {
       "max_tokens": 380,
       "min_tokens": 150,

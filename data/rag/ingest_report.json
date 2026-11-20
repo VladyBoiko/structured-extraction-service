@@ -21,7 +21,7 @@
   "uncatalogued": [],
   "chunking": {
     "params": {
-      "chunker": "chunker-v2",
+      "chunker": "chunker-v3",
       "structured": {
         "max_tokens": 380,
         "min_tokens": 150,
@@ -210,7 +210,7 @@
       }
     }
   },
-  "dataset_version": "ds-f1b0b383d207",
+  "dataset_version": "ds-ec70d82e8d60",
   "counts": {
     "ok": 51,
     "exact_duplicate": 2,
