@@ -33,8 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -48,20 +48,24 @@ jobs:
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
 
       # Embedding model and reranker (about 3 GB): downloaded once, then restored from the cache.
-      - uses: actions/cache@v4
+      - name: Restore the models
+        id: models
+        uses: actions/cache/restore@v4
         with:
           path: .models
           key: models-e5-large-bge-reranker-v2-m3-v1
       # Vectors and the Qdrant collection depend only on the chunks: unchanged chunks are never embedded again.
-      - uses: actions/cache@v4
+      - name: Restore the vectors and the index
+        id: index
+        uses: actions/cache/restore@v4
         with:
           path: |
             data/rag/.cache/embeddings
@@ -71,6 +75,23 @@ jobs:
 
       - name: Retrieval evaluation (configuration in use)
         run: python -m src.rag eval-retrieval-quick --tag ci
+
+      # Saved right after retrieval, whatever the rest of the job does: a failed gate must not throw away the
+      # half hour of embedding a changed corpus takes on a CI runner.
+      - name: Save the models
+        if: always() && steps.models.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .models
+          key: models-e5-large-bge-reranker-v2-m3-v1
+      - name: Save the vectors and the index
+        if: always() && steps.index.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/rag/.cache/embeddings
+            data/rag/.index
+          key: index-${{ hashFiles('data/rag/chunks.jsonl') }}
 
       - name: Check the API key
         id: key
