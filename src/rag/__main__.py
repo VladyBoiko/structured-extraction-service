@@ -63,7 +63,8 @@ def main(argv: list[str] | None = None) -> int:
     j = sub.add_parser("judge", help="grade every answer of an evaluation run with the LLM judge")
     j.add_argument("--tag", help="evaluation run under evals/results/answers/ (default: the answer prompt version)")
     j.add_argument("--judge-prompt", help="judge prompt version in prompts/judge/")
-    ci = sub.add_parser("ci-check", help="compare an evaluation run with the CI gates (exit 1 on failure)")
+    j.add_argument("--latest", action="store_true", help="the newest of tag, tag_2 ... (the run eval just wrote)")
+    ci =sub.add_parser("ci-check", help="compare an evaluation run with the CI gates (exit 1 on failure)")
     ci.add_argument("--answers", default="ci", help="answer run under evals/results/answers/ (newest of name, name_2 ...); 'none' to skip")
     ci.add_argument("--retrieval", default="ci", help="retrieval run under evals/results/retrieval/; 'none' to skip")
     bl = sub.add_parser("baseline", help="accept an answer run as evals/baseline.json for the regression gates")
@@ -72,7 +73,16 @@ def main(argv: list[str] | None = None) -> int:
     rq.add_argument("--tag", default="ci")
     fa = sub.add_parser("faithfulness", help="check that every claim follows from the sources it cites")
     fa.add_argument("--tag", help="evaluation run under evals/results/answers/ (default: the answer prompt version)")
+    fa.add_argument("--latest", action="store_true", help="the newest of tag, tag_2 ... (the run eval just wrote)")
     args = ap.parse_args(argv)
+
+    def answers_tag(tag: str) -> str:
+        """With --latest: eval never overwrites, so a repeated run lands in tag_2, tag_3 ...; take the newest."""
+        if not getattr(args, "latest", False):
+            return tag
+        from . import config as C
+        from .ci import latest
+        return latest(C.ANSWER_RESULTS, tag).name
 
     if args.cmd in ("build-store", "data"):
         from .build_store import build_store
@@ -144,7 +154,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "judge":
         from . import config as C
         from .judge import judge_run
-        judge_run(tag=args.tag or C.PROMPT_VERSION, prompt_version=args.judge_prompt or C.JUDGE_PROMPT_VERSION)
+        judge_run(tag=answers_tag(args.tag or C.PROMPT_VERSION),prompt_version=args.judge_prompt or C.JUDGE_PROMPT_VERSION)
     if args.cmd == "ci-check":
         from .ci import check
         return 0 if check(None if args.answers == "none" else args.answers,
@@ -158,7 +168,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "faithfulness":
         from . import config as C
         from .faithfulness import run as faithfulness_run
-        faithfulness_run(tag=args.tag or C.PROMPT_VERSION)
+        faithfulness_run(tag=answers_tag(args.tag or C.PROMPT_VERSION))
     return 0
 
 

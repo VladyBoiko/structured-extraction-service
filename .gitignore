@@ -15,4 +15,5 @@ data/rag/.index/
 # CI and local `make rag-ci` runs (uploaded as an artifact in Actions, not committed)
 evals/results/answers/ci*/
 evals/results/answers/full*/
+evals/results/retrieval/run*/
 evals/results/retrieval/ci*/
