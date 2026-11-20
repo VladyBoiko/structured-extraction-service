@@ -308,7 +308,7 @@ def translate(client, question: str) -> tuple[dict, float]:
     cache = _load_translation_cache()
     if key in cache:
         return cache[key]["translations"], cache[key]["cost_usd"]
-    translations, spent = _translate(client or make_client(), question)   # a client only on a cache miss
+    translations, spent = _translate(client, question)
     if translations and C.TRANSLATION_CACHE:
         cache = _load_translation_cache()
         cache[key] = {"translations": translations, "cost_usd": spent}
@@ -318,6 +318,7 @@ def translate(client, question: str) -> tuple[dict, float]:
 
 
 def _translate(client, question: str) -> tuple[dict, float]:
+    client = client or make_client()   # only on a cache miss: cached translations need no API key
     prompt = (C.QUERY_PROMPTS_DIR / f"{C.QUERY_PROMPT_VERSION}.md").read_text(encoding="utf-8").strip()
     try:
         resp = client.messages.create(
