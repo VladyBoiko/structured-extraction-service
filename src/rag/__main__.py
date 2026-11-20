@@ -7,6 +7,7 @@
     python -m src.rag index            embed the chunks and (re)build the Qdrant collections
     python -m src.rag search "query" [--mode rerank] [--region UA INTL] [--all-versions]
     python -m src.rag eval-retrieval [--models minilm mpnet e5-large]
+    python -m src.rag ask "question" [--region UA] [--prompt v1] [--json]
 """
 
 import argparse
@@ -39,6 +40,15 @@ def main(argv: list[str] | None = None) -> int:
     e = sub.add_parser("eval-retrieval", help="recall@k / MRR of all configurations")
     e.add_argument("--models", nargs="+", help="embedding models to compare (vector search)")
     e.add_argument("--sweep", action="store_true", help="also compare structure-aware chunk sizes (slow: re-embeds)")
+    a = sub.add_parser("ask", help="answer a question with sources (calls Claude; needs ANTHROPIC_API_KEY in .env)")
+    a.add_argument("question")
+    a.add_argument("--region", nargs="+", help="UA DACH INTL EU DE GLOBAL")
+    a.add_argument("--language", nargs="+", help="only documents in these languages: uk en de")
+    a.add_argument("--doc-type", nargs="+", help="policy faq product_page service spec_sheet manual law")
+    a.add_argument("--as-of", help="only documents in force on this date, YYYY-MM-DD")
+    a.add_argument("--all-versions", action="store_true", help="include superseded documents")
+    a.add_argument("--prompt", help="prompt version in prompts/rag/ (default: PROMPT_VERSION in config)")
+    a.add_argument("--json", action="store_true", help="print the full record: context, claims, rejected quotes, usage")
     args = ap.parse_args(argv)
 
     if args.cmd in ("build-store", "data"):
@@ -72,6 +82,26 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "eval-retrieval":
         from .retrieval_eval import run as eval_run
         eval_run(models=args.models, sweep=args.sweep)
+    if args.cmd == "ask":
+        import json
+        from . import config as C
+        from .answer import answer
+        from .retrieve import Filters, Retriever
+        r = Retriever.build(C.CHUNKS, "structured")
+        flt = Filters(status=None if args.all_versions else "current", regions=args.region,
+                      languages=args.language, doc_types=args.doc_type, as_of=args.as_of)
+        res = answer(args.question, r, filters=flt, prompt_version=args.prompt or C.PROMPT_VERSION)
+        if args.json:
+            print(json.dumps(res.to_dict(), ensure_ascii=False, indent=2))
+        else:
+            print(res.text)
+            print(f"\n[{res.status} | prompt {res.prompt_version} | {res.model} | context {len(res.context)} chunks, "
+                  f"{res.context_tokens} tokens | top score {res.top_score if res.top_score is None else round(res.top_score, 2)} | "
+                  f"tokens in/out {res.input_tokens}/{res.output_tokens} | ${res.cost_usd:.5f} | {res.latency_ms} ms]")
+            for claim in res.dropped:
+                print(f"[dropped, no verified source: {claim.text}]")
+            if res.error:
+                print(f"[error: {res.error}]")
     return 0
 
 

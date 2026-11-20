@@ -31,6 +31,9 @@ rag-index:         ## embed chunks and build the Qdrant collections
 rag-eval-retrieval:  ## recall@5 / MRR on evals/retrieval_questions.yaml
 	$(PYTHON) -m src.rag eval-retrieval
 
+rag-ask:           ## answer a question with sources: make rag-ask Q="Скільки днів на повернення?"
+	$(PYTHON) -m src.rag ask "$(Q)"
+
 rag: rag-data rag-index rag-eval-retrieval
 
-.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval
+.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval rag-ask

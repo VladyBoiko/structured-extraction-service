@@ -125,8 +125,10 @@ def shared_client() -> QdrantClient:
     """Local (embedded) Qdrant stored on disk. It locks its folder, so one process keeps one client."""
     global _client
     if _client is None:
+        import atexit
         C.INDEX_DIR.mkdir(parents=True, exist_ok=True)
         _client = QdrantClient(path=str(C.INDEX_DIR))
+        atexit.register(_client.close)   # close while Python is still up (otherwise its destructor fails at exit)
     return _client
 
 

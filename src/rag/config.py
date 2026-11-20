@@ -51,3 +51,14 @@ CANDIDATES = 30                # how many hits each of vector / BM25 contributes
 RERANK_CANDIDATES = 20         # how many fused hits the cross-encoder re-scores
 RRF_K = 60                     # Reciprocal Rank Fusion constant
 TOP_K = 5                      # hits returned / evaluated (recall@5)
+
+# ---------------------------------------------------------------- step 3: answers with sources
+PROMPTS_DIR = ROOT / "prompts" / "rag"        # v1.md, v2.md, ... + CHANGELOG.md
+PROMPT_VERSION = "v1"
+ANSWER_MODEL = "claude-haiku-5-5"
+ANSWER_EFFORT = "low"          # Haiku 5.5 default is medium; short grounded answers need little reasoning
+ANSWER_MAX_TOKENS = 4000       # thinking + the JSON answer; a cut answer (stop_reason=max_tokens) is not used
+CONTEXT_BUDGET = 2000          # o200k tokens of retrieved text sent to the model (about 5 chunks)
+MIN_RERANK_SCORE = -4.0        # best reranker score below this: nothing relevant was found, answer "I don't know"
+                               # without calling the model (correct answers scored down to -2.4 in step 2)
+PRICE_PER_MTOK = {"claude-haiku-5-5": (0.10, 0.50)}   # USD per million input / output tokens (prompts up to 100K)
