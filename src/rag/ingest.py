@@ -197,7 +197,9 @@ def run(full: bool = False) -> dict:
     for doc in docs:
         if doc.status != "ok":
             continue
-        doc.chunks = chunk_structured(doc.text)
+        # FAQ_CHUNKS = per_question: an FAQ is a list of unrelated questions, merged they score low (step 4)
+        per_question = C.FAQ_CHUNKS == "per_question" and doc.entry.get("doc_type") == "faq"
+        doc.chunks = chunk_structured(doc.text, merge_siblings=not per_question)
         fixed = chunk_fixed(doc.text)
         records += [chunk_record(doc, i, c) for i, c in enumerate(doc.chunks)]
         fixed_records += [chunk_record(doc, i, c, prefix="fixed:") for i, (c, _) in enumerate(fixed)]
@@ -213,7 +215,8 @@ def run(full: bool = False) -> dict:
                                "fixed": chunk_stats([c for c, _ in fixed], f_clean)}
     report["chunking"] = {
         "params": {"chunker": C.CHUNKER_VERSION,
-                   "structured": {"max_tokens": C.CHUNK_MAX_TOKENS, "min_tokens": C.CHUNK_MIN_TOKENS},
+                   "structured": {"max_tokens": C.CHUNK_MAX_TOKENS, "min_tokens": C.CHUNK_MIN_TOKENS,
+                                  "faq": C.FAQ_CHUNKS},
                    "fixed": {"tokens": C.FIXED_TOKENS, "overlap": C.FIXED_OVERLAP}, "tokenizer": C.TOKENIZER},
         "corpus": {name: chunk_stats(*v) for name, v in totals.items()},
         "documents": per_doc,

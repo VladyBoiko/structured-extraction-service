@@ -1,0 +1,452 @@
+{
+  "pass": 0.752,
+  "decision": 0.795,
+  "false_not_found": 0.229,
+  "answered_unanswerable": 0.0,
+  "facts": 1.0,
+  "traps": 0.012,
+  "source_hit": 1.0,
+  "source_precision": 0.996,
+  "retrieval_hit": 0.943,
+  "language": 0.949,
+  "id_leak": 0.012,
+  "dropped_claims": 0,
+  "status": {
+    "answered": 81,
+    "not_found_model": 9,
+    "not_found_retrieval": 27
+  },
+  "cost_per_1000": 0.362,
+  "cost_per_1000_answered": 0.471,
+  "latency_ms_p50": 1319,
+  "latency_ms_p95": 4637,
+  "input_tokens_avg": 3897,
+  "output_tokens_avg": 344,
+  "total_cost_usd": 0.0424,
+  "ci95": {
+    "pass": [
+      0.624,
+      0.872
+    ],
+    "decision": [
+      0.667,
+      0.915
+    ],
+    "false_not_found": [
+      0.105,
+      0.362
+    ]
+  },
+  "by_type": {
+    "answerable": {
+      "questions": 11,
+      "pass": 0.606
+    },
+    "partial": {
+      "questions": 3,
+      "pass": 0.778
+    },
+    "trap": {
+      "questions": 21,
+      "pass": 0.778
+    },
+    "unanswerable": {
+      "questions": 4,
+      "pass": 1.0
+    }
+  },
+  "by_language": {
+    "de": {
+      "questions": 8,
+      "pass": 0.875
+    },
+    "en": {
+      "questions": 11,
+      "pass": 0.879
+    },
+    "mixed": {
+      "questions": 1,
+      "pass": 0.667
+    },
+    "uk": {
+      "questions": 19,
+      "pass": 0.632
+    }
+  },
+  "per_question": {
+    "t01": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t02": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t03": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t04": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t05": {
+      "passed_runs": 2,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t06": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t07": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t08": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t09": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t10": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t11": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t12": {
+      "passed_runs": 2,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "answered",
+        "answered"
+      ]
+    },
+    "t13": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t14": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t15": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t16": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t17": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t18": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t19": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t20": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t21": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t22": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t23": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t24": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t25": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t26": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t27": {
+      "passed_runs": 1,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t28": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t29": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t30": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t31": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t32": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t33": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t34": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t35": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t36": {
+      "passed_runs": 2,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t37": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t38": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t39": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    }
+  },
+  "always_pass": 27,
+  "unstable": [
+    "t05",
+    "t12",
+    "t27",
+    "t36"
+  ],
+  "always_fail": [
+    "t16",
+    "t17",
+    "t18",
+    "t19",
+    "t28",
+    "t34",
+    "t37",
+    "t39"
+  ],
+  "prompt_version": "v1",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "runs": 3,
+  "questions": 39,
+  "seconds": 214
+}

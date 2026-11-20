@@ -30,6 +30,40 @@ def detect(text: str) -> str | None:
     return "de" if de > en else "en"
 
 
+# ---------------------------------------------------------------- short customer questions
+# detect() needs 20 letters and function words of running text; a question is often shorter, has no articles, and
+# borrows English words ("Gibt es Trade-in in Deutschland?"). These lists add question words and everyday verbs; words
+# shared by German and English ("in", "was" is German, "is" English) are left out of both.
+DE_QUESTION = DE_WORDS | {"gibt", "es", "ich", "kann", "wie", "was", "wer", "wo", "wann", "warum", "welche", "sind",
+                          "mein", "meine", "meinen", "habe", "hab", "noch", "schon", "kostet", "kosten", "bekomme",
+                          "muss", "darf", "zurück", "zurückgeben", "zurückschicken", "bestellt", "bestellung"}
+EN_QUESTION = (EN_WORDS - {"in"}) | {"what", "whats", "how", "do", "does", "my", "i", "much", "many", "when", "where",
+                                     "why", "which", "who", "get", "pay", "cost", "costs", "there", "much"}
+DE_QUESTION -= {"in"}
+# Ukrainian written in Latin letters: stems of common words in the usual transliterations.
+UK_TRANSLIT = ("skil", "shcho", "scho", "sho", "chy", "mozh", "yak", "koly", "tse", "mene", "meni", "nemay",
+               "tovar", "zamovl", "dostav", "povern", "oplat", "koshtu", "hroshi", "groshi", "viddil", "poshty",
+               "potribno", "treba", "dniv", "hrn", "grn")
+
+
+def detect_question(text: str) -> str | None:
+    """'uk' | 'de' | 'en' for a short question, or None. Cyrillic -> uk; Ukrainian in Latin letters -> uk."""
+    letters = [c for c in text if c.isalpha()]
+    if not letters:
+        return None
+    if sum("Ѐ" <= c <= "ӿ" for c in letters) / len(letters) > 0.3:
+        return "uk"
+    words = re.findall(r"[a-zäöüß]+", text.lower())
+    translit = sum(any(w.startswith(s) for s in UK_TRANSLIT) for w in words)
+    de = sum(w in DE_QUESTION for w in words) + 2 * len(re.findall(r"[äöüß]", text.lower()))
+    en = sum(w in EN_QUESTION for w in words)
+    if translit >= 2 and translit > max(de, en):
+        return "uk"
+    if de == en == 0:
+        return None
+    return "de" if de > en else "en"
+
+
 def foreign_share(text: str, declared: str, min_chars: int = 80) -> float:
     """Share of the document's paragraphs (long enough to judge) detected as another language."""
     verdicts = [detect(p) for p in re.split(r"\n\s*\n", text) if len(p) >= min_chars and not p.startswith("|")]

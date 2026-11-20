@@ -1,11 +1,12 @@
 {
-  "dataset_version": "ds-8b2b8f63bcbf",
+  "dataset_version": "ds-f1b0b383d207",
   "pipeline_version": "ingest-v1",
   "chunking": {
     "chunker": "chunker-v2",
     "structured": {
       "max_tokens": 380,
-      "min_tokens": 150
+      "min_tokens": 150,
+      "faq": "per_question"
     },
     "fixed": {
       "tokens": 300,
@@ -18,7 +19,7 @@
     "exact_duplicate": 2,
     "near_duplicate": 1
   },
-  "chunks": 834,
+  "chunks": 853,
   "files": {
     "store/policies/returns_ua_2024.md": {
       "doc_id": "returns_ua_2024",
@@ -678,7 +679,7 @@
       "language_detected": "uk",
       "foreign_share": 0.0,
       "tokens": 314,
-      "chunks": 1
+      "chunks": 7
     },
     "store/faq/faq_en.html": {
       "doc_id": "faq_en",
@@ -700,7 +701,7 @@
       "language_detected": "en",
       "foreign_share": 0.0,
       "tokens": 287,
-      "chunks": 1
+      "chunks": 8
     },
     "store/faq/faq_dach.html": {
       "doc_id": "faq_dach",
@@ -722,7 +723,7 @@
       "language_detected": "de",
       "foreign_share": 0.0,
       "tokens": 270,
-      "chunks": 1
+      "chunks": 7
     },
     "store/products/jbl_tune_760nc_ua.html": {
       "doc_id": "jbl_tune_760nc_ua",

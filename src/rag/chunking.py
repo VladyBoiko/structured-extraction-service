@@ -158,7 +158,10 @@ def _hard_split(text: str, budget: int) -> list[str]:
 
 # ---------------------------------------------------------------- structure-aware chunker
 
-def chunk_structured(text: str, max_tokens: int = CHUNK_MAX_TOKENS, min_tokens: int = CHUNK_MIN_TOKENS) -> list[Chunk]:
+def chunk_structured(text: str, max_tokens: int = CHUNK_MAX_TOKENS, min_tokens: int = CHUNK_MIN_TOKENS,
+                     merge_siblings: bool = True) -> list[Chunk]:
+    """merge_siblings=False keeps every section apart (an FAQ: one question per chunk); a short intro still joins
+    the first section under it."""
     chunks: list[Chunk] = []
     for sec in sections_of(text):
         head = "\n\n".join(sec.heading_lines)
@@ -178,10 +181,10 @@ def chunk_structured(text: str, max_tokens: int = CHUNK_MAX_TOKENS, min_tokens: 
             parts.append(piece)
             has_body = True
         chunks.append(Chunk("\n\n".join(parts), [sec.path]))
-    return merge_small(chunks, max_tokens, min_tokens)
+    return merge_small(chunks, max_tokens, min_tokens, merge_siblings)
 
 
-def merge_small(chunks: list[Chunk], max_tokens: int, min_tokens: int) -> list[Chunk]:
+def merge_small(chunks: list[Chunk], max_tokens: int, min_tokens: int, merge_siblings: bool = True) -> list[Chunk]:
     """Merge a chunk below min_tokens into its neighbour when both are siblings (same parent path)
     or the next one is its child, and the result still fits."""
     out: list[Chunk] = []
@@ -190,8 +193,10 @@ def merge_small(chunks: list[Chunk], max_tokens: int, min_tokens: int) -> list[C
             prev = out[-1]
             small = prev.tokens < min_tokens or c.tokens < min_tokens
             anchor, last = prev.paths[0], prev.paths[-1]
-            siblings = len(last) == len(c.path) and last[:-1] == c.path[:-1]
+            siblings = merge_siblings and len(last) == len(c.path) and last[:-1] == c.path[:-1]
             child = c.path[:len(anchor)] == anchor and len(c.path) > len(anchor)
+            if not merge_siblings:   # only the intro takes its first section, not every section below it
+                child = child and len(prev.paths) == 1
             if small and (siblings or child) and n_tokens(prev.text + "\n\n" + c.text) <= max_tokens:
                 paths = prev.paths + [p for p in c.paths if p not in prev.paths]
                 out[-1] = Chunk(prev.text + "\n\n" + c.text, paths)

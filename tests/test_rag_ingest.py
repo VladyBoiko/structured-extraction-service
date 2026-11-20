@@ -249,3 +249,12 @@ def test_real_chunks_file_if_built():
         for key in ("source", "title", "section", "language", "region", "version", "status", "doc_hash", "doc_type"):
             assert key in r
     assert {r["status"] for r in records} == {"current", "superseded"}
+
+
+def test_faq_per_question_keeps_every_question_apart():
+    md = "# FAQ\n\nUpdated 2025.\n\n## Q1?\n\nYes.\n\n## Q2?\n\nNo.\n\n## Q3?\n\nMaybe."
+    merged = chunk_structured(md, max_tokens=300, min_tokens=150)
+    apart = chunk_structured(md, max_tokens=300, min_tokens=150, merge_siblings=False)
+    assert len(merged) == 1
+    assert [c.section for c in apart] == ["FAQ > Q1?", "FAQ > Q2?", "FAQ > Q3?"]
+    assert apart[0].text.startswith("# FAQ")        # the intro joins the first question

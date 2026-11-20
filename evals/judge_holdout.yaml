@@ -1,0 +1,138 @@
+# Human labels on fresh answers: a check of the LLM judge that was not tuned on them (step 4).
+#
+# Ten answers of the final configuration (evals/results/answers/v2-threshold, run 1), to questions that are not in
+# evals/judge_calibration.yaml. Judge prompt v2 was written after the calibration set; these answers were not looked
+# at while writing it, so the agreement here is the honest estimate. Labels as in judge_calibration.yaml.
+
+answers:
+  - id: t36
+    run: 1
+    question: "whats the warranty on a TV in ukraine and how long does a repair take"
+    expected_answer: "24 months for TVs and monitors; a warranty repair takes up to 14 days (a replacement device can be provided if it takes longer)."
+    answer: |
+      The warranty on TVs in Ukraine is 24 months. [Гарантійне обслуговування (Україна) › Строк гарантії]
+      Warranty repairs in Ukraine are completed within 14 days. [Гарантійне обслуговування (Україна) › Строки ремонту]
+
+      Sources:
+      - Гарантійне обслуговування (Україна) › Строк гарантії
+      - Гарантійне обслуговування (Україна) › Строки ремонту
+    human_label: "correct"
+    human_note: ""
+
+  - id: t17
+    run: 1
+    question: "Скажи мені де є фізичні магазини в Україні?"
+    expected_answer: "Фізичних магазинів немає: ElectroStore — онлайн-магазин без точок видачі, доставляє Новою Поштою та Укрпоштою."
+    answer: |
+      Не знаю: у документах магазину немає відповіді на це питання.
+    human_label: "incorrect"
+    human_note: ""
+
+  - id: t11
+    run: 1
+    question: "Kann ich In-Ear-Kopfhörer zurückgeben, wenn ich die Versiegelung schon entfernt habe?"
+    expected_answer: "Nein: In-Ear-Kopfhörer mit entfernter Hygieneversiegelung sind von der Rückgabe ausgeschlossen (Shop-Richtlinie, auch gesetzliche Ausnahme)."
+    answer: |
+      Nein, In-Ear-Kopfhörer können nur mit unbeschädigter Hygieneversiegelung zurückgegeben werden. [Sony WF-1000XM5 — Produktseite › Rückgabe]
+      In-Ear-Kopfhörer, deren Hygieneversiegelung entfernt wurde, sind von der Rückgabe ausgenommen. [Rückgabe und Widerruf (Deutschland, Österreich, Schweiz) › Ausnahmen]
+
+      Quellen:
+      - Sony WF-1000XM5 — Produktseite › Rückgabe
+      - Rückgabe und Widerruf (Deutschland, Österreich, Schweiz) › Ausnahmen
+    human_label: "correct"
+    human_note: ""
+
+  - id: t39
+    run: 1
+    question: "Це жах!!! Замовив пральку, а приїхала з вм'ятиною. Що мені тепер робити???"
+    expected_answer: "Якщо пошкодження видно лише після розпакування, повідомте протягом 48 годин після доставки: номер замовлення, фото товару, коробки й етикетки, короткий опис. Не викидайте упаковку. Магазин за свій рахунок замінить товар або поверне повну суму разом з доставкою — на ваш вибір."
+    answer: |
+      Якщо товар є в наявності, вимога про його заміну підлягає негайному задоволенню; якщо потрібна перевірка якості, то протягом чотирнадцяти днів або за домовленістю сторін. [Закон України «Про захист прав споживачів» › Стаття 8. Права споживача у разі придбання ним товару неналежної якості]
+      Доставка товарів вагою понад п'ять кілограмів продавцю та їх повернення споживачеві здійснюються за рахунок продавця. [Закон України «Про захист прав споживачів» › Стаття 8. Права споживача у разі придбання ним товару неналежної якості]
+      Якщо замінити товар у встановлений строк неможливо, ви можете на свій вибір пред'явити продавцю інші вимоги, передбачені законом. [Закон України «Про захист прав споживачів» › Стаття 8. Права споживача у разі придбання ним товару неналежної якості]
+      Немає в документах: порядок дій ElectroStore для пошкодженої при доставці техніки та строки саме для вашого замовлення в політиці магазину
+
+      Джерела:
+      - Закон України «Про захист прав споживачів» › Стаття 8. Права споживача у разі придбання ним товару неналежної якості
+    human_label: "incorrect"
+    human_note: "answers from the law on faulty goods, not the store's rules for damage in transit; none of the expected steps; false 'not in the documents'"
+
+  - id: t29
+    run: 1
+    question: "Чи продаєте ви ноутбуки Lenovo?"
+    expected_answer: "Не знаю: у документах немає асортименту ноутбуків."
+    answer: |
+      Не знаю: у документах магазину немає відповіді на це питання.
+    human_label: "correct"
+    human_note: ""
+
+  - id: t18
+    run: 1
+    question: "Коли доступна телефонна гаряча лінія?"
+    expected_answer: "Телефонна підтримка є лише для Німеччини та Австрії, у робочі дні з 9:00 до 18:00 (CET). В Україні — чат на сайті (щодня 8:00–22:00) та email."
+    answer: |
+      Телефонна гаряча лінія працює для Німеччини та Австрії у робочі дні з 9:00 до 18:00. [Häufige Fragen › Gibt es eine Telefon-Hotline?]
+      Телефонна підтримка доступна в Німеччині та Австрії у робочі дні з 9:00 до 18:00 за CET. [Frequently asked questions › How do I contact support?]
+
+      Джерела:
+      - Häufige Fragen › Gibt es eine Telefon-Hotline?
+      - Frequently asked questions › How do I contact support?
+    human_label: "partial"
+    human_note: "phone hours for Germany and Austria are right, but a Ukrainian customer is not told about the chat and email that are their way to contact support"
+
+  - id: t34
+    run: 1
+    question: "шо там з поверненням якщо я коробку вже викинув?"
+    expected_answer: "Товар належної якості приймають назад, якщо збережено оригінальну упаковку (а також товарний вигляд, комплектацію й документи); без коробки повернення можуть не прийняти."
+    answer: |
+      За законом, якщо договір укладено поза торговельними або офісними приміщеннями, зменшення вартості продукції через відкриття упаковки не позбавляє вас права на розірвання договору. [Закон України «Про захист прав споживачів» › Стаття 12. Права споживача в разі укладення договору поза торговельними або офісними приміщеннями]
+      Немає в документах: правила магазину щодо повернення товару без коробки (упаковки) у Правилах повернення не описані
+
+      Джерела:
+      - Закон України «Про захист прав споживачів» › Стаття 12. Права споживача в разі укладення договору поза торговельними або офісними приміщеннями
+    human_label: "incorrect"
+    human_note: "suggests an opened or missing box does not matter, from a law article on off-premises contracts; the store policy requires the original packaging; false 'not in the documents'"
+
+  - id: t14
+    run: 1
+    question: "Wer zahlt den Zoll bei einer Lieferung in die Schweiz?"
+    expected_answer: "Der Kunde: Lieferungen in die Schweiz werden unverzollt versendet, Einfuhrumsatzsteuer und Zollgebühren zahlt der Kunde."
+    answer: |
+      Bei Lieferungen in die Schweiz zahlt der Kunde Einfuhrumsatzsteuer und Zollgebühren bei der Zustellung an den Paketdienst. [Versand nach Deutschland, Österreich und in die Schweiz › Zoll in der Schweiz]
+      Die Lieferungen in die Schweiz werden unverzollt versendet. [Versand nach Deutschland, Österreich und in die Schweiz › Zoll in der Schweiz]
+
+      Quellen:
+      - Versand nach Deutschland, Österreich und in die Schweiz › Zoll in der Schweiz
+    human_label: "correct"
+    human_note: ""
+
+  - id: t38
+    run: 1
+    question: "How much is shipping?"
+    expected_answer: "It depends on the country: Ukraine 80 UAH to a Nova Poshta branch (free from 3,000 UAH); Germany 4.90 EUR (free from 49 EUR); Austria 7.90 EUR (free from 99 EUR); Switzerland 14.90 EUR; Poland, Czechia and Slovakia 9.90 EUR (free from 150 EUR). Any answer should make clear the price depends on the country."
+    answer: |
+      Shipping to Germany costs 4.90 € (standard), and is free from 49 €. [Versand nach Deutschland, Österreich und in die Schweiz › Versandkosten und Lieferzeiten]
+      Shipping to Austria costs 7.90 € (standard), and is free from 99 €. [Versand nach Deutschland, Österreich und in die Schweiz › Versandkosten und Lieferzeiten]
+      Shipping to Switzerland costs 14.90 € (standard), and there is no free-shipping threshold. [Versand nach Deutschland, Österreich und in die Schweiz › Versandkosten und Lieferzeiten]
+      In Ukraine, delivery to a Nova Poshta branch or parcel locker costs 80 UAH, and is free from 3,000 UAH. [Доставка по Україні › Способи доставки]
+      In Ukraine, Ukrposhta delivery costs 55 UAH. [Доставка по Україні › Способи доставки]
+
+      Sources:
+      - Versand nach Deutschland, Österreich und in die Schweiz › Versandkosten und Lieferzeiten
+      - Доставка по Україні › Способи доставки
+    human_label: "partial"
+    human_note: "borderline: every price given is right and the list by country shows that the price depends on the destination, but Poland, Czechia and Slovakia (9.90 EUR, free from 150 EUR) are missing, so a customer there gets no price although the documents have it; the answer also never says plainly that the price depends on the country"
+
+  - id: t35
+    run: 1
+    question: "hab meine kopfhörer von sony bestellt, die in-ear dinger, siegel ist ab. kann ich die noch zurückschicken??"
+    expected_answer: "Nein: In-Ear-Kopfhörer mit entfernter Hygieneversiegelung können nicht zurückgegeben werden."
+    answer: |
+      Nein, In-Ear-Kopfhörer, bei denen die Hygieneversiegelung entfernt wurde, können nicht zurückgeschickt werden. [Rückgabe und Widerruf (Deutschland, Österreich, Schweiz) › Ausnahmen]
+      In-Ear-Kopfhörer können aus hygienischen Gründen nur mit unbeschädigter Hygieneversiegelung zurückgegeben werden. [Sony WF-1000XM5 — Produktseite › Rückgabe]
+
+      Quellen:
+      - Rückgabe und Widerruf (Deutschland, Österreich, Schweiz) › Ausnahmen
+      - Sony WF-1000XM5 — Produktseite › Rückgabe
+    human_label: "correct"
+    human_note: ""

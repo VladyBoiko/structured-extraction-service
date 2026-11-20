@@ -52,11 +52,13 @@ def lint(questions: list[dict], chunks: list[dict]) -> list[str]:
     return problems
 
 
-def run_config(retriever: Retriever, questions: list[dict], mode: str, filters: Filters | None = None) -> dict:
+def run_config(retriever: Retriever, questions: list[dict], mode: str, filters: Filters | None = None,
+               translations: dict[str, dict] | None = None) -> dict:
     per_q, timer = {}, Timer()
     for q in questions:
+        kw = {"translations": translations[q["id"]]} if translations and translations.get(q["id"]) else {}
         with timer:
-            hits = retriever.search(q["question"], mode=mode, filters=filters, k=EVAL_DEPTH)
+            hits = retriever.search(q["question"], mode=mode, filters=filters, k=EVAL_DEPTH, **kw)
         rank = next((h["rank"] for h in hits if is_hit(h, q)), None)
         superseded = [h["chunk_id"] for h in hits[:C.TOP_K] if h["doc_id"] in q.get("superseded", [])]
         per_q[q["id"]] = {"rank": rank, "top": [h["chunk_id"] for h in hits[:C.TOP_K]], "superseded_top5": superseded}
@@ -113,7 +115,7 @@ def run_rerankers(questions: list[dict], chunks: list[dict]) -> dict:
     return out
 
 
-def run(models: list[str] | None = None, write: bool = True, sweep: bool = False) -> dict:
+def run(models: list[str] | None = None, write: bool = True, sweep: bool = False, tag: str | None = None) -> dict:
     data = load_questions()
     questions = data["questions"]
     structured, fixed = load_chunks(C.CHUNKS), load_chunks(C.CHUNKS_FIXED)
@@ -138,6 +140,17 @@ def run(models: list[str] | None = None, write: bool = True, sweep: bool = False
             results["modes"][f"{name}/{mode}"] = res
             print(f"{name:<10} {mode:<7} hit@1 {res['hit@1']:.2f}  recall@5 {res['recall@5']:.2f}  "
                   f"MRR {res['mrr@10']:.2f}  {res['ms']:>5} ms  misses {' '.join(res['misses@5']) or '-'}")
+
+    # 2b. With QUERY_TRANSLATION on: the question in uk / en / de, each chunk reranked against its own language.
+    if C.QUERY_TRANSLATION:
+        from .answer import make_client, translate
+        client = make_client()
+        translations = {q["id"]: translate(client, q["question"])[0] for q in questions}
+        res = run_config(Retriever(structured, "structured"), questions, "rerank", translations=translations)
+        res["translations"] = translations
+        results["modes"]["structured/rerank+translation"] = res
+        print(f"structured rerank+translation hit@1 {res['hit@1']:.2f}  recall@5 {res['recall@5']:.2f}  "
+              f"MRR {res['mrr@10']:.2f}  {res['ms']:>5} ms  misses {' '.join(res['misses@5']) or '-'}")
 
     # 3. Version traps: does an outdated policy reach the top-5 without the status filter?
     traps = [q for q in questions if q.get("superseded")]
@@ -171,12 +184,18 @@ def run(models: list[str] | None = None, write: bool = True, sweep: bool = False
     results["questions_hash"] = questions_hash(questions)
     results["chunks_hash"] = chunks_hash
 
-    if write:
-        C.RETRIEVAL_RESULTS.mkdir(parents=True, exist_ok=True)
-        (C.RETRIEVAL_RESULTS / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n",
-                                                         encoding="utf-8")
-        (C.RETRIEVAL_RESULTS / "results.md").write_text(to_markdown(results, questions), encoding="utf-8")
-        write_per_question(questions, structured, r)
+    results["pipeline"] = {"faq_chunks": C.FAQ_CHUNKS, "query_translation": C.QUERY_TRANSLATION}
+    if write:   # a new run never overwrites an earlier one: the first run is in results/retrieval/, later ones in a
+                # folder of their own next to it
+        from .answer_eval import free_path
+        out = C.RETRIEVAL_RESULTS
+        if tag or (out / "results.json").exists():
+            out = free_path(C.RETRIEVAL_RESULTS / (tag or "run"))
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (out / "results.md").write_text(to_markdown(results, questions), encoding="utf-8")
+        write_per_question(questions, structured, r, folder=out)
+        print(f"written to {out}")
     return results
 
 
@@ -218,7 +237,7 @@ def to_markdown(res: dict, questions: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def write_per_question(questions: list[dict], chunks: list[dict], retriever: Retriever) -> None:
+def write_per_question(questions: list[dict], chunks: list[dict], retriever: Retriever, folder=None) -> None:
     """Per question: the chunks its evidence points to and the top-5 of the chosen configuration."""
     by_id = {c["chunk_id"]: c for c in chunks}
     out = ["# Retrieval per question\n",
@@ -241,4 +260,4 @@ def write_per_question(questions: list[dict], chunks: list[dict], retriever: Ret
             snippet = " ".join(h["text"].split())[:160]
             out.append(f"{h['rank']}. {mark} `{h['chunk_id']}` — {h['section'][:80]}  \n   _{snippet}_")
         out.append("")
-    (C.RETRIEVAL_RESULTS / "per_question.md").write_text("\n".join(out), encoding="utf-8")
+    (folder or C.RETRIEVAL_RESULTS).joinpath("per_question.md").write_text("\n".join(out), encoding="utf-8")

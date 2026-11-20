@@ -204,11 +204,43 @@ class Retriever:
         ranked = sorted(zip((i for i, _ in candidates), scores), key=lambda x: -x[1])
         return [(i, float(s)) for i, s in ranked[:k]]
 
-    def search(self, query: str, mode: str = "rerank", filters: Filters | None = None, k: int = C.TOP_K) -> list[dict]:
+    def rerank_translated(self, query: str, translations: dict[str, str], filters: Filters,
+                          k: int) -> list[tuple[int, float]]:
+        """Candidates from the question and its translations (RRF over the hybrid lists of each), then each candidate is
+        re-scored against the version of the question in the candidate's own language, so every pair the cross-encoder
+        sees is monolingual and the scores of a Ukrainian and an English chunk are comparable."""
+        queries = [query] + [t for t in translations.values() if t and t != query]
+        fused: dict[int, float] = {}
+        for q in queries:
+            for rank, (i, _) in enumerate(self.hybrid(q, filters, C.CANDIDATES), start=1):
+                fused[i] = fused.get(i, 0.0) + 1 / (C.RRF_K + rank)
+        candidates = [i for i, _ in sorted(fused.items(), key=lambda x: -x[1])[:C.RERANK_CANDIDATES]]
+        if not candidates:
+            return []
+        if self._reranker is None:
+            from fastembed.rerank.cross_encoder import TextCrossEncoder
+            self._reranker = TextCrossEncoder(RERANKERS[self.rerank_key], cache_dir=str(C.MODELS_DIR))
+        scores: dict[int, float] = {}
+        by_language: dict[str, list[int]] = {}
+        for i in candidates:
+            by_language.setdefault(self.chunks[i]["language"], []).append(i)
+        for lang, ids in by_language.items():
+            q = translations.get(lang) or query
+            for i, s in zip(ids, self._reranker.rerank(q, [search_text(self.chunks[i]) for i in ids])):
+                scores[i] = float(s)
+        return sorted(scores.items(), key=lambda x: -x[1])[:k]
+
+    def search(self, query: str, mode: str = "rerank", filters: Filters | None = None, k: int = C.TOP_K,
+               translations: dict[str, str] | None = None) -> list[dict]:
+        """`translations` ({"uk": ..., "en": ..., "de": ...}): rerank mode searches with every version of the question."""
         filters = filters if filters is not None else Filters()
-        fn = {"vector": self.vector, "bm25": lambda q, f, n: self.bm25.search(q, f, n),
-              "hybrid": self.hybrid, "rerank": self.rerank}[mode]
-        return [{**self.chunks[i], "score": s, "rank": r} for r, (i, s) in enumerate(fn(query, filters, k), start=1)]
+        if mode == "rerank" and translations:
+            ranked = self.rerank_translated(query, translations, filters, k)
+        else:
+            fn = {"vector": self.vector, "bm25": lambda q, f, n: self.bm25.search(q, f, n),
+                  "hybrid": self.hybrid, "rerank": self.rerank}[mode]
+            ranked = fn(query, filters, k)
+        return [{**self.chunks[i], "score": s, "rank": r} for r, (i, s) in enumerate(ranked, start=1)]
 
 
 @dataclass

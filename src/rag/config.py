@@ -59,6 +59,43 @@ ANSWER_MODEL = "claude-haiku-5-5"
 ANSWER_EFFORT = "low"          # Haiku 5.5 default is medium; short grounded answers need little reasoning
 ANSWER_MAX_TOKENS = 4000       # thinking + the JSON answer; a cut answer (stop_reason=max_tokens) is not used
 CONTEXT_BUDGET = 2000          # o200k tokens of retrieved text sent to the model (about 5 chunks)
-MIN_RERANK_SCORE = -4.0        # best reranker score below this: nothing relevant was found, answer "I don't know"
-                               # without calling the model (correct answers scored down to -2.4 in step 2)
+MIN_RERANK_SCORE = -6.0        # best reranker score below this: nothing relevant was found, answer "I don't know"
+                               # without calling the model. -4.0 until step 4; with translated queries the lowest
+                               # score of an answerable test question is -5.7, so -6.0 lets every one of them reach
+                               # the model, and the model decides on the unanswerable ones (step 4, threshold table)
 PRICE_PER_MTOK = {"claude-haiku-5-5": (0.10, 0.50)}   # USD per million input / output tokens (prompts up to 100K)
+
+# Fixes from the error analysis of v1 (step 4). Each one is a switch, so every step of the evaluation can be
+# reproduced; the evaluation records the switches it ran with.
+QUESTION_LANGUAGE = "v2"       # v1: detect() made for paragraphs; v2: detect_question() for short questions and
+                               # Ukrainian in Latin letters
+FAQ_CHUNKS = "per_question"          # merged: small sibling sections merged like any document; per_question: one
+                               # FAQ question per chunk (needs `python -m src.rag ingest` and `index`)
+QUERY_TRANSLATION = True       # rewrite the question in uk / en / de (one model call) and search with all three
+QUERY_PROMPTS_DIR = ROOT / "prompts" / "query"
+QUERY_PROMPT_VERSION = "v1"
+TRANSLATION_CACHE = ROOT / "evals" / "translations.json"   # None: translate every time; a path: reuse a
+                               # translation of the same question (stable evaluation runs)
+CONTEXT_MIN_SCORE = -6.0       # None: the top-5 go to the model; a number: hits scoring below it are left out
+DEMOTE_OUTDATED_FAQ = True     # an FAQ older than a store policy in the same context goes last, with a note
+
+# ---------------------------------------------------------------- step 4: answer evaluation
+TESTSET = EVALS / "testset.yaml"
+ANSWER_RESULTS = EVALS / "results" / "answers"     # one folder per prompt version (or --tag)
+EVAL_RUNS = 3                  # each question is answered this many times: the model is not deterministic
+EVAL_WORKERS = 4               # parallel model calls (retrieval runs once per question, before them)
+
+# LLM judge: grades an answer against the reference answer (correct / partial / incorrect)
+JUDGE_PROMPTS_DIR = ROOT / "prompts" / "judge"
+JUDGE_PROMPT_VERSION = "v2"   # v1 -> v2: see prompts/judge/CHANGELOG.md
+JUDGE_MODEL = "claude-haiku-5-5"
+JUDGE_EFFORT = "medium"        # grading needs more care than answering
+JUDGE_CALIBRATION = EVALS / "judge_calibration.yaml"   # answers labelled by a person
+JUDGE_HOLDOUT = EVALS / "judge_holdout.yaml"           # fresh answers labelled by a person: the judge was not
+                                                      # tuned on them
+JUDGE_RESULTS = EVALS / "results" / "judge"
+
+# Faithfulness: is every claim supported by the sources it cites (checked per claim by an LLM)
+FAITHFULNESS_PROMPTS_DIR = ROOT / "prompts" / "faithfulness"
+FAITHFULNESS_PROMPT_VERSION = "v1"
+FAITHFULNESS_CONTROLS = EVALS / "faithfulness_controls.yaml"   # written control claims

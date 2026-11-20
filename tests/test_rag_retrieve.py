@@ -134,3 +134,35 @@ def test_metrics(retriever):
     trap = [{**questions[0], "question": "return within 30 or 14 days"}]
     res = run_config(retriever, trap, "bm25", R.NO_FILTER)
     assert res["per_question"]["a"]["superseded_top5"] == ["returns_2024#000"]
+
+
+class FakeReranker:
+    """Scores a pair by shared words; records which query text was used for which chunk."""
+
+    def __init__(self):
+        self.pairs = []
+
+    def rerank(self, query, texts):
+        for t in texts:
+            self.pairs.append((query, t))
+            yield float(len(set(R.tokenize(query)) & set(R.tokenize(t))))
+
+
+def test_translated_search_scores_each_chunk_with_the_question_in_its_language(retriever):
+    retriever._reranker = FakeReranker()
+    translations = {"uk": "повернення", "en": "Press and hold the reset button", "de": "Was kostet der Versand nach Österreich?"}
+    hits = retriever.search("Як скинути навушники?", translations=translations)
+    assert hits[0]["chunk_id"] in ("manual#000", "delivery_dach#000")
+    used = {t.split("\n")[0]: q for q, t in retriever._reranker.pairs}
+    for q, t in retriever._reranker.pairs:
+        if "reset button" in t:
+            assert q == translations["en"]
+        if "Österreich" in t:
+            assert q == translations["de"]
+    assert all(h["status"] == "current" for h in hits)            # the default filter still applies
+
+
+def test_untranslated_search_is_unchanged(retriever):
+    retriever._reranker = FakeReranker()
+    retriever.search("Return within 30 days")
+    assert {q for q, _ in retriever._reranker.pairs} == {"Return within 30 days"}

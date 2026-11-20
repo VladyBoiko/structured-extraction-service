@@ -1,0 +1,49 @@
+# Answer evaluation: prompt v2
+
+39 questions x 3 runs, claude-haiku-5-5 (effort low). Deterministic scorers only; per question details: [per_question.md](per_question.md).
+
+Pipeline: `{'question_language': 'v2', 'faq_chunks': 'per_question', 'query_translation': False, 'context_min_score': None, 'min_rerank_score': -4.0, 'context_budget': 2000, 'chunks': '9c0664878542'}`
+
+| metric | value | meaning |
+|---|---|---|
+| pass | 0.85 [0.73–0.96] | answer passes all deterministic checks |
+| decision | 0.86 [0.75–0.96] | answered when it should, said "I don't know" when it should |
+| false_not_found | 0.15 [0.05–0.28] | "I don't know" although the documents answer it (of answerable questions) |
+| answered_unanswerable | 0.00 | answered a question the documents do not answer |
+| facts | 0.99 | all key facts present (of answered, answerable questions) |
+| traps | 0.00 | a trap value in the answer |
+| source_hit | 0.99 | at least one citation from an expected document |
+| source_precision | 0.99 | share of citations from expected documents |
+| retrieval_hit | 0.94 | an expected document is in the context |
+| language | 1.00 | answer in the language of the question |
+| id_leak | 0.00 | a source id like S1 shown to the customer |
+
+[a–b]: 95% interval, bootstrap over questions.
+
+| type | questions | pass |
+|---|---|---|
+| answerable | 11 | 0.73 |
+| partial | 3 | 0.78 |
+| trap | 21 | 0.91 |
+| unanswerable | 4 | 1.00 |
+
+| language | questions | pass |
+|---|---|---|
+| de | 8 | 1.00 |
+| en | 11 | 0.85 |
+| mixed | 1 | 1.00 |
+| uk | 19 | 0.79 |
+
+## Stability across runs
+
+- passed in every run: 33 of 39
+- unstable (passed in some runs): t38
+- failed in every run: t16, t17, t28, t34, t39
+- statuses: {'answered': 89, 'not_found_model': 7, 'not_found_retrieval': 21}; claims dropped by the citation check: 0
+
+## Cost and latency
+
+- $0.376 per 1,000 questions ($0.458 per 1,000 that reach the model; the others stop at the retrieval threshold and cost nothing)
+- tokens per model call: 3902 in, 359 out (thinking included)
+- latency per question that reaches the model: p50 1497 ms, p95 4758 ms
+- this evaluation: $0.044, 216 s

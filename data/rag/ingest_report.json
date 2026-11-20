@@ -24,7 +24,8 @@
       "chunker": "chunker-v2",
       "structured": {
         "max_tokens": 380,
-        "min_tokens": 150
+        "min_tokens": 150,
+        "faq": "per_question"
       },
       "fixed": {
         "tokens": 300,
@@ -34,11 +35,11 @@
     },
     "corpus": {
       "structured": {
-        "chunks": 834,
-        "avg_tokens": 282,
-        "median_tokens": 309,
+        "chunks": 853,
+        "avg_tokens": 276,
+        "median_tokens": 306,
         "max_tokens": 380,
-        "under_40_tokens": 5,
+        "under_40_tokens": 16,
         "starts_mid_sentence": 1,
         "ends_mid_sentence": 94,
         "cut_tables": 2,
@@ -209,7 +210,7 @@
       }
     }
   },
-  "dataset_version": "ds-8b2b8f63bcbf",
+  "dataset_version": "ds-f1b0b383d207",
   "counts": {
     "ok": 51,
     "exact_duplicate": 2,

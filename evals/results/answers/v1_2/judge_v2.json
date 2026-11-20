@@ -1,0 +1,13 @@
+{
+  "judge_prompt": "v2",
+  "n": 117,
+  "labels": {
+    "correct": 73,
+    "partial": 20,
+    "incorrect": 24
+  },
+  "correct": 0.624,
+  "correct_or_partial": 0.795,
+  "score": 0.709,
+  "cost_usd": 0.01379
+}

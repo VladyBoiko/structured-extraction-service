@@ -34,6 +34,9 @@ rag-eval-retrieval:  ## recall@5 / MRR on evals/retrieval_questions.yaml
 rag-ask:           ## answer a question with sources: make rag-ask Q="Скільки днів на повернення?"
 	$(PYTHON) -m src.rag ask "$(Q)"
 
+rag-eval:          ## answer the test set 3 times and score the answers (calls Claude)
+	$(PYTHON) -m src.rag eval
+
 rag: rag-data rag-index rag-eval-retrieval
 
-.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval rag-ask
+.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval rag-ask rag-eval

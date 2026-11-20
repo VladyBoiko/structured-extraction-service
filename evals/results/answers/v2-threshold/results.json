@@ -1,0 +1,453 @@
+{
+  "pass": 0.897,
+  "decision": 0.949,
+  "false_not_found": 0.057,
+  "answered_unanswerable": 0.0,
+  "facts": 0.97,
+  "traps": 0.0,
+  "source_hit": 0.939,
+  "source_precision": 0.933,
+  "retrieval_hit": 0.943,
+  "language": 1.0,
+  "id_leak": 0.0,
+  "dropped_claims": 0,
+  "status": {
+    "answered": 99,
+    "not_found_model": 15,
+    "not_found_retrieval": 3
+  },
+  "cost_per_1000": 0.532,
+  "cost_per_1000_answered": 0.543,
+  "latency_ms_p50": 1486,
+  "latency_ms_p95": 4681,
+  "input_tokens_avg": 3586,
+  "output_tokens_avg": 397,
+  "total_cost_usd": 0.0622,
+  "ci95": {
+    "pass": [
+      0.795,
+      0.974
+    ],
+    "decision": [
+      0.872,
+      1.0
+    ],
+    "false_not_found": [
+      0.0,
+      0.143
+    ]
+  },
+  "by_type": {
+    "answerable": {
+      "questions": 11,
+      "pass": 0.818
+    },
+    "partial": {
+      "questions": 3,
+      "pass": 1.0
+    },
+    "trap": {
+      "questions": 21,
+      "pass": 0.905
+    },
+    "unanswerable": {
+      "questions": 4,
+      "pass": 1.0
+    }
+  },
+  "by_language": {
+    "de": {
+      "questions": 8,
+      "pass": 1.0
+    },
+    "en": {
+      "questions": 11,
+      "pass": 1.0
+    },
+    "mixed": {
+      "questions": 1,
+      "pass": 1.0
+    },
+    "uk": {
+      "questions": 19,
+      "pass": 0.789
+    }
+  },
+  "per_question": {
+    "t01": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t02": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t03": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t04": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t05": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t06": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t07": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t08": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t09": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t10": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t11": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t12": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t13": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t14": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t15": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t16": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t17": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t18": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t19": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t20": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t21": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t22": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t23": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t24": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t25": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t26": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t27": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t28": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t29": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t30": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t31": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t32": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t33": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t34": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t35": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t36": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t37": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t38": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t39": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    }
+  },
+  "always_pass": 35,
+  "unstable": [],
+  "always_fail": [
+    "t17",
+    "t28",
+    "t34",
+    "t39"
+  ],
+  "prompt_version": "v2",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "runs": 3,
+  "questions": 39,
+  "seconds": 236,
+  "pipeline": {
+    "question_language": "v2",
+    "faq_chunks": "per_question",
+    "query_translation": true,
+    "context_min_score": -6.0,
+    "demote_outdated_faq": true,
+    "min_rerank_score": -6.0,
+    "context_budget": 2000,
+    "chunks": "9c0664878542"
+  }
+}

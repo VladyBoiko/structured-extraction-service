@@ -3,9 +3,21 @@
 import json
 from types import SimpleNamespace
 
+import pytest
+
 from src.rag import config as C
 from src.rag.answer import (ANSWER_SCHEMA, answer, build_context, load_prompt, question_language, render,
                             section_of, validate)
+
+@pytest.fixture(autouse=True)
+def base_switches(monkeypatch):
+    """The tests do not depend on the switches in config.py: every fix is off unless a test turns it on."""
+    monkeypatch.setattr(C, "QUESTION_LANGUAGE", "v1")
+    monkeypatch.setattr(C, "QUERY_TRANSLATION", False)
+    monkeypatch.setattr(C, "CONTEXT_MIN_SCORE", None)
+    monkeypatch.setattr(C, "DEMOTE_OUTDATED_FAQ", False)
+    monkeypatch.setattr(C, "TRANSLATION_CACHE", None)
+
 
 RETURNS = {
     "chunk_id": "returns_ua_2025#000", "doc_id": "returns_ua_2025", "title": "Правила повернення товару (Україна)",
@@ -165,3 +177,63 @@ def test_question_language():
 def test_section_without_a_heading_falls_back_to_the_chunk_label():
     chunk = dict(FAQ, text="Повернути товар можна протягом 14 днів.")
     assert section_of(chunk, 0) == "Повернення"
+
+
+def test_question_language_v2_handles_short_and_transliterated_questions(monkeypatch):
+    monkeypatch.setattr(C, "QUESTION_LANGUAGE", "v2")
+    assert question_language("Gibt es Trade-in in Deutschland?") == "de"
+    assert question_language("skilky koshtuye dostavka na viddilennya NP?") == "uk"
+    assert question_language("Can I pay in instalments in Germany?") == "en"
+    assert question_language("Tracking number?") == "en"                 # nothing to tell: English
+
+
+def test_translation_goes_to_the_search_and_its_cost_to_the_answer(monkeypatch):
+    from src.rag import answer as A
+    monkeypatch.setattr(C, "QUERY_TRANSLATION", True)
+    monkeypatch.setattr(A, "translate", lambda client, q: ({"uk": "q uk", "en": "q en", "de": "q de"}, 0.0001))
+    seen = {}
+
+    class Recording(FakeRetriever):
+        def search(self, query, mode="rerank", filters=None, k=5, **kw):
+            seen.update(kw)
+            return super().search(query, mode, filters, k)
+
+    client = FakeClient({"answerable": True, "missing": "", "claims": [
+        {"text": "30 днів.", "sources": [{"id": "S1", "quote": "до 30 днів з дня отримання"}]}]})
+    res = answer("Скільки днів на повернення?", Recording([RETURNS]), client=client)
+    assert seen["translations"]["en"] == "q en"
+    assert res.translations["de"] == "q de" and res.retrieval_cost_usd == 0.0001
+    assert res.cost_usd > res.retrieval_cost_usd
+
+
+def test_context_filter_leaves_out_low_scores(monkeypatch):
+    monkeypatch.setattr(C, "CONTEXT_MIN_SCORE", 0.0)
+    client = FakeClient({"answerable": True, "missing": "", "claims": [
+        {"text": "30 днів.", "sources": [{"id": "S1", "quote": "до 30 днів з дня отримання"}]}]})
+    res = answer("Скільки днів на повернення?", FakeRetriever([RETURNS, dict(FAQ, score=-2.0)]), client=client)
+    assert [c["chunk_id"] for c in res.context] == ["returns_ua_2025#000"]
+
+
+def test_an_faq_older_than_a_policy_goes_last_with_a_note():
+    from src.rag.answer import demote_outdated_faq
+    policy = dict(RETURNS, chunk_id="delivery_ua_2025#000", doc_type="policy", region="UA", effective_date="2025-06-01")
+    old_faq = dict(FAQ, region="UA", effective_date="2024-05-10", score=6.6)
+    other_region = dict(FAQ, chunk_id="faq_dach#004", region="DACH", effective_date="2024-05-10")
+    hits = demote_outdated_faq([old_faq, policy, other_region])
+    assert [h["chunk_id"] for h in hits] == ["delivery_ua_2025#000", "faq_dach#004", "faq_ua#000"]
+    assert "older than the store policy" in hits[-1]["outdated_note"] and "outdated_note" not in hits[1]
+    used, text, _ = build_context(hits, budget=10_000)
+    assert "note: this FAQ (updated 2024-05-10)" in text
+    # no newer policy in the context: the FAQ stays where it is, untouched (it may hold the only answer)
+    assert demote_outdated_faq([old_faq]) == [old_faq]
+
+
+def test_translation_cache_reuses_the_same_translation(monkeypatch, tmp_path):
+    from src.rag import answer as A
+    monkeypatch.setattr(C, "TRANSLATION_CACHE", tmp_path / "translations.json")
+    calls = []
+    monkeypatch.setattr(A, "_translate", lambda client, q: (calls.append(q) or {"uk": f"uk {len(calls)}"}, 0.0001))
+    first = A.translate(None, "Питання?")
+    second = A.translate(None, "Питання?")
+    assert first == second == ({"uk": "uk 1"}, 0.0001) and calls == ["Питання?"]
+    assert A.translate(None, "Інше?")[0] == {"uk": "uk 2"}

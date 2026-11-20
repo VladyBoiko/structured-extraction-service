@@ -8,6 +8,7 @@
     python -m src.rag search "query" [--mode rerank] [--region UA INTL] [--all-versions]
     python -m src.rag eval-retrieval [--models minilm mpnet e5-large]
     python -m src.rag ask "question" [--region UA] [--prompt v1] [--json]
+    python -m src.rag eval [--runs 3] [--prompt v1] [--ids t01 t02] [--tag name]
 """
 
 import argparse
@@ -40,6 +41,7 @@ def main(argv: list[str] | None = None) -> int:
     e = sub.add_parser("eval-retrieval", help="recall@k / MRR of all configurations")
     e.add_argument("--models", nargs="+", help="embedding models to compare (vector search)")
     e.add_argument("--sweep", action="store_true", help="also compare structure-aware chunk sizes (slow: re-embeds)")
+    e.add_argument("--tag", help="results folder under evals/results/retrieval/ (earlier runs are never overwritten)")
     a = sub.add_parser("ask", help="answer a question with sources (calls Claude; needs ANTHROPIC_API_KEY in .env)")
     a.add_argument("question")
     a.add_argument("--region", nargs="+", help="UA DACH INTL EU DE GLOBAL")
@@ -49,6 +51,20 @@ def main(argv: list[str] | None = None) -> int:
     a.add_argument("--all-versions", action="store_true", help="include superseded documents")
     a.add_argument("--prompt", help="prompt version in prompts/rag/ (default: PROMPT_VERSION in config)")
     a.add_argument("--json", action="store_true", help="print the full record: context, claims, rejected quotes, usage")
+    v = sub.add_parser("eval", help="answer the test set and score the answers (calls Claude)")
+    v.add_argument("--runs", type=int, help="answers per question (default: EVAL_RUNS in config)")
+    v.add_argument("--prompt", help="prompt version in prompts/rag/")
+    v.add_argument("--ids", nargs="+", help="only these questions, e.g. t01 t12")
+    v.add_argument("--tag", help="results folder name under evals/results/answers/ (default: the prompt version)")
+    v.add_argument("--rescore", action="store_true", help="score the saved answers again, without calling the model")
+    jc = sub.add_parser("judge-calibrate", help="agreement of the LLM judge with the human labels")
+    jc.add_argument("--judge-prompt", help="judge prompt version in prompts/judge/")
+    jc.add_argument("--holdout", action="store_true", help="use the fresh answers (evals/judge_holdout.yaml)")
+    j = sub.add_parser("judge", help="grade every answer of an evaluation run with the LLM judge")
+    j.add_argument("--tag", help="evaluation run under evals/results/answers/ (default: the answer prompt version)")
+    j.add_argument("--judge-prompt", help="judge prompt version in prompts/judge/")
+    fa = sub.add_parser("faithfulness", help="check that every claim follows from the sources it cites")
+    fa.add_argument("--tag", help="evaluation run under evals/results/answers/ (default: the answer prompt version)")
     args = ap.parse_args(argv)
 
     if args.cmd in ("build-store", "data"):
@@ -81,7 +97,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"    {' '.join(h['text'].split())[:200]}")
     if args.cmd == "eval-retrieval":
         from .retrieval_eval import run as eval_run
-        eval_run(models=args.models, sweep=args.sweep)
+        eval_run(models=args.models, sweep=args.sweep, tag=args.tag)
     if args.cmd == "ask":
         import json
         from . import config as C
@@ -102,6 +118,30 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"[dropped, no verified source: {claim.text}]")
             if res.error:
                 print(f"[error: {res.error}]")
+    if args.cmd == "eval":
+        from . import config as C
+        from .answer_eval import rescore, run as eval_answers
+        if args.rescore:
+            rescore(tag=args.tag or args.prompt or C.PROMPT_VERSION)
+            return 0
+        eval_answers(runs=args.runs or C.EVAL_RUNS, prompt_version=args.prompt or C.PROMPT_VERSION,
+                     ids=args.ids, tag=args.tag)
+    if args.cmd == "judge-calibrate":
+        from . import config as C
+        from .judge import calibrate
+        if args.holdout:
+            calibrate(prompt_version=args.judge_prompt or C.JUDGE_PROMPT_VERSION, labels_file=C.JUDGE_HOLDOUT,
+                      name="holdout", answers_tag="v2-threshold")
+        else:
+            calibrate(prompt_version=args.judge_prompt or C.JUDGE_PROMPT_VERSION)
+    if args.cmd == "judge":
+        from . import config as C
+        from .judge import judge_run
+        judge_run(tag=args.tag or C.PROMPT_VERSION, prompt_version=args.judge_prompt or C.JUDGE_PROMPT_VERSION)
+    if args.cmd == "faithfulness":
+        from . import config as C
+        from .faithfulness import run as faithfulness_run
+        faithfulness_run(tag=args.tag or C.PROMPT_VERSION)
     return 0
 
 
