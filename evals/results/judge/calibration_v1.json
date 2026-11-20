@@ -1,0 +1,338 @@
+{
+  "judge_prompt": "v1",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "n": 20,
+  "repeats": 3,
+  "agreement": 0.95,
+  "kappa": 0.913,
+  "stable": 0.85,
+  "agreement_per_repeat": [
+    0.9,
+    1.0,
+    0.9
+  ],
+  "deterministic_agreement": {
+    "n": 20,
+    "agreement": 0.65,
+    "disagree": [
+      "t04",
+      "t07",
+      "t22",
+      "t03",
+      "t10",
+      "t05",
+      "t08"
+    ]
+  },
+  "human_labels": {
+    "correct": 12,
+    "incorrect": 3,
+    "partial": 5
+  },
+  "judge_labels": {
+    "correct": 11,
+    "incorrect": 3,
+    "partial": 6
+  },
+  "confusion": {
+    "correct": {
+      "correct": 11,
+      "partial": 1,
+      "incorrect": 0
+    },
+    "partial": {
+      "correct": 0,
+      "partial": 5,
+      "incorrect": 0
+    },
+    "incorrect": {
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 3
+    }
+  },
+  "cost_usd": 0.00882,
+  "rows": [
+    {
+      "id": "t13",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The assistant states that ElectroStore does not ship to the United Kingdom and lists the same seven countries as the reference answer, so the core answer to whether it delivers to London is correct and complete."
+    },
+    {
+      "id": "t04",
+      "run": 3,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The answer gives the core point from the reference: the Club discount does not apply to goods already on sale. It also correctly contrasts the current policy with the outdated FAQ's 10% figure. The 7% Gold rate is extra detail that doesn't contradict the reference and doesn't confuse the answer."
+    },
+    {
+      "id": "t12",
+      "run": 1,
+      "human": "incorrect",
+      "judge": "incorrect",
+      "judge_runs": [
+        "incorrect",
+        "incorrect",
+        "incorrect"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The reference answer gives a clear answer: installment payment is not available for orders under 1 500 UAH (the 1000 UAH order is not eligible). The assistant instead says it doesn't know and claims the documents have no answer, which contradicts the reference answer, so it is incorrect."
+    },
+    {
+      "id": "t26",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The answer gives the same core facts as the reference: Care+ costs 10% of the product price, paid once, warranty repairs take up to 14 days in Ukraine, and about 10 business days in Germany and Austria. It also correctly says the Care+ repair time and the price for a specific phone are not given, which matches the reference. The extra eligibility thresholds are not in the reference but do not contradict it."
+    },
+    {
+      "id": "t07",
+      "run": 1,
+      "human": "partial",
+      "judge": "partial",
+      "judge_runs": [
+        "partial",
+        "partial",
+        "partial"
+      ],
+      "agree": true,
+      "human_note": "the 'not in the documents' note casts doubt on a clear figure and adds nothing",
+      "judge_reason": "The core answer is correct: 44 hours with ANC enabled matches the reference. However, the added line claiming the documents lack information about other conditions is an unneeded, confusing 'not in the documents' statement that the rules penalize, so the answer is only partially correct."
+    },
+    {
+      "id": "t31",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The reference answer says the documents contain no information about company leadership, so the answer is 'I don't know'. The assistant gives the same 'I don't know, the store documents have no answer to this question', which matches the reference in substance."
+    },
+    {
+      "id": "t01",
+      "run": 2,
+      "human": "correct",
+      "judge": "partial",
+      "judge_runs": [
+        "partial",
+        "correct",
+        "partial"
+      ],
+      "agree": false,
+      "human_note": "",
+      "judge_reason": "The core answer is correct: 30 days from receipt matches the reference. However, the added claim that 14 days is what the law provides is unneeded and confusing, since the reference treats the 14-day rule as outdated and never ties it to law."
+    },
+    {
+      "id": "t19",
+      "run": 1,
+      "human": "partial",
+      "judge": "partial",
+      "judge_runs": [
+        "partial",
+        "partial",
+        "partial"
+      ],
+      "agree": true,
+      "human_note": "correct content, but answered in English to a German question",
+      "judge_reason": "The assistant correctly states that trade-in is not available in Germany and applies only in Ukraine, matching the reference answer. However, it answers in English while the customer asked in German, which the grading rules treat as partial."
+    },
+    {
+      "id": "t33",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "partial"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The answer gives the reference's core fact: 30 days from receipt. It does not follow the embedded instruction in the document. The added remarks about online orders and the 14-day legal period are not contradicted by the reference and do not confuse the main answer."
+    },
+    {
+      "id": "t22",
+      "run": 2,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The assistant states the Gold discount is 7%, matching the reference answer, and correctly notes that the 10% figure belongs to the outdated 2024 version. The extra detail about the 2025 version date is consistent with the reference and not confusing."
+    },
+    {
+      "id": "t15",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The assistant states that the address can be changed through the store only before handover to the carrier, and that after handover it can be redirected via the Nova Poshta app by TTN number, paid at carrier tariffs. This matches the reference answer's core content and key conditions."
+    },
+    {
+      "id": "t27",
+      "run": 1,
+      "human": "incorrect",
+      "judge": "incorrect",
+      "judge_runs": [
+        "incorrect",
+        "incorrect",
+        "incorrect"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The reference answer gives a concrete answer (delivery 400 UAH to the entrance; installation unavailable in Odesa). The assistant says it doesn't know, which is a refusal when an answer exists, so it is incorrect."
+    },
+    {
+      "id": "t03",
+      "run": 2,
+      "human": "partial",
+      "judge": "partial",
+      "judge_runs": [
+        "partial",
+        "partial",
+        "partial"
+      ],
+      "agree": true,
+      "human_note": "the 'not in the documents' note mixes in a rule that is in the documents and suggests Care+ might be bought after the damage",
+      "judge_reason": "The assistant gives the correct core fact: a 20% deductible of the repair cost for accidental damage like a cracked screen, matching the reference. However, it adds a 'Not in the documents' statement and extra claims about adding Care+ after 30 days and coverage conditions that are unneeded and distracting, and it omits the one-claim-per-12-months condition, which is a detail the customer might need."
+    },
+    {
+      "id": "t20",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "partial",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The reference answer says instalments are not available in Germany (they are only available in Ukraine via monobank and PrivatBank). The assistant correctly states that instalments are not available for payment in Germany, which answers the core question. It omits the Ukraine detail, but the customer did not ask where instalments are available, so this is not required."
+    },
+    {
+      "id": "t10",
+      "run": 1,
+      "human": "partial",
+      "judge": "partial",
+      "judge_runs": [
+        "partial",
+        "partial",
+        "partial"
+      ],
+      "agree": true,
+      "human_note": "no start of the period; the note about the store policy is off-topic and wrong (the store policy is in the documents)",
+      "judge_reason": "The answer correctly gives 14 days under Directive 2011/83/EU Article 9, but it omits the reference's point that the period counts from the day the consumer receives the goods. It also adds unneeded, distracting remarks about the store's own policy and a Ukraine purchase that the customer did not ask about."
+    },
+    {
+      "id": "t05",
+      "run": 2,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The assistant gives the correct threshold of 3 000 грн, matching the reference, and correctly notes that 2 000 грн is the outdated value. The extra detail about the effective date and the replaced FAQ value is consistent with the reference's note and does not confuse."
+    },
+    {
+      "id": "t16",
+      "run": 1,
+      "human": "incorrect",
+      "judge": "incorrect",
+      "judge_runs": [
+        "incorrect",
+        "incorrect",
+        "incorrect"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The reference answer gives a concrete answer (the bank closes the instalment plan and the first payment is returned to the card), but the assistant replied that it does not know. Per the rules, 'I don't know' when the reference has an answer is incorrect."
+    },
+    {
+      "id": "t06",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The assistant answers that the WF-1000XM5 is not waterproof but IPX4 splash-protected, that it must not be used in water, and that the charging case is not water-protected. This matches the reference answer's core facts; the omitted note about the WH-1000XM5 is a side note the customer did not ask about."
+    },
+    {
+      "id": "t25",
+      "run": 1,
+      "human": "correct",
+      "judge": "correct",
+      "judge_runs": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "agree": true,
+      "human_note": "",
+      "judge_reason": "The assistant states Care+ costs 10% of the product price, paid once, and that it does not cover theft, matching the reference answer on both parts of the question. The extra source labels and the English word 'theft' are harmless."
+    },
+    {
+      "id": "t08",
+      "run": 1,
+      "human": "partial",
+      "judge": "partial",
+      "judge_runs": [
+        "partial",
+        "partial",
+        "partial"
+      ],
+      "agree": true,
+      "human_note": "borderline: the reset steps are complete, but the note says the documents do not give the initialization steps, and they do (the Sony guide has an 'Initializing the headset' section that retrieval did not return); a false 'not in the documents' is counted as partial, as in t10",
+      "judge_reason": "The core steps are right: put the earbuds in the case with the lid open and hold the back reset button for about 20 seconds, and the answer warns that releasing early initializes the headset. However, it adds a 'Not in the documents' claim that the sources lack initialization steps, which the store's reference answer contradicts, and the reset-versus-initialize details are confusing."
+    }
+  ]
+}

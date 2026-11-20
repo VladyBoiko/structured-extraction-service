@@ -1,0 +1,104 @@
+# Control claims for the faithfulness check: each claim cites a real chunk and differs from it in one detail
+# (supported: false), or restates it correctly in other words, in another language or as a direct inference
+# (supported: true). The check must reject the first kind and accept the second. Generated controls (a number changed,
+# another question's claim under these citations) are added in src/rag/faithfulness.py.
+
+controls:
+  # ---------------------------------------------------------------- one detail differs: must be rejected
+  - id: c01
+    kind: scope widened
+    claim: "Kopfhörer, deren Hygieneversiegelung entfernt wurde, sind von der Rückgabe ausgeschlossen."
+    citations: [returns_dach_2025#000]
+    supported: false          # the source excludes in-ear headphones only
+  - id: c02
+    kind: another country
+    claim: "Die Rücksendung aus Österreich ist mit dem DHL-Retourenlabel kostenlos."
+    citations: [returns_dach_2025#000]
+    supported: false          # free in Germany; Austria costs 5,90 €
+  - id: c03
+    kind: before / after swapped
+    claim: "Адресу доставки можна змінити через підтримку магазину і після передачі посилки перевізнику."
+    citations: [order_changes_ua#000]
+    supported: false          # through the store only before the handover
+  - id: c04
+    kind: condition loosened
+    claim: "With Care+ you pay a deductible of 20% of the repair cost for every repair."
+    citations: [care_plus_en#000]
+    supported: false          # defect repairs have no deductible
+  - id: c05
+    kind: exclusion turned around
+    claim: "Care+ покриває крадіжку телефона."
+    citations: [care_plus_en#000]
+    supported: false          # theft or loss is not covered
+  - id: c06
+    kind: property moved to another part
+    claim: "Das Ladeetui des WF-1000XM5 ist nach IPX4 gegen Spritzwasser geschützt."
+    citations: [sony_wf1000xm5_dach#000]
+    supported: false          # the earbuds are IPX4, the case is not protected
+  - id: c07
+    kind: condition swapped
+    claim: "JBL Tune 770NC працює до 44 годин без шумозаглушення."
+    citations: [jbl_tune_770nc_ua#000]
+    supported: false          # 44 h with ANC, 70 h without
+  - id: c08
+    kind: condition made stricter
+    claim: "Оплата частинами від 1 500 грн доступна лише через monobank."
+    citations: [payment_ua#000]
+    supported: false          # monobank and PrivatBank
+  - id: c09
+    kind: another delivery method
+    claim: "Доставка кур'єром Нової Пошти безкоштовна для замовлень від 3 000 грн."
+    citations: [delivery_ua_2025#000]
+    supported: false          # 3 000 UAH is the branch threshold; courier is free from 10 000 UAH
+  - id: c10
+    kind: unit changed
+    claim: "За законом недоліки товару мають бути усунуті протягом 14 робочих днів."
+    citations: [ua_consumer_protection_law#024]
+    supported: false          # fourteen days, not working days
+  - id: c11
+    kind: payer swapped
+    claim: "Bei Lieferungen in die Schweiz übernimmt ElectroStore die Zollgebühren."
+    citations: [delivery_dach#000]
+    supported: false          # the customer pays
+  - id: c12
+    kind: invented exception
+    claim: "ElectroStore ships to the United Kingdom only for business customers."
+    citations: [shipping_international_en#000]
+    supported: false          # no shipping to the UK at all
+  - id: c13
+    kind: limit turned around
+    claim: "Накладений платіж доступний для замовлень від 20 000 грн."
+    citations: [payment_ua#000]
+    supported: false          # up to 20 000 UAH
+
+  # ---------------------------------------------------------------- correct restatements: must be accepted
+  - id: s01
+    kind: translation
+    claim: "In Austria a return costs 5.90 EUR, which is deducted from the refund."
+    citations: [returns_dach_2025#000]
+    supported: true
+  - id: s02
+    kind: direct inference
+    claim: "Замовлення на 1 000 грн не можна оплатити частинами, бо мінімальна сума — 1 500 грн."
+    citations: [payment_ua#000]
+    supported: true
+  - id: s03
+    kind: rewording
+    claim: "Після передачі посилки Новій Пошті адресу змінюють лише в застосунку перевізника за номером ТТН, і це платно."
+    citations: [order_changes_ua#000]
+    supported: true
+  - id: s04
+    kind: translation
+    claim: "Der Kunde zahlt bei Lieferungen in die Schweiz die Einfuhrumsatzsteuer und den Zoll."
+    citations: [delivery_dach#000]
+    supported: true
+  - id: s05
+    kind: translation
+    claim: "Care+ не покриває крадіжку та втрату."
+    citations: [care_plus_en#000]
+    supported: true
+  - id: s06
+    kind: direct inference
+    claim: "Large appliances cannot be delivered to Poland."
+    citations: [shipping_international_en#000]
+    supported: true

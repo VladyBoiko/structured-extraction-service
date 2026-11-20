@@ -1,0 +1,455 @@
+{
+  "pass": 0.855,
+  "decision": 0.863,
+  "false_not_found": 0.152,
+  "answered_unanswerable": 0.0,
+  "facts": 0.989,
+  "traps": 0.0,
+  "source_hit": 0.989,
+  "source_precision": 0.987,
+  "retrieval_hit": 0.943,
+  "language": 1.0,
+  "id_leak": 0.0,
+  "dropped_claims": 0,
+  "status": {
+    "answered": 89,
+    "not_found_model": 7,
+    "not_found_retrieval": 21
+  },
+  "cost_per_1000": 0.376,
+  "cost_per_1000_answered": 0.458,
+  "latency_ms_p50": 1497,
+  "latency_ms_p95": 4758,
+  "input_tokens_avg": 3902,
+  "output_tokens_avg": 359,
+  "total_cost_usd": 0.044,
+  "ci95": {
+    "pass": [
+      0.735,
+      0.957
+    ],
+    "decision": [
+      0.752,
+      0.957
+    ],
+    "false_not_found": [
+      0.048,
+      0.276
+    ]
+  },
+  "by_type": {
+    "answerable": {
+      "questions": 11,
+      "pass": 0.727
+    },
+    "partial": {
+      "questions": 3,
+      "pass": 0.778
+    },
+    "trap": {
+      "questions": 21,
+      "pass": 0.905
+    },
+    "unanswerable": {
+      "questions": 4,
+      "pass": 1.0
+    }
+  },
+  "by_language": {
+    "de": {
+      "questions": 8,
+      "pass": 1.0
+    },
+    "en": {
+      "questions": 11,
+      "pass": 0.848
+    },
+    "mixed": {
+      "questions": 1,
+      "pass": 1.0
+    },
+    "uk": {
+      "questions": 19,
+      "pass": 0.789
+    }
+  },
+  "per_question": {
+    "t01": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t02": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t03": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t04": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t05": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t06": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t07": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t08": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t09": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t10": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t11": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t12": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t13": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t14": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t15": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t16": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "answered",
+        "not_found_model"
+      ]
+    },
+    "t17": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t18": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t19": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t20": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t21": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t22": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t23": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t24": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t25": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t26": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t27": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t28": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t29": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t30": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t31": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_model",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t32": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t33": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t34": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    },
+    "t35": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t36": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t37": {
+      "passed_runs": 3,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "answered",
+        "answered"
+      ]
+    },
+    "t38": {
+      "passed_runs": 1,
+      "runs": 3,
+      "statuses": [
+        "answered",
+        "not_found_model",
+        "not_found_model"
+      ]
+    },
+    "t39": {
+      "passed_runs": 0,
+      "runs": 3,
+      "statuses": [
+        "not_found_retrieval",
+        "not_found_retrieval",
+        "not_found_retrieval"
+      ]
+    }
+  },
+  "always_pass": 33,
+  "unstable": [
+    "t38"
+  ],
+  "always_fail": [
+    "t16",
+    "t17",
+    "t28",
+    "t34",
+    "t39"
+  ],
+  "prompt_version": "v2",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "runs": 3,
+  "questions": 39,
+  "seconds": 216,
+  "pipeline": {
+    "question_language": "v2",
+    "faq_chunks": "per_question",
+    "query_translation": false,
+    "context_min_score": null,
+    "min_rerank_score": -4.0,
+    "context_budget": 2000,
+    "chunks": "9c0664878542"
+  }
+}

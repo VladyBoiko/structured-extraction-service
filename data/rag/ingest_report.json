@@ -1,0 +1,220 @@
+{
+  "exact_duplicates": [
+    {
+      "dropped": "store/shared_drive/returns_ua_2025 (copy).md",
+      "kept": "store/policies/returns_ua_2025.md"
+    },
+    {
+      "dropped": "store/legacy/faq_en_cms_export.html",
+      "kept": "store/faq/faq_en.html"
+    }
+  ],
+  "near_duplicates": [
+    {
+      "dropped": "store/drafts/shipping_international_en_draft.md",
+      "kept": "store/policies/shipping_international_en.md",
+      "jaccard": 0.886
+    }
+  ],
+  "language": [],
+  "errors": [],
+  "uncatalogued": [],
+  "chunking": {
+    "params": {
+      "chunker": "chunker-v3",
+      "structured": {
+        "max_tokens": 380,
+        "min_tokens": 150,
+        "faq": "per_question"
+      },
+      "fixed": {
+        "tokens": 300,
+        "overlap": 50
+      },
+      "tokenizer": "o200k_base"
+    },
+    "corpus": {
+      "structured": {
+        "chunks": 853,
+        "avg_tokens": 276,
+        "median_tokens": 306,
+        "max_tokens": 380,
+        "under_40_tokens": 16,
+        "starts_mid_sentence": 1,
+        "ends_mid_sentence": 94,
+        "cut_tables": 2,
+        "mixes_sections": 169
+      },
+      "fixed": {
+        "chunks": 938,
+        "avg_tokens": 293,
+        "median_tokens": 300,
+        "max_tokens": 300,
+        "under_40_tokens": 0,
+        "starts_mid_sentence": 835,
+        "ends_mid_sentence": 820,
+        "cut_tables": 17,
+        "mixes_sections": 475
+      }
+    },
+    "documents": {
+      "returns_ua_2025": {
+        "tokens": 552,
+        "structured": {
+          "chunks": 2,
+          "avg_tokens": 276,
+          "median_tokens": 276,
+          "max_tokens": 352,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 0,
+          "ends_mid_sentence": 0,
+          "cut_tables": 0,
+          "mixes_sections": 2
+        },
+        "fixed": {
+          "chunks": 3,
+          "avg_tokens": 217,
+          "median_tokens": 300,
+          "max_tokens": 300,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 2,
+          "ends_mid_sentence": 2,
+          "cut_tables": 1,
+          "mixes_sections": 2
+        }
+      },
+      "delivery_dach": {
+        "tokens": 319,
+        "structured": {
+          "chunks": 1,
+          "avg_tokens": 319,
+          "median_tokens": 319,
+          "max_tokens": 319,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 0,
+          "ends_mid_sentence": 0,
+          "cut_tables": 0,
+          "mixes_sections": 1
+        },
+        "fixed": {
+          "chunks": 2,
+          "avg_tokens": 184,
+          "median_tokens": 184,
+          "max_tokens": 300,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 1,
+          "ends_mid_sentence": 0,
+          "cut_tables": 0,
+          "mixes_sections": 2
+        }
+      },
+      "payment_ua": {
+        "tokens": 312,
+        "structured": {
+          "chunks": 1,
+          "avg_tokens": 312,
+          "median_tokens": 312,
+          "max_tokens": 312,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 0,
+          "ends_mid_sentence": 0,
+          "cut_tables": 0,
+          "mixes_sections": 1
+        },
+        "fixed": {
+          "chunks": 2,
+          "avg_tokens": 181,
+          "median_tokens": 181,
+          "max_tokens": 300,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 1,
+          "ends_mid_sentence": 1,
+          "cut_tables": 0,
+          "mixes_sections": 2
+        }
+      },
+      "jbl_tune_770nc_spec_en": {
+        "tokens": 1193,
+        "structured": {
+          "chunks": 4,
+          "avg_tokens": 298,
+          "median_tokens": 346,
+          "max_tokens": 378,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 0,
+          "ends_mid_sentence": 1,
+          "cut_tables": 0,
+          "mixes_sections": 3
+        },
+        "fixed": {
+          "chunks": 5,
+          "avg_tokens": 279,
+          "median_tokens": 300,
+          "max_tokens": 300,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 4,
+          "ends_mid_sentence": 3,
+          "cut_tables": 0,
+          "mixes_sections": 5
+        }
+      },
+      "sony_wf1000xm5_help_guide_en": {
+        "tokens": 42572,
+        "structured": {
+          "chunks": 156,
+          "avg_tokens": 277,
+          "median_tokens": 310,
+          "max_tokens": 380,
+          "under_40_tokens": 1,
+          "starts_mid_sentence": 0,
+          "ends_mid_sentence": 24,
+          "cut_tables": 0,
+          "mixes_sections": 20
+        },
+        "fixed": {
+          "chunks": 171,
+          "avg_tokens": 299,
+          "median_tokens": 300,
+          "max_tokens": 300,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 156,
+          "ends_mid_sentence": 158,
+          "cut_tables": 6,
+          "mixes_sections": 100
+        }
+      },
+      "eu_directive_2011_83_consumer_rights_en": {
+        "tokens": 17822,
+        "structured": {
+          "chunks": 63,
+          "avg_tokens": 286,
+          "median_tokens": 298,
+          "max_tokens": 380,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 0,
+          "ends_mid_sentence": 1,
+          "cut_tables": 0,
+          "mixes_sections": 13
+        },
+        "fixed": {
+          "chunks": 72,
+          "avg_tokens": 297,
+          "median_tokens": 300,
+          "max_tokens": 300,
+          "under_40_tokens": 0,
+          "starts_mid_sentence": 70,
+          "ends_mid_sentence": 65,
+          "cut_tables": 0,
+          "mixes_sections": 27
+        }
+      }
+    }
+  },
+  "dataset_version": "ds-ec70d82e8d60",
+  "counts": {
+    "ok": 51,
+    "exact_duplicate": 2,
+    "near_duplicate": 1
+  },
+  "cached": 54
+}

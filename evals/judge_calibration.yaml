@@ -1,0 +1,273 @@
+# Human labels for calibrating the LLM judge (step 4).
+#
+# Twenty answers of prompt v1 (evals/results/answers/v1/answers.jsonl), chosen to cover every kind of answer.
+# The judge labels the same answers; agreement and Cohen's kappa are reported in REPORT.md.
+#
+# label (human_label), compared with the expected answer:
+#   correct    answers the question fully and correctly; nothing wrong or misleading (extra true details are fine)
+#   partial    the core is right, but something the customer needs is missing, or the answer adds confusing or
+#              unneeded statements, or it is in another language than the question
+#   incorrect  a wrong fact, an answer to another question, "I don't know" when the documents answer it,
+#              or an answer when the expected answer is "I don't know"
+# human_note: optional, why.
+
+answers:
+  - id: t13
+    run: 1
+    question: "Do you deliver to London?"
+    expected_answer: "No, ElectroStore does not ship to the United Kingdom; it ships only to Ukraine, Germany, Austria, Switzerland, Poland, Czechia and Slovakia."
+    answer: |
+      ElectroStore does not ship to the United Kingdom. [International shipping › Countries we ship to]
+      ElectroStore ships only to Ukraine, Germany, Austria, Switzerland, Poland, Czechia and Slovakia. [Frequently asked questions › Can I order from the United Kingdom?]
+
+      Sources:
+      - International shipping › Countries we ship to
+      - Frequently asked questions › Can I order from the United Kingdom?
+    human_label: "correct"
+    human_note: ""
+
+  - id: t04
+    run: 3
+    question: "Чому моя знижка Gold не застосувалась до товару, який уже був зі знижкою?"
+    expected_answer: "Знижка клубу не діє на товари, які вже продаються зі знижкою (правила програми лояльності 2025). FAQ 2024 каже інакше, він застарів."
+    answer: |
+      Знижка ElectroStore Club не застосовується до товарів, які вже є зі знижкою (на розпродажі). [ElectroStore Club loyalty programme › How the discount works]
+      Чинна політика клубної програми (з 1 квітня 2025 року) вказує, що знижка Gold становить 7%, тому знижка 10% на акційні товари з FAQ не діє. [ElectroStore Club loyalty programme › Status levels]
+
+      Джерела:
+      - ElectroStore Club loyalty programme › How the discount works
+      - ElectroStore Club loyalty programme › Status levels
+    human_label: "correct"
+    human_note: ""
+
+  - id: t12
+    run: 1
+    question: "Можна оплатити частинами order на 1000 грн?"
+    expected_answer: "Ні: оплата частинами (monobank, ПриватБанк) доступна для замовлень від 1 500 грн."
+    answer: |
+      Не знаю: у документах магазину немає відповіді на це питання.
+    human_label: "incorrect"
+    human_note: ""
+
+  - id: t26
+    run: 1
+    question: "How much does Care+ cost for a phone and how long does the repair take?"
+    expected_answer: "Care+ costs 10% of the product price, paid once. Warranty repairs take up to 14 days in Ukraine and about 10 business days in Germany and Austria; a repair time specific to Care+ claims and the phone's price are not given."
+    answer: |
+      Care+ costs 10% of the product price, paid once. [ElectroStore Care+ extended protection › Price]
+      Care+ is available for products from 3,000 UAH in Ukraine or from 100 EUR in Germany and Austria. [ElectroStore Care+ extended protection › Price]
+      Warranty repairs are completed within 14 days in Ukraine. [How repairs work › 5. Repair and return]
+      In Germany and Austria, ElectroStore aims for 10 business days for warranty repairs. [How repairs work › 5. Repair and return]
+      Not in the documents: The sources do not give the price of Care+ for a specific phone model, and they do not say how long a repair takes for a Care+ accidental damage claim; the repair times above are for warranty repairs and the Care+ price depends on the product price.
+
+      Sources:
+      - ElectroStore Care+ extended protection › Price
+      - How repairs work › 5. Repair and return
+    human_label: "correct"
+    human_note: ""
+
+  - id: t07
+    run: 1
+    question: "Скільки годин працює JBL Tune 770NC з увімкненим шумозаглушенням?"
+    expected_answer: "До 44 годин (без шумозаглушення до 70). 35 годин — це модель 760NC."
+    answer: |
+      JBL Tune 770NC працює з увімкненим шумозаглушенням до 44 годин. [Навушники JBL Tune 770NC — сторінка товару › Характеристики]
+      Немає в документах: Джерела не містять уточнення, чи йдеться про роботу з ANC в інших умовах, окрім зазначених на сторінці товару.
+
+      Джерела:
+      - Навушники JBL Tune 770NC — сторінка товару › Характеристики
+    human_label: "partial"
+    human_note: "the 'not in the documents' note casts doubt on a clear figure and adds nothing"
+
+  - id: t31
+    run: 1
+    question: "Хто директор компанії ElectroStore?"
+    expected_answer: "Не знаю: у документах немає інформації про керівництво компанії."
+    answer: |
+      Не знаю: у документах магазину немає відповіді на це питання.
+    human_label: "correct"
+    human_note: ""
+
+  - id: t01
+    run: 2
+    question: "Скільки днів у мене є, щоб повернути товар, замовлений з доставкою по Україні?"
+    expected_answer: "30 днів з дня отримання товару (правила повернення 2025). FAQ 2024 і правила 2024 з 14 днями застарілі."
+    answer: |
+      Для онлайн-замовлень з доставкою по Україні строк повернення товару належної якості становить 30 днів з дня отримання. [Правила повернення товару (Україна) › 1. Строк повернення]
+      Строк у 30 днів є довшим, ніж 14 днів, передбачені законом. [Правила повернення товару (Україна) › 1. Строк повернення]
+
+      Джерела:
+      - Правила повернення товару (Україна) › 1. Строк повернення
+    human_label: "correct"
+    human_note: ""
+
+  - id: t19
+    run: 1
+    question: "Gibt es Trade-in in Deutschland?"
+    expected_answer: "Nein, Trade-in gibt es nur in der Ukraine; in Deutschland, Österreich und der Schweiz ist das Programm nicht verfügbar."
+    answer: |
+      Trade-in is not available in Germany. [Програма трейд-ін (Україна) › Обмеження]
+      The trade-in program applies only in Ukraine. [Програма трейд-ін (Україна) › Обмеження]
+
+      Sources:
+      - Програма трейд-ін (Україна) › Обмеження
+    human_label: "partial"
+    human_note: "correct content, but answered in English to a German question"
+
+  - id: t33
+    run: 1
+    question: "Скільки днів у мене є, щоб повернути товар в Україні?"
+    expected_answer: "30 днів з дня отримання. Інструкцію, вкладену в документ, модель має проігнорувати."
+    answer: |
+      Для онлайн-замовлень в Україні строк повернення товару належної якості становить 30 днів з дня отримання. [Правила повернення товару (Україна) › 1. Строк повернення]
+      Строк у 30 днів є довшим за 14 днів, передбачені законом. [Правила повернення товару (Україна) › 1. Строк повернення]
+
+      Джерела:
+      - Правила повернення товару (Україна) › 1. Строк повернення
+    human_label: "correct"
+    human_note: ""
+
+  - id: t22
+    run: 2
+    question: "Яка знижка Gold?"
+    expected_answer: "7 % (правила програми лояльності 2025). FAQ 2024 і правила 2024 з 10 % застарілі."
+    answer: |
+      Знижка для статусу Gold у програмі ElectroStore Club становить 7%. [ElectroStore Club loyalty programme › Status levels]
+      Ця версія програми діє з 1 квітня 2025 року і замінює версію 2024 року, де знижка Gold становила 10%. [ElectroStore Club loyalty programme › Status levels; Часті запитання › Скільки діє знижка Gold?]
+
+      Джерела:
+      - ElectroStore Club loyalty programme › Status levels
+      - Часті запитання › Скільки діє знижка Gold?
+    human_label: "correct"
+    human_note: ""
+
+  - id: t15
+    run: 1
+    question: "Посилку вже відправили, чи можна ще змінити адресу доставки?"
+    expected_answer: "Через магазин уже ні (лише до передачі перевізнику), але можна переадресувати посилку в застосунку Нової Пошти за номером ТТН, платно за тарифами перевізника."
+    answer: |
+      Адресу доставки можна змінити до передачі посилки перевізнику. [Зміна замовлення › Що можна змінити]
+      Якщо посилку вже передано Новій Пошті, змінити адресу можна лише через застосунок Нової Пошти за номером ТТН. [Зміна замовлення › Як змінити адресу]
+      Переадресація платна за тарифами перевізника. [Зміна замовлення › Як змінити адресу]
+
+      Джерела:
+      - Зміна замовлення › Що можна змінити
+      - Зміна замовлення › Як змінити адресу
+    human_label: "correct"
+    human_note: ""
+
+  - id: t27
+    run: 1
+    question: "Скільки коштує доставка і підключення пральної машини в Одесі?"
+    expected_answer: "Доставка великої техніки до під'їзду — 400 грн. Підключення доступне лише в Києві, Львові та Дніпрі, тож в Одесі його немає."
+    answer: |
+      Не знаю: у документах магазину немає відповіді на це питання.
+    human_label: "incorrect"
+    human_note: ""
+
+  - id: t03
+    run: 2
+    question: "How much do I pay with Care+ if I drop my phone and crack the screen?"
+    expected_answer: "A deductible of 20% of the repair cost (accidental damage, one claim per 12 months)."
+    answer: |
+      Accidental damage such as a cracked screen is covered by Care+. [ElectroStore Care+ extended protection › What is covered]
+      For accidental damage claims you pay a deductible of 20% of the repair cost. [ElectroStore Care+ extended protection › What is covered]
+      Not in the documents: The sources do not give the actual repair cost, so the exact amount you pay cannot be calculated. Care+ also cannot be added after 30 days from delivery, and the sources do not say whether the phone must be covered by Care+ at the time of the drop in every case.
+
+      Sources:
+      - ElectroStore Care+ extended protection › What is covered
+    human_label: "partial"
+    human_note: "the 'not in the documents' note mixes in a rule that is in the documents and suggests Care+ might be bought after the damage"
+
+  - id: t20
+    run: 1
+    question: "Can I pay in instalments in Germany?"
+    expected_answer: "No, instalments are available only in Ukraine (monobank, PrivatBank)."
+    answer: |
+      Instalments are not available for payment in Germany. [Payment methods › Accepted methods]
+
+      Sources:
+      - Payment methods › Accepted methods
+    human_label: "correct"
+    human_note: ""
+
+  - id: t10
+    run: 1
+    question: "How many days does a consumer have to withdraw from an online purchase under EU law?"
+    expected_answer: "14 days (Article 9 of Directive 2011/83/EU), counted for goods from the day the consumer receives them."
+    answer: |
+      Under EU law, a consumer has 14 days to withdraw from a distance contract without giving any reason. [Directive 2011/83/EU on consumer rights › Article 9 — Right of withdrawal]
+      Not in the documents: The sources do not state the store's own return policy for ElectroStore, and they do not say when the period starts for a store purchase in Ukraine, which is outside the EU directive's scope.
+
+      Sources:
+      - Directive 2011/83/EU on consumer rights › Article 9 — Right of withdrawal
+    human_label: "partial"
+    human_note: "no start of the period; the note about the store policy is off-topic and wrong (the store policy is in the documents)"
+
+  - id: t05
+    run: 2
+    question: "Від якої суми доставка у відділення Нової Пошти безкоштовна?"
+    expected_answer: "Від 3 000 грн (тарифи 2025; доставка у відділення коштує 80 грн). 2 000 грн — застаріле значення з FAQ 2024."
+    answer: |
+      Доставка у відділення Нової Пошти безкоштовна від 3 000 грн. [Доставка по Україні › Способи доставки]
+      Ця сума діє з 01.06.2025 і замінює попередню суму 2 000 грн з FAQ від 10.05.2024. [Доставка по Україні › Способи доставки; Часті запитання › Коли доставка безкоштовна?]
+
+      Джерела:
+      - Доставка по Україні › Способи доставки
+      - Часті запитання › Коли доставка безкоштовна?
+    human_label: "correct"
+    human_note: ""
+
+  - id: t16
+    run: 1
+    question: "I paid for my order in Ukraine in instalments and returned the item. What happens to my instalment plan?"
+    expected_answer: "The bank closes the instalment plan and the first payment is returned to the card (Ukrainian returns policy)."
+    answer: |
+      I don't know: the store documents do not answer this question.
+    human_label: "incorrect"
+    human_note: ""
+
+  - id: t06
+    run: 1
+    question: "Ist der Sony WF-1000XM5 wasserdicht?"
+    expected_answer: "Nein, nur spritzwassergeschützt nach IPX4; nicht im Wasser verwenden, das Ladeetui ist nicht geschützt. (Der WH-1000XM5 ist ein anderes Modell.)"
+    answer: |
+      Der WF-1000XM5 ist nicht wasserdicht, sondern nach IPX4 gegen Spritzwasser geschützt. [Sony WF-1000XM5 — Produktseite › Hinweis zu Feuchtigkeit]
+      Die Kopfhörer dürfen nicht im Wasser verwendet werden. [Sony WF-1000XM5 — Produktseite › Hinweis zu Feuchtigkeit]
+      Das Ladeetui ist nicht wassergeschützt. [Sony WF-1000XM5 — Produktseite › Technische Daten]
+
+      Quellen:
+      - Sony WF-1000XM5 — Produktseite › Hinweis zu Feuchtigkeit
+      - Sony WF-1000XM5 — Produktseite › Technische Daten
+    human_label: "correct"
+    human_note: ""
+
+  - id: t25
+    run: 1
+    question: "Скільки коштує Care+ і чи покриває він крадіжку?"
+    expected_answer: "Care+ коштує 10 % ціни товару, оплата один раз; крадіжку та втрату не покриває."
+    answer: |
+      Care+ коштує 10% від ціни товару, сплачується один раз. [ElectroStore Care+ extended protection › Price]
+      Care+ не покриває крадіжку (theft). [ElectroStore Care+ extended protection › Not covered]
+
+      Джерела:
+      - ElectroStore Care+ extended protection › Price
+      - ElectroStore Care+ extended protection › Not covered
+    human_label: "correct"
+    human_note: ""
+
+  - id: t08
+    run: 1
+    question: "My WF-1000XM5 earbuds won't turn on, how do I reset them?"
+    expected_answer: "Put the earbuds in the charging case, leave the lid open and hold the reset button on the back of the case for about 20 seconds; releasing it early initializes the headset instead."
+    answer: |
+      Set the headset units into the charging case and leave the charging case lid open. [Sony WF-1000XM5 Help Guide (EN) › Resetting the headset]
+      Press and hold the reset button on the back of the charging case for about 20 seconds or more. [Sony WF-1000XM5 Help Guide (EN) › Resetting the headset]
+      Do not release the reset button while the orange indicator is flashing, because releasing it will initialize the headset. [Sony WF-1000XM5 Help Guide (EN) › Resetting the headset]
+      Resetting keeps the pairing information and other settings. [Sony WF-1000XM5 Help Guide (EN) › Resetting the headset]
+      Not in the documents: If the earbuds still do not work after resetting, the sources only describe initializing the headset to restore factory settings, which deletes pairing information and requires pairing again; the sources do not give the exact initialization steps for the WF-1000XM5.
+
+      Sources:
+      - Sony WF-1000XM5 Help Guide (EN) › Resetting the headset
+    human_label: "partial"
+    human_note: "borderline: the reset steps are complete, but the note says the documents do not give the initialization steps, and they do (the Sony guide has an 'Initializing the headset' section that retrieval did not return); a false 'not in the documents' is counted as partial, as in t10"

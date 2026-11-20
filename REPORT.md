@@ -1,5 +1,8 @@
 # Report: cloud vs local model for ticket extraction
 
+> This report covers block 1. Block 2 (RAG over the support corpus, its evaluation and CI) is reported in
+> [REPORT_RAG.md](REPORT_RAG.md).
+
 **Task:** extract 13 fields (6 enums, booleans, strings, a list of nested `products`) from 75 messy support tickets
 (en / uk / de / mixed, typos, transliteration, a prompt injection, spam). Accuracy is measured on 30 hand-labeled tickets
 over 12 scored fields; validity, latency and cost on all 75. Metric definitions: [docs/METRICS.md](docs/METRICS.md).

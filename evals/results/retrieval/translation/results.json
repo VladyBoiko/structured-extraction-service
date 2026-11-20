@@ -1,0 +1,3781 @@
+{
+  "questions": 16,
+  "k": 5,
+  "embed_model": "e5-large",
+  "rerank_model": "bge-m3",
+  "models": {
+    "e5-large": {
+      "hit@1": 0.625,
+      "recall@5": 0.938,
+      "mrr@10": 0.71,
+      "ms": 10,
+      "misses@5": [
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 3,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "returns_ua_2025#000",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#030"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 4,
+          "top": [
+            "faq_dach#000",
+            "delivery_dach#000",
+            "price_match_dach#000",
+            "returns_dach_2025#000",
+            "eu_directive_2011_83_consumer_rights_de#064"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "repair_process_en#000",
+            "eu_directive_2011_83_consumer_rights_en#057",
+            "damaged_on_arrival_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#051"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 5,
+          "top": [
+            "faq_ua#004",
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#057",
+            "loyalty_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 4,
+          "top": [
+            "faq_ua#001",
+            "payment_ua#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000",
+            "delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#148",
+            "sony_wf1000xm5_help_guide_de#164"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#002",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_760nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#124",
+            "sony_wf1000xm5_help_guide_en#123",
+            "sony_wf1000xm5_help_guide_en#030",
+            "sony_wh1000xm5_help_guide_en#102"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#022"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 3,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "eu_directive_2011_83_consumer_rights_en#018",
+            "eu_directive_2011_83_consumer_rights_en#046",
+            "eu_directive_2011_83_consumer_rights_en#050",
+            "eu_directive_2011_83_consumer_rights_en#047"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_help_guide_de#190",
+            "sony_wf1000xm5_help_guide_de#019",
+            "sony_wf1000xm5_help_guide_de#189",
+            "sony_wf1000xm5_help_guide_de#009"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#003",
+            "payment_ua#000",
+            "payment_methods_en#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "faq_en#003",
+            "shipping_international_en#000",
+            "eu_directive_2011_83_consumer_rights_en#043",
+            "faq_en#006",
+            "eu_directive_2019_771_sale_of_goods_en#046"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "warranty_dach#000",
+            "price_match_dach#000",
+            "shipping_international_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "delivery_ua_2025#001",
+            "payment_ua#000",
+            "faq_ua#002",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "payment_methods_en#000",
+            "order_cancellation_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#052",
+            "shipping_international_en#000",
+            "returns_overview_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    }
+  },
+  "modes": {
+    "structured/vector": {
+      "hit@1": 0.625,
+      "recall@5": 0.938,
+      "mrr@10": 0.71,
+      "ms": 7,
+      "misses@5": [
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 3,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "returns_ua_2025#000",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#030"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 4,
+          "top": [
+            "faq_dach#000",
+            "delivery_dach#000",
+            "price_match_dach#000",
+            "returns_dach_2025#000",
+            "eu_directive_2011_83_consumer_rights_de#064"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "repair_process_en#000",
+            "eu_directive_2011_83_consumer_rights_en#057",
+            "damaged_on_arrival_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#051"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 5,
+          "top": [
+            "faq_ua#004",
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#057",
+            "loyalty_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 4,
+          "top": [
+            "faq_ua#001",
+            "payment_ua#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000",
+            "delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#148",
+            "sony_wf1000xm5_help_guide_de#164"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#002",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_760nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#124",
+            "sony_wf1000xm5_help_guide_en#123",
+            "sony_wf1000xm5_help_guide_en#030",
+            "sony_wh1000xm5_help_guide_en#102"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#022"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 3,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "eu_directive_2011_83_consumer_rights_en#018",
+            "eu_directive_2011_83_consumer_rights_en#046",
+            "eu_directive_2011_83_consumer_rights_en#050",
+            "eu_directive_2011_83_consumer_rights_en#047"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_help_guide_de#190",
+            "sony_wf1000xm5_help_guide_de#019",
+            "sony_wf1000xm5_help_guide_de#189",
+            "sony_wf1000xm5_help_guide_de#009"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#003",
+            "payment_ua#000",
+            "payment_methods_en#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "faq_en#003",
+            "shipping_international_en#000",
+            "eu_directive_2011_83_consumer_rights_en#043",
+            "faq_en#006",
+            "eu_directive_2019_771_sale_of_goods_en#046"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "warranty_dach#000",
+            "price_match_dach#000",
+            "shipping_international_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "delivery_ua_2025#001",
+            "payment_ua#000",
+            "faq_ua#002",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "payment_methods_en#000",
+            "order_cancellation_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#052",
+            "shipping_international_en#000",
+            "returns_overview_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "structured/bm25": {
+      "hit@1": 0.25,
+      "recall@5": 0.75,
+      "mrr@10": 0.48,
+      "ms": 1,
+      "misses@5": [
+        "r02",
+        "r04",
+        "r10",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "returns_ua_2025#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "delivery_ua_2025#001",
+            "warranty_ua#001"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 6,
+          "top": [
+            "faq_dach#003",
+            "faq_dach#000",
+            "faq_dach#001",
+            "wrong_item_dach#000",
+            "delivery_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 2,
+          "top": [
+            "faq_en#001",
+            "care_plus_en#000",
+            "loyalty_2025#000",
+            "sony_wh1000xm5_help_guide_en#034",
+            "sony_wf1000xm5_help_guide_en#058"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "faq_ua#004",
+            "order_changes_ua#000",
+            "trade_in_ua#000",
+            "faq_ua#002",
+            "ua_consumer_protection_law#015"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#001",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#000",
+            "payment_ua#000",
+            "delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wf1000xm5_help_guide_de#167",
+            "sony_wf1000xm5_help_guide_de#138"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 2,
+          "top": [
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_770nc_spec_en#003",
+            "jbl_tune_770nc_spec_en#001",
+            "jbl_tune_770nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 5,
+          "top": [
+            "sony_wh1000xm5_help_guide_en#088",
+            "sony_wf1000xm5_help_guide_en#006",
+            "faq_en#001",
+            "sony_wf1000xm5_help_guide_en#149",
+            "sony_wf1000xm5_help_guide_en#151"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 2,
+          "top": [
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#003",
+            "ua_consumer_protection_law#028",
+            "ua_consumer_protection_law#025"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 9,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#019",
+            "eu_directive_2019_771_sale_of_goods_en#003",
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "repair_process_en#000",
+            "eu_directive_2011_83_consumer_rights_en#018"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 5,
+          "top": [
+            "faq_dach#003",
+            "faq_dach#002",
+            "faq_dach#001",
+            "sony_wf1000xm5_help_guide_de#155",
+            "sony_wf1000xm5_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#003",
+            "payment_ua#000",
+            "returns_ua_2025#001",
+            "installation_ua#000",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 2,
+          "top": [
+            "damaged_on_arrival_en#000",
+            "shipping_international_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#022",
+            "eu_directive_2011_83_consumer_rights_en#019",
+            "sony_wf1000xm5_help_guide_en#001"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "warranty_dach#000",
+            "returns_dach_2025#000",
+            "eu_directive_2011_83_consumer_rights_de#038"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "delivery_ua_2025#001",
+            "faq_ua#005",
+            "faq_ua#002",
+            "returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "care_plus_en#000",
+            "returns_overview_en#000",
+            "order_cancellation_en#000",
+            "repair_process_en#000",
+            "damaged_on_arrival_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "structured/hybrid": {
+      "hit@1": 0.5,
+      "recall@5": 0.875,
+      "mrr@10": 0.643,
+      "ms": 9,
+      "misses@5": [
+        "r04",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#000",
+            "returns_ua_2025#001",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#030"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 4,
+          "top": [
+            "faq_dach#000",
+            "delivery_dach#000",
+            "price_match_dach#000",
+            "returns_dach_2025#000",
+            "faq_dach#001"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "loyalty_2025#000",
+            "eu_directive_2011_83_consumer_rights_en#038",
+            "eu_directive_2011_83_consumer_rights_en#051",
+            "eu_directive_2011_83_consumer_rights_en#043"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "faq_ua#004",
+            "ua_consumer_protection_law#056",
+            "trade_in_ua#000",
+            "ua_consumer_protection_law#029",
+            "ua_consumer_protection_law#023"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 3,
+          "top": [
+            "faq_ua#001",
+            "payment_ua#000",
+            "delivery_ua_2025#000",
+            "order_changes_ua#000",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#138",
+            "sony_wf1000xm5_help_guide_de#152"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_770nc_spec_en#001",
+            "jbl_tune_760nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#123",
+            "sony_wh1000xm5_help_guide_en#088",
+            "sony_wh1000xm5_help_guide_en#102",
+            "sony_wf1000xm5_help_guide_en#142"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 2,
+          "top": [
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#028",
+            "ua_consumer_protection_law#023"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 5,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "eu_directive_2011_83_consumer_rights_en#019",
+            "eu_directive_2011_83_consumer_rights_en#018",
+            "eu_directive_2011_83_consumer_rights_en#050",
+            "eu_directive_2011_83_consumer_rights_en#046"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#192",
+            "sony_wf1000xm5_help_guide_de#144"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#003",
+            "payment_ua#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#006",
+            "damaged_on_arrival_en#000",
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#056"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "warranty_dach#000",
+            "price_match_dach#000",
+            "returns_dach_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "delivery_ua_2025#001",
+            "faq_ua#002",
+            "faq_ua#005",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "order_cancellation_en#000",
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "repair_process_en#000",
+            "damaged_on_arrival_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "structured/rerank": {
+      "hit@1": 0.812,
+      "recall@5": 0.938,
+      "mrr@10": 0.875,
+      "ms": 4250,
+      "misses@5": [
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "returns_ua_2025#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#024"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "delivery_dach#000",
+            "faq_dach#000",
+            "price_match_dach#000",
+            "eu_directive_2011_83_consumer_rights_de#050"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "warranty_ua#000",
+            "loyalty_2025#000",
+            "repair_process_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#051"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 1,
+          "top": [
+            "loyalty_2025#000",
+            "faq_ua#004",
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#057",
+            "trade_in_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#001",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#000",
+            "payment_ua#000",
+            "shipping_international_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wf1000xm5_help_guide_en#120",
+            "sony_wf1000xm5_help_guide_de#167"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_770nc_spec_en#001",
+            "jbl_tune_770nc_spec_en#002"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#124",
+            "sony_wh1000xm5_help_guide_en#102",
+            "sony_wh1000xm5_help_guide_en#088",
+            "sony_wf1000xm5_help_guide_en#030"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#017",
+            "ua_consumer_protection_law#028"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 1,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#046",
+            "eu_directive_2011_83_consumer_rights_en#050",
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "eu_directive_2011_83_consumer_rights_en#019",
+            "eu_directive_2011_83_consumer_rights_en#049"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_dach#000",
+            "de_bgb_312g_widerrufsrecht#000",
+            "eu_directive_2011_83_consumer_rights_de#068",
+            "eu_directive_2011_83_consumer_rights_de#069"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#003",
+            "payment_ua#000",
+            "returns_ua_2025#001",
+            "payment_methods_en#000",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#003",
+            "damaged_on_arrival_en#000",
+            "payment_methods_en#000",
+            "eu_directive_2011_83_consumer_rights_en#043"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "returns_dach_2025#000",
+            "large_appliances_dach#000",
+            "shipping_international_en#000",
+            "wrong_item_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "shipping_international_en#000",
+            "ua_consumer_protection_law#046",
+            "ua_consumer_protection_law#044",
+            "ua_consumer_protection_law#040"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "order_cancellation_en#000",
+            "care_plus_en#000",
+            "gift_cards_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "fixed/vector": {
+      "hit@1": 0.688,
+      "recall@5": 0.875,
+      "mrr@10": 0.74,
+      "ms": 8,
+      "misses@5": [
+        "r10",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "fixed:returns_ua_2025#000",
+            "fixed:ua_consumer_protection_law#047",
+            "fixed:returns_ua_2025#001",
+            "fixed:faq_ua#000",
+            "fixed:ua_consumer_protection_law#034"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 3,
+          "top": [
+            "fixed:faq_dach#000",
+            "fixed:delivery_dach#000",
+            "fixed:returns_dach_2025#000",
+            "fixed:returns_dach_2025#001",
+            "fixed:delivery_dach#001"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "fixed:care_plus_en#000",
+            "fixed:repair_process_en#000",
+            "fixed:warranty_ua#001",
+            "fixed:damaged_on_arrival_en#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#064"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 5,
+          "top": [
+            "fixed:ua_consumer_protection_law#066",
+            "fixed:ua_consumer_protection_law#067",
+            "fixed:faq_ua#000",
+            "fixed:ua_consumer_protection_law#026",
+            "fixed:loyalty_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 5,
+          "top": [
+            "fixed:delivery_ua_2025#001",
+            "fixed:faq_ua#000",
+            "fixed:payment_ua#000",
+            "fixed:order_changes_ua#000",
+            "fixed:delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 1,
+          "top": [
+            "fixed:sony_wf1000xm5_help_guide_de#171",
+            "fixed:sony_wf1000xm5_dach#000",
+            "fixed:sony_wh1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_help_guide_de#172",
+            "fixed:sony_wf1000xm5_help_guide_de#169"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "fixed:jbl_tune_770nc_ua#001",
+            "fixed:jbl_tune_760nc_ua#001",
+            "fixed:jbl_tune_770nc_ua#000",
+            "fixed:jbl_tune_760nc_ua#000",
+            "fixed:jbl_tune_770nc_spec_en#004"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "fixed:sony_wf1000xm5_help_guide_en#166",
+            "fixed:sony_wf1000xm5_help_guide_en#014",
+            "fixed:sony_wf1000xm5_help_guide_en#137",
+            "fixed:sony_wf1000xm5_help_guide_en#152",
+            "fixed:sony_wf1000xm5_help_guide_en#167"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "fixed:ua_consumer_protection_law#028",
+            "fixed:ua_consumer_protection_law#029",
+            "fixed:ua_consumer_protection_law#004",
+            "fixed:ua_consumer_protection_law#033",
+            "fixed:ua_consumer_protection_law#022"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 9,
+          "top": [
+            "fixed:eu_directive_2011_83_consumer_rights_en#020",
+            "fixed:eu_directive_2011_83_consumer_rights_en#024",
+            "fixed:eu_directive_2011_83_consumer_rights_en#019",
+            "fixed:eu_directive_2011_83_consumer_rights_en#023",
+            "fixed:eu_directive_2011_83_consumer_rights_en#053"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "fixed:returns_dach_2025#001",
+            "fixed:sony_wf1000xm5_help_guide_de#021",
+            "fixed:sony_wf1000xm5_help_guide_de#008",
+            "fixed:sony_wf1000xm5_help_guide_de#214",
+            "fixed:sony_wf1000xm5_help_guide_de#166"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "fixed:payment_ua#000",
+            "fixed:faq_ua#000",
+            "fixed:payment_methods_en#000",
+            "fixed:order_changes_ua#000",
+            "fixed:delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "fixed:shipping_international_en#000",
+            "fixed:faq_en#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#063",
+            "fixed:eu_directive_2019_771_sale_of_goods_en#054",
+            "fixed:eu_directive_2019_771_sale_of_goods_en#052"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "fixed:delivery_dach#000",
+            "fixed:large_appliances_dach#000",
+            "fixed:delivery_dach#001",
+            "fixed:returns_dach_2025#000",
+            "fixed:faq_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "fixed:order_changes_ua#000",
+            "fixed:faq_ua#000",
+            "fixed:faq_ua#001",
+            "fixed:delivery_ua_2025#000",
+            "fixed:returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "fixed:payment_methods_en#000",
+            "fixed:returns_overview_en#001",
+            "fixed:order_cancellation_en#000",
+            "fixed:shipping_international_en#000",
+            "fixed:damaged_on_arrival_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "fixed/bm25": {
+      "hit@1": 0.438,
+      "recall@5": 0.812,
+      "mrr@10": 0.57,
+      "ms": 1,
+      "misses@5": [
+        "r04",
+        "r10",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "fixed:returns_ua_2025#000",
+            "fixed:faq_ua#000",
+            "fixed:returns_ua_2025#001",
+            "fixed:delivery_ua_2025#001",
+            "fixed:warranty_ua#001"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 3,
+          "top": [
+            "fixed:faq_dach#000",
+            "fixed:delivery_dach#000",
+            "fixed:returns_dach_2025#000",
+            "fixed:wrong_item_dach#000",
+            "fixed:price_match_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "fixed:care_plus_en#000",
+            "fixed:faq_en#000",
+            "fixed:loyalty_2025#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#044",
+            "fixed:payment_methods_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "fixed:faq_ua#000",
+            "fixed:order_changes_ua#000",
+            "fixed:ua_consumer_protection_law#033",
+            "fixed:ua_consumer_protection_law#066",
+            "fixed:ua_consumer_protection_law#055"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 1,
+          "top": [
+            "fixed:delivery_ua_2025#000",
+            "fixed:faq_ua#000",
+            "fixed:returns_ua_2025#001",
+            "fixed:returns_ua_2025#000",
+            "fixed:delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "fixed:sony_wh1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_help_guide_de#172",
+            "fixed:sony_wf1000xm5_help_guide_de#171",
+            "fixed:sony_wf1000xm5_help_guide_de#189"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "fixed:jbl_tune_770nc_ua#000",
+            "fixed:jbl_tune_760nc_ua#001",
+            "fixed:jbl_tune_770nc_ua#001",
+            "fixed:jbl_tune_760nc_ua#000",
+            "fixed:faq_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "fixed:sony_wf1000xm5_help_guide_en#166",
+            "fixed:sony_wf1000xm5_help_guide_en#007",
+            "fixed:sony_wf1000xm5_help_guide_en#137",
+            "fixed:sony_wh1000xm5_help_guide_en#092",
+            "fixed:sony_wf1000xm5_help_guide_en#004"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 5,
+          "top": [
+            "fixed:ua_consumer_protection_law#022",
+            "fixed:ua_consumer_protection_law#032",
+            "fixed:ua_consumer_protection_law#004",
+            "fixed:ua_consumer_protection_law#026",
+            "fixed:ua_consumer_protection_law#029"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": null,
+          "top": [
+            "fixed:eu_directive_2019_771_sale_of_goods_en#003",
+            "fixed:faq_en#000",
+            "fixed:eu_directive_2019_771_sale_of_goods_en#004",
+            "fixed:eu_directive_2011_83_consumer_rights_en#023",
+            "fixed:eu_directive_2011_83_consumer_rights_en#024"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 3,
+          "top": [
+            "fixed:faq_dach#000",
+            "fixed:sony_wf1000xm5_help_guide_de#176",
+            "fixed:returns_dach_2025#001",
+            "fixed:sony_wf1000xm5_help_guide_de#175",
+            "fixed:sony_wf1000xm5_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 2,
+          "top": [
+            "fixed:returns_ua_2025#001",
+            "fixed:faq_ua#000",
+            "fixed:payment_ua#000",
+            "fixed:delivery_ua_2025#000",
+            "fixed:installation_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 4,
+          "top": [
+            "fixed:damaged_on_arrival_en#000",
+            "fixed:eu_directive_2019_771_sale_of_goods_en#024",
+            "fixed:eu_directive_2011_83_consumer_rights_en#023",
+            "fixed:shipping_international_en#000",
+            "fixed:jbl_tune_770nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "fixed:delivery_dach#000",
+            "fixed:large_appliances_dach#000",
+            "fixed:delivery_dach#001",
+            "fixed:warranty_dach#000",
+            "fixed:returns_dach_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "fixed:order_changes_ua#000",
+            "fixed:faq_ua#000",
+            "fixed:delivery_ua_2025#001",
+            "fixed:faq_ua#001",
+            "fixed:returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "fixed:care_plus_en#000",
+            "fixed:returns_overview_en#000",
+            "fixed:order_cancellation_en#000",
+            "fixed:repair_process_en#000",
+            "fixed:payment_methods_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "fixed/hybrid": {
+      "hit@1": 0.562,
+      "recall@5": 0.812,
+      "mrr@10": 0.664,
+      "ms": 10,
+      "misses@5": [
+        "r04",
+        "r10",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "fixed:returns_ua_2025#000",
+            "fixed:faq_ua#000",
+            "fixed:returns_ua_2025#001",
+            "fixed:ua_consumer_protection_law#047",
+            "fixed:ua_consumer_protection_law#048"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 3,
+          "top": [
+            "fixed:faq_dach#000",
+            "fixed:delivery_dach#000",
+            "fixed:returns_dach_2025#000",
+            "fixed:price_match_dach#000",
+            "fixed:returns_dach_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "fixed:care_plus_en#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#058",
+            "fixed:repair_process_en#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#050",
+            "fixed:faq_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "fixed:faq_ua#000",
+            "fixed:ua_consumer_protection_law#066",
+            "fixed:trade_in_ua#001",
+            "fixed:ua_consumer_protection_law#027",
+            "fixed:ua_consumer_protection_law#033"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 3,
+          "top": [
+            "fixed:faq_ua#000",
+            "fixed:delivery_ua_2025#001",
+            "fixed:delivery_ua_2025#000",
+            "fixed:payment_ua#000",
+            "fixed:returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "fixed:sony_wh1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_help_guide_de#171",
+            "fixed:sony_wf1000xm5_help_guide_de#172",
+            "fixed:sony_wf1000xm5_help_guide_de#169"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "fixed:jbl_tune_770nc_ua#001",
+            "fixed:jbl_tune_770nc_ua#000",
+            "fixed:jbl_tune_760nc_ua#001",
+            "fixed:jbl_tune_760nc_ua#000",
+            "fixed:jbl_tune_770nc_spec_en#004"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "fixed:sony_wf1000xm5_help_guide_en#166",
+            "fixed:sony_wf1000xm5_help_guide_en#137",
+            "fixed:sony_wf1000xm5_help_guide_en#007",
+            "fixed:sony_wf1000xm5_help_guide_en#164",
+            "fixed:sony_wf1000xm5_help_guide_en#144"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 3,
+          "top": [
+            "fixed:ua_consumer_protection_law#022",
+            "fixed:ua_consumer_protection_law#004",
+            "fixed:ua_consumer_protection_law#029",
+            "fixed:ua_consumer_protection_law#026",
+            "fixed:ua_consumer_protection_law#028"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 8,
+          "top": [
+            "fixed:eu_directive_2011_83_consumer_rights_en#024",
+            "fixed:eu_directive_2011_83_consumer_rights_en#023",
+            "fixed:eu_directive_2011_83_consumer_rights_en#020",
+            "fixed:eu_directive_2011_83_consumer_rights_en#055",
+            "fixed:eu_directive_2019_771_sale_of_goods_en#003"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "fixed:returns_dach_2025#001",
+            "fixed:sony_wf1000xm5_help_guide_de#215",
+            "fixed:sony_wf1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_help_guide_de#164",
+            "fixed:eu_directive_2011_83_consumer_rights_de#076"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "fixed:payment_ua#000",
+            "fixed:faq_ua#000",
+            "fixed:returns_ua_2025#001",
+            "fixed:delivery_ua_2025#000",
+            "fixed:order_changes_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "fixed:shipping_international_en#000",
+            "fixed:damaged_on_arrival_en#000",
+            "fixed:faq_en#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#063",
+            "fixed:payment_methods_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "fixed:delivery_dach#000",
+            "fixed:large_appliances_dach#000",
+            "fixed:delivery_dach#001",
+            "fixed:returns_dach_2025#000",
+            "fixed:warranty_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "fixed:order_changes_ua#000",
+            "fixed:faq_ua#000",
+            "fixed:faq_ua#001",
+            "fixed:delivery_ua_2025#001",
+            "fixed:delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "fixed:payment_methods_en#000",
+            "fixed:order_cancellation_en#000",
+            "fixed:returns_overview_en#001",
+            "fixed:returns_overview_en#000",
+            "fixed:damaged_on_arrival_en#000"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "fixed/rerank": {
+      "hit@1": 0.75,
+      "recall@5": 0.938,
+      "mrr@10": 0.844,
+      "ms": 3683,
+      "misses@5": [
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "fixed:returns_ua_2025#000",
+            "fixed:faq_ua#000",
+            "fixed:returns_ua_2025#001",
+            "fixed:delivery_ua_2025#000",
+            "fixed:ua_consumer_protection_law#025"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 2,
+          "top": [
+            "fixed:faq_dach#000",
+            "fixed:returns_dach_2025#000",
+            "fixed:delivery_dach#000",
+            "fixed:price_match_dach#000",
+            "fixed:large_appliances_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "fixed:care_plus_en#000",
+            "fixed:warranty_ua#001",
+            "fixed:loyalty_2025#000",
+            "fixed:repair_process_en#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#064"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 1,
+          "top": [
+            "fixed:loyalty_2025#000",
+            "fixed:faq_ua#000",
+            "fixed:ua_consumer_protection_law#066",
+            "fixed:ua_consumer_protection_law#067",
+            "fixed:ua_consumer_protection_law#065"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "fixed:faq_ua#000",
+            "fixed:delivery_ua_2025#000",
+            "fixed:returns_ua_2025#001",
+            "fixed:payment_ua#000",
+            "fixed:shipping_international_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "fixed:sony_wh1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_dach#000",
+            "fixed:sony_wf1000xm5_help_guide_de#171",
+            "fixed:sony_wf1000xm5_help_guide_de#189",
+            "fixed:sony_wf1000xm5_help_guide_en#134"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "fixed:jbl_tune_770nc_ua#000",
+            "fixed:jbl_tune_770nc_spec_en#000",
+            "fixed:jbl_tune_770nc_ua#001",
+            "fixed:jbl_tune_770nc_spec_en#004",
+            "fixed:jbl_tune_770nc_spec_en#001"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "fixed:sony_wf1000xm5_help_guide_en#166",
+            "fixed:sony_wf1000xm5_help_guide_en#137",
+            "fixed:sony_wh1000xm5_help_guide_en#092",
+            "fixed:sony_wf1000xm5_help_guide_en#167",
+            "fixed:sony_wf1000xm5_help_guide_en#138"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "fixed:ua_consumer_protection_law#028",
+            "fixed:ua_consumer_protection_law#029",
+            "fixed:ua_consumer_protection_law#022",
+            "fixed:ua_consumer_protection_law#019",
+            "fixed:ua_consumer_protection_law#004"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 1,
+          "top": [
+            "fixed:eu_directive_2011_83_consumer_rights_en#052",
+            "fixed:eu_directive_2011_83_consumer_rights_en#024",
+            "fixed:eu_directive_2011_83_consumer_rights_en#055",
+            "fixed:eu_directive_2011_83_consumer_rights_en#020",
+            "fixed:eu_directive_2011_83_consumer_rights_en#023"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "fixed:returns_dach_2025#001",
+            "fixed:sony_wf1000xm5_dach#000",
+            "fixed:eu_directive_2011_83_consumer_rights_de#076",
+            "fixed:de_bgb_312g_widerrufsrecht#001",
+            "fixed:sony_wf1000xm5_help_guide_de#021"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "fixed:payment_ua#000",
+            "fixed:faq_ua#000",
+            "fixed:returns_ua_2025#001",
+            "fixed:payment_methods_en#000",
+            "fixed:order_changes_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "fixed:shipping_international_en#000",
+            "fixed:faq_en#000",
+            "fixed:damaged_on_arrival_en#000",
+            "fixed:eu_directive_2011_83_consumer_rights_en#062",
+            "fixed:payment_methods_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "fixed:delivery_dach#000",
+            "fixed:delivery_dach#001",
+            "fixed:large_appliances_dach#000",
+            "fixed:returns_dach_2025#000",
+            "fixed:wrong_item_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "fixed:order_changes_ua#000",
+            "fixed:delivery_ua_2025#000",
+            "fixed:faq_ua#000",
+            "fixed:ua_consumer_protection_law#035",
+            "fixed:delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "fixed:payment_methods_en#000",
+            "fixed:returns_overview_en#000",
+            "fixed:order_cancellation_en#000",
+            "fixed:care_plus_en#000",
+            "fixed:returns_overview_en#001"
+          ],
+          "superseded_top5": []
+        }
+      }
+    },
+    "structured/rerank+translation": {
+      "hit@1": 0.75,
+      "recall@5": 1.0,
+      "mrr@10": 0.875,
+      "ms": 5074,
+      "misses@5": [],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "returns_ua_2025#000",
+            "returns_overview_en#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "order_cancellation_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "returns_overview_en#000",
+            "delivery_dach#000",
+            "repair_process_en#000",
+            "faq_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "warranty_ua#000",
+            "trade_in_ua#000",
+            "loyalty_2025#000",
+            "repair_process_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 1,
+          "top": [
+            "loyalty_2025#000",
+            "faq_ua#004",
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#057",
+            "ua_cabinet_resolution_172#004"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#001",
+            "delivery_ua_2025#000",
+            "shipping_international_en#000",
+            "returns_ua_2025#000",
+            "payment_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wf1000xm5_help_guide_en#120",
+            "sony_wf1000xm5_help_guide_de#167"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 2,
+          "top": [
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#001",
+            "jbl_tune_770nc_spec_en#002"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#124",
+            "sony_wh1000xm5_help_guide_en#102",
+            "sony_wf1000xm5_help_guide_en#152",
+            "sony_wh1000xm5_help_guide_en#088"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#028",
+            "ua_consumer_protection_law#003"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 1,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#046",
+            "eu_directive_2011_83_consumer_rights_de#024",
+            "eu_directive_2011_83_consumer_rights_de#028",
+            "eu_directive_2011_83_consumer_rights_de#060",
+            "eu_directive_2011_83_consumer_rights_en#050"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_dach#000",
+            "returns_overview_en#000",
+            "returns_ua_2025#001",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#003",
+            "payment_ua#000",
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#003",
+            "damaged_on_arrival_en#000",
+            "delivery_dach#000",
+            "faq_ua#005"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "shipping_international_en#000",
+            "returns_dach_2025#000",
+            "large_appliances_dach#000",
+            "price_match_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "shipping_international_en#000",
+            "order_cancellation_en#000",
+            "eu_directive_2011_83_consumer_rights_de#021",
+            "eu_directive_2011_83_consumer_rights_en#037"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": 2,
+          "top": [
+            "payment_ua#000",
+            "returns_ua_2025#001",
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "order_cancellation_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "translations": {
+        "r01": {
+          "uk": "Скільки днів у мене є, щоб повернути товар, замовлений з доставкою по Україні?",
+          "en": "How many days do I have to return a product ordered with delivery within Ukraine?",
+          "de": "Wie viele Tage habe ich Zeit, um einen Artikel zurückzugeben, der mit Lieferung innerhalb der Ukraine bestellt wurde?"
+        },
+        "r02": {
+          "uk": "Скільки коштує повернення товару, якщо я живу в Австрії?",
+          "en": "How much does it cost to return an item if I live in Austria?",
+          "de": "Was kostet die Rücksendung, wenn ich in Österreich wohne?"
+        },
+        "r03": {
+          "uk": "Скільки я заплачу за ремонт за програмою Care+, якщо я впущу телефон і тріśне екран?",
+          "en": "How much do I pay with Care+ if I drop my phone and crack the screen?",
+          "de": "Wie viel zahle ich mit Care+, wenn ich mein Telefon fallen lasse und das Display zerbricht?"
+        },
+        "r04": {
+          "uk": "Чому моя знижка Gold не застосувалася до товару, який уже був зі знижкою?",
+          "en": "Why was my Gold discount not applied to an item that was already on sale?",
+          "de": "Warum wurde mein Gold-Rabatt nicht auf einen Artikel angewendet, der bereits reduziert war?"
+        },
+        "r05": {
+          "uk": "Від якої суми доставка у відділення Нової Пошти безкоштовна?",
+          "en": "From what amount is delivery to a Nova Poshta branch free?",
+          "de": "Ab welchem Betrag ist die Lieferung in eine Filiale von Nova Poshta kostenlos?"
+        },
+        "r06": {
+          "uk": "Чи є Sony WF-1000XM5 водонепроникними?",
+          "en": "Is the Sony WF-1000XM5 waterproof?",
+          "de": "Ist der Sony WF-1000XM5 wasserdicht?"
+        },
+        "r07": {
+          "uk": "Скільки годин працює JBL Tune 770NC з увімкненим шумозаглушенням?",
+          "en": "How many hours does the JBL Tune 770NC run with noise cancellation turned on?",
+          "de": "Wie viele Stunden läuft der JBL Tune 770NC mit eingeschalteter Geräuschunterdrückung?"
+        },
+        "r08": {
+          "uk": "Як скинути налаштування навушників WF-1000XM5, якщо вони не вмикаються?",
+          "en": "How do I reset my WF-1000XM5 earbuds if they won't turn on?",
+          "de": "Wie setze ich meine WF-1000XM5 Ohrhörer zurück, wenn sie sich nicht einschalten lassen?"
+        },
+        "r09": {
+          "uk": "У який строк продавець має усунути недоліки товару згідно із законом?",
+          "en": "Within what period must the seller remedy defects of a product according to the law?",
+          "de": "Innerhalb welcher Frist muss der Verkäufer Mängel an einer Ware gemäß dem Gesetz beheben?"
+        },
+        "r10": {
+          "uk": "Скільки днів має споживач, щоб відмовитися від онлайн-покупки згідно з законодавством ЄС?",
+          "en": "How many days does a consumer have to withdraw from an online purchase under EU law?",
+          "de": "Wie viele Tage hat ein Verbraucher Zeit, um einen Online-Kauf nach EU-Recht zu widerrufen?"
+        },
+        "r11": {
+          "uk": "Чи можу я повернути навушники-вкладиші, якщо я вже зняв пломбу?",
+          "en": "Can I return in-ear headphones if I have already removed the seal?",
+          "de": "Kann ich In-Ear-Kopfhörer zurückgeben, wenn ich die Versiegelung schon entfernt habe?"
+        },
+        "r12": {
+          "uk": "Чи можна оплатити замовлення на 1000 грн частинами?",
+          "en": "Can I pay for an order of 1000 UAH in installments?",
+          "de": "Kann ich eine Bestellung über 1000 UAH in Raten bezahlen?"
+        },
+        "r13": {
+          "uk": "Чи доставляєте ви замовлення до Лондона?",
+          "en": "Do you deliver to London?",
+          "de": "Liefern Sie nach London?"
+        },
+        "r14": {
+          "uk": "Хто сплачує мито при доставці до Швейцарії?",
+          "en": "Who pays the customs duty for a delivery to Switzerland?",
+          "de": "Wer zahlt den Zoll bei einer Lieferung in die Schweiz?"
+        },
+        "r15": {
+          "uk": "Посилку вже відправили, чи можна ще змінити адресу доставки?",
+          "en": "The parcel has already been shipped. Can the delivery address still be changed?",
+          "de": "Das Paket wurde bereits versendet. Kann die Lieferadresse noch geändert werden?"
+        },
+        "r16": {
+          "uk": "Я оплатив замовлення в Україні частинами (у розстрочку) і повернув товар. Що відбувається з моїм планом розстрочки?",
+          "en": "I paid for my order in Ukraine in instalments and returned the item. What happens to my instalment plan?",
+          "de": "Ich habe meine Bestellung in der Ukraine in Raten bezahlt und den Artikel zurückgegeben. Was passiert mit meinem Ratenplan?"
+        }
+      }
+    }
+  },
+  "filters": {
+    "status=current (default)": {
+      "hit@1": 0.667,
+      "recall@5": 1.0,
+      "mrr@10": 0.833,
+      "ms": 4272,
+      "misses@5": [],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "returns_ua_2025#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#024"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 1,
+          "top": [
+            "loyalty_2025#000",
+            "faq_ua#004",
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#057",
+            "trade_in_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#001",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#000",
+            "payment_ua#000",
+            "shipping_international_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "superseded_in_top5": 0,
+      "questions_with_superseded": []
+    },
+    "no filter": {
+      "hit@1": 0.333,
+      "recall@5": 1.0,
+      "mrr@10": 0.611,
+      "ms": 3727,
+      "misses@5": [],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "returns_ua_2024#000",
+            "returns_ua_2025#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "warranty_ua#001"
+          ],
+          "superseded_top5": [
+            "returns_ua_2024#000"
+          ]
+        },
+        "r04": {
+          "rank": 1,
+          "top": [
+            "loyalty_2025#000",
+            "faq_ua#004",
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#057",
+            "ua_cabinet_resolution_172#004"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 3,
+          "top": [
+            "faq_ua#001",
+            "delivery_ua_2024#000",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#000",
+            "payment_ua#000"
+          ],
+          "superseded_top5": [
+            "delivery_ua_2024#000"
+          ]
+        }
+      },
+      "superseded_in_top5": 2,
+      "questions_with_superseded": [
+        "r01",
+        "r05"
+      ]
+    }
+  },
+  "sweep": {
+    "300/40/vector": {
+      "hit@1": 0.625,
+      "recall@5": 0.875,
+      "mrr@10": 0.729,
+      "ms": 14,
+      "misses@5": [
+        "r04",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "returns_ua_2025#004",
+            "returns_ua_2025#002",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#003",
+            "faq_dach#000",
+            "returns_dach_2025#004",
+            "delivery_dach#000",
+            "returns_dach_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#001",
+            "care_plus_en#002",
+            "care_plus_en#000",
+            "repair_process_en#003",
+            "repair_process_en#001"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "faq_ua#002",
+            "ua_consumer_protection_law#075",
+            "ua_consumer_protection_law#074",
+            "ua_consumer_protection_law#030",
+            "ua_consumer_protection_law#076"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 3,
+          "top": [
+            "faq_ua#000",
+            "payment_ua#001",
+            "delivery_ua_2025#000",
+            "faq_ua#001",
+            "delivery_ua_2025#003"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_dach#002",
+            "sony_wf1000xm5_help_guide_de#204",
+            "sony_wf1000xm5_help_guide_de#205",
+            "sony_wh1000xm5_dach#001",
+            "sony_wf1000xm5_help_guide_de#201"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#002",
+            "jbl_tune_770nc_ua#001",
+            "jbl_tune_760nc_ua#003",
+            "jbl_tune_760nc_ua#001",
+            "jbl_tune_770nc_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#198",
+            "sony_wf1000xm5_help_guide_en#164",
+            "sony_wh1000xm5_help_guide_en#163",
+            "sony_wf1000xm5_help_guide_en#163",
+            "sony_wf1000xm5_help_guide_en#037"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 2,
+          "top": [
+            "ua_consumer_protection_law#033",
+            "ua_consumer_protection_law#031",
+            "ua_consumer_protection_law#029",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#030"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 3,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#027",
+            "eu_directive_2011_83_consumer_rights_en#060",
+            "eu_directive_2011_83_consumer_rights_en#022",
+            "eu_directive_2011_83_consumer_rights_en#067"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#005",
+            "sony_wf1000xm5_help_guide_de#255",
+            "sony_wf1000xm5_help_guide_de#254",
+            "sony_wf1000xm5_dach#002",
+            "sony_wf1000xm5_help_guide_de#026"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "payment_ua#002",
+            "faq_ua#001",
+            "payment_ua#001",
+            "order_changes_ua#002",
+            "payment_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#003",
+            "damaged_on_arrival_en#003",
+            "eu_directive_2011_83_consumer_rights_en#056",
+            "faq_en#001"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#001",
+            "delivery_dach#000",
+            "returns_dach_2025#003",
+            "delivery_dach#002",
+            "returns_dach_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#001",
+            "order_changes_ua#000",
+            "order_changes_ua#003",
+            "faq_ua#001",
+            "delivery_ua_2025#004"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "order_cancellation_en#001",
+            "returns_overview_en#004",
+            "returns_overview_en#001",
+            "payment_methods_en#002",
+            "payment_methods_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 1257,
+      "avg_tokens": 189
+    },
+    "300/40/hybrid": {
+      "hit@1": 0.625,
+      "recall@5": 0.875,
+      "mrr@10": 0.75,
+      "ms": 17,
+      "misses@5": [
+        "r04",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "returns_ua_2025#000",
+            "returns_ua_2025#002",
+            "delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 2,
+          "top": [
+            "faq_dach#000",
+            "returns_dach_2025#003",
+            "faq_dach#002",
+            "delivery_dach#000",
+            "price_match_dach#001"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#001",
+            "care_plus_en#000",
+            "loyalty_2025#001",
+            "faq_en#003",
+            "eu_directive_2011_83_consumer_rights_en#050"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "faq_ua#002",
+            "order_changes_ua#003",
+            "trade_in_ua#003",
+            "ua_consumer_protection_law#074",
+            "ua_consumer_protection_law#038"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "payment_ua#001",
+            "faq_ua#001",
+            "delivery_ua_2025#003"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_dach#002",
+            "sony_wf1000xm5_help_guide_de#204",
+            "sony_wh1000xm5_dach#001",
+            "sony_wf1000xm5_help_guide_de#205",
+            "sony_wf1000xm5_help_guide_de#189"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#002",
+            "jbl_tune_760nc_ua#003",
+            "jbl_tune_770nc_ua#001",
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#198",
+            "sony_wf1000xm5_help_guide_en#163",
+            "sony_wh1000xm5_help_guide_en#141",
+            "sony_wf1000xm5_help_guide_en#196",
+            "sony_wf1000xm5_help_guide_en#001"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#031",
+            "ua_consumer_protection_law#033",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#029",
+            "ua_consumer_protection_law#036"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 2,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#060",
+            "eu_directive_2011_83_consumer_rights_en#027",
+            "eu_directive_2011_83_consumer_rights_en#067",
+            "eu_directive_2011_83_consumer_rights_en#025"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#005",
+            "sony_wf1000xm5_dach#002",
+            "sony_wf1000xm5_help_guide_de#257",
+            "sony_wf1000xm5_help_guide_de#197",
+            "sony_wf1000xm5_help_guide_de#195"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#001",
+            "payment_ua#002",
+            "order_changes_ua#000",
+            "faq_ua#003",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "faq_en#001",
+            "eu_directive_2011_83_consumer_rights_en#074",
+            "eu_directive_2011_83_consumer_rights_en#030",
+            "damaged_on_arrival_en#003",
+            "eu_directive_2019_771_sale_of_goods_en#026"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#001",
+            "delivery_dach#000",
+            "delivery_dach#002",
+            "warranty_dach#000",
+            "returns_dach_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#001",
+            "order_changes_ua#000",
+            "order_changes_ua#003",
+            "faq_ua#001",
+            "delivery_ua_2025#004"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "order_cancellation_en#001",
+            "returns_overview_en#004",
+            "repair_process_en#004",
+            "payment_methods_en#000",
+            "returns_overview_en#001"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 1257,
+      "avg_tokens": 189
+    },
+    "300/40/rerank": {
+      "hit@1": 0.562,
+      "recall@5": 0.875,
+      "mrr@10": 0.719,
+      "ms": 3865,
+      "misses@5": [
+        "r04",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "returns_ua_2025#004",
+            "delivery_ua_2025#001",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#003",
+            "delivery_dach#000",
+            "faq_dach#000",
+            "faq_dach#002",
+            "returns_overview_en#001"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#001",
+            "care_plus_en#002",
+            "warranty_ua#002",
+            "care_plus_en#000",
+            "repair_process_en#003"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "faq_ua#002",
+            "ua_consumer_protection_law#074",
+            "ua_consumer_protection_law#075",
+            "ua_consumer_protection_law#076",
+            "order_changes_ua#003"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "payment_ua#001",
+            "returns_ua_2025#003",
+            "delivery_ua_2025#002"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#001",
+            "sony_wf1000xm5_dach#002",
+            "sony_wf1000xm5_help_guide_de#204",
+            "sony_wf1000xm5_help_guide_de#226",
+            "sony_wf1000xm5_dach#001"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 2,
+          "top": [
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_770nc_ua#001",
+            "jbl_tune_770nc_ua#002",
+            "jbl_tune_770nc_spec_en#009",
+            "jbl_tune_770nc_spec_en#001"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#198",
+            "sony_wf1000xm5_help_guide_en#164",
+            "sony_wh1000xm5_help_guide_en#163",
+            "sony_wf1000xm5_help_guide_en#037",
+            "sony_wf1000xm5_help_guide_en#163"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 2,
+          "top": [
+            "ua_consumer_protection_law#033",
+            "ua_consumer_protection_law#031",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#032",
+            "ua_consumer_protection_law#082"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 1,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#060",
+            "eu_directive_2011_83_consumer_rights_en#027",
+            "eu_directive_2011_83_consumer_rights_en#067",
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#066"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#005",
+            "de_bgb_312g_widerrufsrecht#001",
+            "sony_wf1000xm5_dach#002",
+            "sony_wf1000xm5_help_guide_de#026",
+            "sony_wh1000xm5_dach#001"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "payment_ua#002",
+            "faq_ua#001",
+            "payment_ua#001",
+            "returns_ua_2025#004",
+            "payment_methods_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#001",
+            "damaged_on_arrival_en#001",
+            "eu_directive_2011_83_consumer_rights_en#056",
+            "shipping_international_en#002"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#001",
+            "delivery_dach#002",
+            "delivery_dach#000",
+            "large_appliances_dach#001",
+            "returns_dach_2025#003"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#001",
+            "order_changes_ua#000",
+            "shipping_international_en#002",
+            "order_cancellation_en#001",
+            "order_changes_ua#002"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "order_cancellation_en#001",
+            "care_plus_en#002",
+            "payment_methods_en#000",
+            "returns_overview_en#001",
+            "returns_overview_en#004"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 1257,
+      "avg_tokens": 189
+    },
+    "300/150/vector": {
+      "hit@1": 0.562,
+      "recall@5": 0.875,
+      "mrr@10": 0.714,
+      "ms": 18,
+      "misses@5": [
+        "r04",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#000",
+            "returns_ua_2025#001",
+            "ua_consumer_protection_law#038",
+            "ua_consumer_protection_law#036"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 4,
+          "top": [
+            "faq_dach#000",
+            "delivery_dach#000",
+            "returns_dach_2025#001",
+            "returns_dach_2025#000",
+            "price_match_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "repair_process_en#000",
+            "warranty_ua#001",
+            "eu_directive_2011_83_consumer_rights_en#070",
+            "damaged_on_arrival_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 6,
+          "top": [
+            "ua_consumer_protection_law#073",
+            "ua_consumer_protection_law#072",
+            "ua_consumer_protection_law#028",
+            "ua_consumer_protection_law#074",
+            "ua_consumer_protection_law#030"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "delivery_ua_2025#001",
+            "payment_ua#000",
+            "order_changes_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_de#191",
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#192",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#188"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#001",
+            "jbl_tune_760nc_ua#001",
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#184",
+            "sony_wf1000xm5_help_guide_en#153",
+            "sony_wf1000xm5_help_guide_en#037",
+            "sony_wf1000xm5_help_guide_en#175",
+            "sony_wf1000xm5_help_guide_en#152"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 2,
+          "top": [
+            "ua_consumer_protection_law#031",
+            "ua_consumer_protection_law#029",
+            "ua_consumer_protection_law#027",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#028"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 2,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#057",
+            "eu_directive_2011_83_consumer_rights_en#027",
+            "eu_directive_2011_83_consumer_rights_en#022",
+            "eu_directive_2011_83_consumer_rights_en#062"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#001",
+            "sony_wf1000xm5_help_guide_de#240",
+            "sony_wf1000xm5_help_guide_de#239",
+            "sony_wf1000xm5_help_guide_de#025",
+            "sony_wf1000xm5_help_guide_de#011"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "payment_ua#000",
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "payment_methods_en#000",
+            "order_changes_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "faq_en#000",
+            "shipping_international_en#000",
+            "eu_directive_2011_83_consumer_rights_en#054",
+            "eu_directive_2011_83_consumer_rights_en#069",
+            "eu_directive_2011_83_consumer_rights_en#030"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "delivery_dach#001",
+            "returns_dach_2025#000",
+            "returns_dach_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "faq_ua#000",
+            "delivery_ua_2025#001",
+            "delivery_ua_2025#000",
+            "shipping_international_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "payment_methods_en#000",
+            "order_cancellation_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#060",
+            "shipping_international_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#058"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 1043,
+      "avg_tokens": 228
+    },
+    "300/150/hybrid": {
+      "hit@1": 0.5,
+      "recall@5": 0.875,
+      "mrr@10": 0.677,
+      "ms": 23,
+      "misses@5": [
+        "r04",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "returns_ua_2025#000",
+            "returns_ua_2025#001",
+            "ua_consumer_protection_law#038",
+            "ua_consumer_protection_law#053"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 3,
+          "top": [
+            "faq_dach#000",
+            "delivery_dach#000",
+            "returns_dach_2025#000",
+            "price_match_dach#000",
+            "returns_dach_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "faq_en#000",
+            "eu_directive_2011_83_consumer_rights_en#048",
+            "loyalty_2025#000",
+            "sony_wf1000xm5_help_guide_en#137"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "faq_ua#000",
+            "trade_in_ua#001",
+            "ua_consumer_protection_law#072",
+            "ua_consumer_protection_law#036",
+            "ua_consumer_protection_law#074"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "delivery_ua_2025#001",
+            "payment_ua#000",
+            "order_changes_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#191",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#192",
+            "sony_wf1000xm5_help_guide_de#188"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 2,
+          "top": [
+            "jbl_tune_760nc_ua#001",
+            "jbl_tune_770nc_ua#001",
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#184",
+            "sony_wf1000xm5_help_guide_en#152",
+            "sony_wh1000xm5_help_guide_en#113",
+            "sony_wf1000xm5_help_guide_en#001",
+            "sony_wf1000xm5_help_guide_en#175"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#029",
+            "ua_consumer_protection_law#031",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#027",
+            "ua_consumer_protection_law#034"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 2,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#057",
+            "eu_directive_2011_83_consumer_rights_en#027",
+            "eu_directive_2011_83_consumer_rights_en#025",
+            "eu_directive_2011_83_consumer_rights_en#062"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#001",
+            "sony_wf1000xm5_dach#000",
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#242",
+            "sony_wf1000xm5_help_guide_de#184"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "faq_ua#000",
+            "payment_ua#000",
+            "returns_ua_2025#001",
+            "delivery_ua_2025#000",
+            "order_changes_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#000",
+            "damaged_on_arrival_en#000",
+            "eu_directive_2011_83_consumer_rights_en#069",
+            "eu_directive_2011_83_consumer_rights_en#030"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "returns_dach_2025#000",
+            "warranty_dach#000",
+            "delivery_dach#001"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "faq_ua#000",
+            "delivery_ua_2025#001",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "order_cancellation_en#000",
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "repair_process_en#000",
+            "damaged_on_arrival_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 1043,
+      "avg_tokens": 228
+    },
+    "300/150/rerank": {
+      "hit@1": 0.688,
+      "recall@5": 0.938,
+      "mrr@10": 0.812,
+      "ms": 4359,
+      "misses@5": [
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "returns_ua_2025#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "delivery_ua_2025#000",
+            "ua_consumer_protection_law#061"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 2,
+          "top": [
+            "faq_dach#000",
+            "returns_dach_2025#000",
+            "delivery_dach#000",
+            "returns_dach_2025#001",
+            "price_match_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "warranty_ua#001",
+            "loyalty_2025#000",
+            "repair_process_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#059"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 1,
+          "top": [
+            "loyalty_2025#000",
+            "faq_ua#000",
+            "ua_consumer_protection_law#072",
+            "ua_consumer_protection_law#074",
+            "ua_consumer_protection_law#073"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "payment_ua#000",
+            "delivery_ua_2025#001",
+            "shipping_international_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#191",
+            "sony_wf1000xm5_help_guide_de#212",
+            "sony_wf1000xm5_help_guide_de#208"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_770nc_ua#001",
+            "jbl_tune_770nc_spec_en#004",
+            "jbl_tune_770nc_spec_en#002"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#184",
+            "sony_wf1000xm5_help_guide_en#153",
+            "sony_wh1000xm5_help_guide_en#113",
+            "sony_wf1000xm5_help_guide_en#037",
+            "sony_wh1000xm5_help_guide_en#130"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 2,
+          "top": [
+            "ua_consumer_protection_law#031",
+            "ua_consumer_protection_law#029",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#030",
+            "ua_consumer_protection_law#079"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 1,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#057",
+            "eu_directive_2011_83_consumer_rights_en#027",
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#062",
+            "eu_directive_2011_83_consumer_rights_en#059"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#001",
+            "de_bgb_312g_widerrufsrecht#001",
+            "sony_wf1000xm5_dach#000",
+            "eu_directive_2011_83_consumer_rights_de#086",
+            "sony_wf1000xm5_help_guide_de#025"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "payment_ua#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "payment_methods_en#000",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#000",
+            "damaged_on_arrival_en#000",
+            "eu_directive_2011_83_consumer_rights_en#054",
+            "eu_directive_2011_83_consumer_rights_en#066"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "returns_dach_2025#000",
+            "large_appliances_dach#000",
+            "delivery_dach#001",
+            "price_match_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "shipping_international_en#000",
+            "delivery_ua_2025#000",
+            "faq_ua#000",
+            "ua_consumer_protection_law#056"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "order_cancellation_en#000",
+            "care_plus_en#000",
+            "gift_cards_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 1043,
+      "avg_tokens": 228
+    },
+    "380/150/vector": {
+      "hit@1": 0.625,
+      "recall@5": 0.938,
+      "mrr@10": 0.714,
+      "ms": 15,
+      "misses@5": [
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 3,
+          "top": [
+            "returns_ua_2025#001",
+            "faq_ua#000",
+            "returns_ua_2025#000",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#030"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 4,
+          "top": [
+            "faq_dach#000",
+            "delivery_dach#000",
+            "price_match_dach#000",
+            "returns_dach_2025#000",
+            "eu_directive_2011_83_consumer_rights_de#064"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "repair_process_en#000",
+            "eu_directive_2011_83_consumer_rights_en#057",
+            "damaged_on_arrival_en#000",
+            "faq_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 4,
+          "top": [
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#057",
+            "loyalty_2025#000",
+            "faq_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 4,
+          "top": [
+            "faq_ua#000",
+            "payment_ua#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000",
+            "delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#148",
+            "sony_wf1000xm5_help_guide_de#164"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#002",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_760nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#124",
+            "sony_wf1000xm5_help_guide_en#123",
+            "sony_wf1000xm5_help_guide_en#030",
+            "sony_wh1000xm5_help_guide_en#102"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#023",
+            "ua_consumer_protection_law#022"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 3,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "eu_directive_2011_83_consumer_rights_en#018",
+            "eu_directive_2011_83_consumer_rights_en#046",
+            "eu_directive_2011_83_consumer_rights_en#050",
+            "eu_directive_2011_83_consumer_rights_en#047"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_help_guide_de#190",
+            "sony_wf1000xm5_help_guide_de#019",
+            "sony_wf1000xm5_help_guide_de#189",
+            "sony_wf1000xm5_help_guide_de#009"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "payment_ua#000",
+            "faq_ua#000",
+            "payment_methods_en#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "faq_en#000",
+            "shipping_international_en#000",
+            "eu_directive_2011_83_consumer_rights_en#043",
+            "eu_directive_2019_771_sale_of_goods_en#046",
+            "eu_directive_2011_83_consumer_rights_en#023"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "warranty_dach#000",
+            "faq_dach#000",
+            "price_match_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "delivery_ua_2025#001",
+            "faq_ua#000",
+            "payment_ua#000",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "payment_methods_en#000",
+            "order_cancellation_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#052",
+            "shipping_international_en#000",
+            "returns_overview_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 834,
+      "avg_tokens": 282
+    },
+    "380/150/hybrid": {
+      "hit@1": 0.562,
+      "recall@5": 0.875,
+      "mrr@10": 0.684,
+      "ms": 19,
+      "misses@5": [
+        "r04",
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 2,
+          "top": [
+            "returns_ua_2025#001",
+            "returns_ua_2025#000",
+            "faq_ua#000",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#030"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 4,
+          "top": [
+            "faq_dach#000",
+            "delivery_dach#000",
+            "price_match_dach#000",
+            "returns_dach_2025#000",
+            "wrong_item_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "faq_en#000",
+            "loyalty_2025#000",
+            "eu_directive_2011_83_consumer_rights_en#051",
+            "eu_directive_2011_83_consumer_rights_en#038"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": null,
+          "top": [
+            "faq_ua#000",
+            "ua_consumer_protection_law#056",
+            "trade_in_ua#000",
+            "ua_consumer_protection_law#029",
+            "ua_consumer_protection_law#023"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "payment_ua#000",
+            "order_changes_ua#000",
+            "returns_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#138",
+            "sony_wf1000xm5_help_guide_de#152"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_770nc_spec_en#001",
+            "jbl_tune_760nc_spec_en#000"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#123",
+            "sony_wh1000xm5_help_guide_en#088",
+            "sony_wh1000xm5_help_guide_en#102",
+            "sony_wf1000xm5_help_guide_en#142"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#028",
+            "ua_consumer_protection_law#023"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 5,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "eu_directive_2011_83_consumer_rights_en#018",
+            "eu_directive_2011_83_consumer_rights_en#019",
+            "eu_directive_2011_83_consumer_rights_en#050",
+            "eu_directive_2011_83_consumer_rights_en#046"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#192",
+            "sony_wf1000xm5_help_guide_de#144"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "payment_ua#000",
+            "faq_ua#000",
+            "order_changes_ua#000",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#000",
+            "damaged_on_arrival_en#000",
+            "eu_directive_2011_83_consumer_rights_en#023",
+            "eu_directive_2011_83_consumer_rights_en#056"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "large_appliances_dach#000",
+            "warranty_dach#000",
+            "price_match_dach#000",
+            "returns_dach_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "delivery_ua_2025#001",
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "order_cancellation_en#000",
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "repair_process_en#000",
+            "damaged_on_arrival_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 834,
+      "avg_tokens": 282
+    },
+    "380/150/rerank": {
+      "hit@1": 0.75,
+      "recall@5": 0.938,
+      "mrr@10": 0.844,
+      "ms": 5177,
+      "misses@5": [
+        "r16"
+      ],
+      "per_question": {
+        "r01": {
+          "rank": 1,
+          "top": [
+            "returns_ua_2025#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "warranty_ua#001",
+            "ua_consumer_protection_law#022"
+          ],
+          "superseded_top5": []
+        },
+        "r02": {
+          "rank": 2,
+          "top": [
+            "faq_dach#000",
+            "returns_dach_2025#000",
+            "delivery_dach#000",
+            "wrong_item_dach#000",
+            "eu_directive_2011_83_consumer_rights_de#050"
+          ],
+          "superseded_top5": []
+        },
+        "r03": {
+          "rank": 1,
+          "top": [
+            "care_plus_en#000",
+            "warranty_ua#000",
+            "repair_process_en#000",
+            "loyalty_2025#000",
+            "eu_directive_2019_771_sale_of_goods_en#051"
+          ],
+          "superseded_top5": []
+        },
+        "r04": {
+          "rank": 1,
+          "top": [
+            "loyalty_2025#000",
+            "faq_ua#000",
+            "ua_consumer_protection_law#056",
+            "ua_consumer_protection_law#057",
+            "ua_cabinet_resolution_172#004"
+          ],
+          "superseded_top5": []
+        },
+        "r05": {
+          "rank": 2,
+          "top": [
+            "faq_ua#000",
+            "delivery_ua_2025#000",
+            "returns_ua_2025#000",
+            "shipping_international_en#000",
+            "payment_ua#000"
+          ],
+          "superseded_top5": []
+        },
+        "r06": {
+          "rank": 2,
+          "top": [
+            "sony_wh1000xm5_dach#000",
+            "sony_wf1000xm5_dach#000",
+            "sony_wf1000xm5_help_guide_de#151",
+            "sony_wf1000xm5_help_guide_en#120",
+            "sony_wf1000xm5_help_guide_de#167"
+          ],
+          "superseded_top5": []
+        },
+        "r07": {
+          "rank": 1,
+          "top": [
+            "jbl_tune_770nc_ua#000",
+            "jbl_tune_770nc_spec_en#000",
+            "jbl_tune_760nc_ua#000",
+            "jbl_tune_770nc_spec_en#001",
+            "jbl_tune_770nc_spec_en#002"
+          ],
+          "superseded_top5": []
+        },
+        "r08": {
+          "rank": 1,
+          "top": [
+            "sony_wf1000xm5_help_guide_en#151",
+            "sony_wf1000xm5_help_guide_en#124",
+            "sony_wh1000xm5_help_guide_en#102",
+            "sony_wh1000xm5_help_guide_en#088",
+            "sony_wf1000xm5_help_guide_en#123"
+          ],
+          "superseded_top5": []
+        },
+        "r09": {
+          "rank": 1,
+          "top": [
+            "ua_consumer_protection_law#024",
+            "ua_consumer_protection_law#025",
+            "ua_consumer_protection_law#019",
+            "ua_consumer_protection_law#017",
+            "ua_consumer_protection_law#028"
+          ],
+          "superseded_top5": []
+        },
+        "r10": {
+          "rank": 1,
+          "top": [
+            "eu_directive_2011_83_consumer_rights_en#046",
+            "eu_directive_2011_83_consumer_rights_en#050",
+            "eu_directive_2011_83_consumer_rights_en#017",
+            "eu_directive_2011_83_consumer_rights_en#019",
+            "eu_directive_2011_83_consumer_rights_en#049"
+          ],
+          "superseded_top5": []
+        },
+        "r11": {
+          "rank": 1,
+          "top": [
+            "returns_dach_2025#000",
+            "sony_wf1000xm5_dach#000",
+            "de_bgb_312g_widerrufsrecht#000",
+            "eu_directive_2011_83_consumer_rights_de#068",
+            "eu_directive_2011_83_consumer_rights_de#069"
+          ],
+          "superseded_top5": []
+        },
+        "r12": {
+          "rank": 1,
+          "top": [
+            "payment_ua#000",
+            "faq_ua#000",
+            "returns_ua_2025#001",
+            "payment_methods_en#000",
+            "delivery_ua_2025#000"
+          ],
+          "superseded_top5": []
+        },
+        "r13": {
+          "rank": 1,
+          "top": [
+            "shipping_international_en#000",
+            "faq_en#000",
+            "eu_directive_2011_83_consumer_rights_en#038",
+            "damaged_on_arrival_en#000",
+            "eu_directive_2019_771_sale_of_goods_en#022"
+          ],
+          "superseded_top5": []
+        },
+        "r14": {
+          "rank": 1,
+          "top": [
+            "delivery_dach#000",
+            "returns_dach_2025#000",
+            "large_appliances_dach#000",
+            "shipping_international_en#000",
+            "wrong_item_dach#000"
+          ],
+          "superseded_top5": []
+        },
+        "r15": {
+          "rank": 1,
+          "top": [
+            "order_changes_ua#000",
+            "shipping_international_en#000",
+            "ua_consumer_protection_law#046",
+            "faq_ua#000",
+            "delivery_ua_2025#001"
+          ],
+          "superseded_top5": []
+        },
+        "r16": {
+          "rank": null,
+          "top": [
+            "payment_methods_en#000",
+            "returns_overview_en#000",
+            "order_cancellation_en#000",
+            "care_plus_en#000",
+            "repair_process_en#000"
+          ],
+          "superseded_top5": []
+        }
+      },
+      "chunks": 834,
+      "avg_tokens": 282
+    }
+  },
+  "questions_hash": "4f02f5e9476f",
+  "chunks_hash": "9c0664878542",
+  "pipeline": {
+    "faq_chunks": "per_question",
+    "query_translation": true
+  }
+}

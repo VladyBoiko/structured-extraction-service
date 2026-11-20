@@ -1,0 +1,56 @@
+{
+  "faithfulness_prompt": "v1",
+  "answers": 69,
+  "claims": 132,
+  "quotes_verified": 1.0,
+  "claims_dropped_by_quote_check": 0,
+  "claims_supported": 0.985,
+  "answers_fully_supported": 0.971,
+  "unsupported": [
+    {
+      "id": "t04",
+      "run": 1,
+      "claim": "Політика програми з 1 квітня 2025 року має пріоритет над FAQ 2024 року, який стверджує, що знижка Gold діє і на акційні товари.",
+      "supported": false,
+      "reason": "The FAQ does say Gold discount applies to sale items, but the sources never state that the 2025 programme takes priority over the 2024 FAQ; 'Replaces the 2024 version' refers to the programme itself, not the FAQ."
+    },
+    {
+      "id": "t04",
+      "run": 3,
+      "claim": "Чинна політика клубної програми (з 1 квітня 2025 року) вказує, що знижка Gold становить 7%, тому знижка 10% на акційні товари з FAQ не діє.",
+      "supported": false,
+      "reason": "The source does confirm that Gold is 7%, but it says nothing about a 10% sale-item discount in an FAQ, and the stated reason (Gold's 7% rate) is not what excludes sale items; the source's exclusion of sale items is a different basis, so the claim's causal link and FAQ reference are not supported."
+    }
+  ],
+  "control_groups": {
+    "generated errors": {
+      "n": 12,
+      "right": 12
+    },
+    "subtle errors": {
+      "n": 13,
+      "right": 12
+    },
+    "correct restatements": {
+      "n": 6,
+      "right": 6
+    }
+  },
+  "controls_wrong": [
+    {
+      "kind": "condition swapped",
+      "id": "c07",
+      "text": "JBL Tune 770NC працює до 44 годин без шумозаглушення.",
+      "expected": false,
+      "citations": [
+        {
+          "chunk_id": "jbl_tune_770nc_ua#000",
+          "title": "Навушники JBL Tune 770NC — сторінка товару"
+        }
+      ],
+      "supported": true,
+      "reason": "The source states battery life with ANC (шумозаглушення) is up to 44 hours, and the claim matches that condition."
+    }
+  ],
+  "cost_usd": 0.01743
+}
