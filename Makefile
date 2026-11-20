@@ -42,6 +42,18 @@ rag-ci:            ## what the CI runs: retrieval and one answer run, then the q
 	$(PYTHON) -m src.rag eval --runs 1 --tag ci
 	$(PYTHON) -m src.rag ci-check --answers ci --retrieval ci
 
-rag: rag-data rag-index rag-eval-retrieval
+rag-full:          ## full answer evaluation of the final configuration: 3 runs, judge, faithfulness, gates (~$0.10)
+	$(PYTHON) -m src.rag eval --prompt v2 --tag full
+	$(PYTHON) -m src.rag judge --tag full --latest
+	$(PYTHON) -m src.rag faithfulness --tag full --latest
+	$(PYTHON) -m src.rag ci-check --answers full --retrieval run
 
-.PHONY: install run report test errors smoke rag rag-data rag-ingest rag-index rag-eval-retrieval rag-ask rag-eval rag-ci
+# Block 2 in one command: corpus -> chunks -> index -> retrieval evaluation -> answers, judge, faithfulness -> gates.
+# Every step writes new results next to the earlier ones (full, full_2 ...; run, run_2 ...).
+rag:
+	$(PYTHON) -m src.rag data
+	$(PYTHON) -m src.rag index
+	$(PYTHON) -m src.rag eval-retrieval --tag run
+	$(MAKE) rag-full
+
+.PHONY: install run report test errors smoke rag rag-full rag-data rag-ingest rag-index rag-eval-retrieval rag-ask rag-eval rag-ci

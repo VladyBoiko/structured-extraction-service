@@ -164,8 +164,22 @@ deterministic checks, an LLM judge, faithfulness, CI). Results, error analysis a
 
 ### Run
 
+**Everything in one command** (put `ANTHROPIC_API_KEY` in `.env` first, see `.env.example`):
+
 ```bash
 pip install -r requirements.txt
+make rag
+```
+
+`make rag` builds the corpus and the chunks, builds the index, evaluates retrieval, answers the 39 test questions three
+times with the final configuration, grades them with the LLM judge, checks faithfulness and applies the CI quality
+gates. The first run downloads the embedding and reranker models and embeds the corpus; the answers, the judge and the faithfulness
+check cost about $0.10. Results are written next to the earlier ones under `evals/results/` (`retrieval/run`,
+`answers/full`; a repeated run writes `run_2`, `full_2`). One question: `make rag-ask Q="Скільки днів на повернення?"`.
+
+The steps one at a time:
+
+```bash
 python -m src.rag data          # or: make rag-data
 ```
 

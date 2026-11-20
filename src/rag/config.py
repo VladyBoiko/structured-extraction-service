@@ -55,7 +55,7 @@ TOP_K = 5                      # hits returned / evaluated (recall@5)
 
 # ---------------------------------------------------------------- step 3: answers with sources
 PROMPTS_DIR = ROOT / "prompts" / "rag"        # v1.md, v2.md, ... + CHANGELOG.md
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"   # the final configuration; v1 -> v2: see prompts/rag/CHANGELOG.md
 ANSWER_MODEL = "claude-haiku-5-5"
 ANSWER_EFFORT = "low"          # Haiku 5.5 default is medium; short grounded answers need little reasoning
 ANSWER_MAX_TOKENS = 4000       # thinking + the JSON answer; a cut answer (stop_reason=max_tokens) is not used

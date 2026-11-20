@@ -1,7 +1,8 @@
 # RAG answer prompts: changelog
 
 The system prompt of the answer step (`python -m src.rag ask`). The version in use is `PROMPT_VERSION` in
-`src/rag/config.py`; every answer records the version it was produced with.
+`src/rag/config.py`; every answer records the version it was produced with. The version in use is v2 (`ask`, the CI,
+`make rag`); v1 is kept for comparison (`--prompt v1`).
 
 ## v2
 
