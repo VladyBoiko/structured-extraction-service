@@ -40,8 +40,8 @@ human labels, and a faithfulness check; then improved in six measured steps.
 ## Test sets
 
 - **Retrieval** ([evals/retrieval_questions.yaml](evals/retrieval_questions.yaml)): 16 questions with the place of
-  the answer (document + exact quote), checked against the top-10 of the search one by one; two runs of the
-  results and the changes between them are in [history.md](evals/results/retrieval/history.md).
+  the answer (document + exact quote), checked against the top-10 of the search one by one; all four runs (two
+  in step 2, two in step 4) and the changes between them are in [history.md](evals/results/retrieval/history.md).
 - **Answers** ([evals/testset.yaml](evals/testset.yaml)): 39 questions (19 Ukrainian, 11 English, 8 German, 1 mixed)
   with the reference answer, the facts it must contain (`must_include`), trap values it must not contain
   (`must_not_include`) and the documents it may cite. 21 traps (outdated FAQ, similar products, regional rules, a
